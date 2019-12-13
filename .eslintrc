@@ -1,0 +1,17 @@
+{
+  "globals": {
+    "__PATH_PREFIX__": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100,
+        "semi": false
+      }
+    ]
+  },
+  "extends": ["react-app", "plugin:prettier/recommended"]
+}
