@@ -1,11 +1,7 @@
 import React from 'react'
 
 const Folio = () => {
-  return (
-    <div>
-      <h1>My portfolio</h1>
-    </div>
-  )
+  return <h1>My portfolio</h1>
 }
 
 export default Folio

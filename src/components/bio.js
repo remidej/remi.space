@@ -33,7 +33,7 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
+      <p className="text-gray-600 p-16">
         Written by <strong>{author}</strong> who lives and works in San Francisco building useful
         things.
         {` `}

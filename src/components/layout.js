@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import reset from 'styled-reset'
 import styled, { createGlobalStyle } from 'styled-components'
 import { palette } from '../utils/palette'
+import '../layout.css'
 
 const GlobalStyles = createGlobalStyle`
   /* Reset all browser base stlyes */
