@@ -1,9 +1,9 @@
 {
   "name": "gatsby-starter-blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Personal blog and portfolio",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Rémi de Juvigny <remidejuvigny@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -30,6 +30,9 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
+    "reflexbox": "^4.0.6",
+    "styled-components": "^4.4.1",
+    "styled-reset": "^4.0.8",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typography": "^0.16.19",
