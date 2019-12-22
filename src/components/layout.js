@@ -1,35 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import reset from 'styled-reset'
-import styled, { createGlobalStyle } from 'styled-components'
-import { palette } from '../utils/palette'
 import '../layout.css'
-
-const GlobalStyles = createGlobalStyle`
-  /* Reset all browser base stlyes */
-  ${reset}
-
-  /* Global stylings */
-  html {
-    background: ${palette.lightGreen};
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    color: ${palette.black};
-    font-size: 10px;
-  }
-
-  /* Set fonts relative to the html font-size above */
-  body {
-    font-size: 1.8rem;
-    line-height: 2em;
-  }
-
-  /* Default */
-`
-
-const Styles = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-`
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -49,18 +20,19 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
-    <>
-      <GlobalStyles />
-      <Styles>
+    <div className="flex flex-col min-h-screen bg-teal-100 text-teal-900">
+      {/* Top section */}
+      <div className="flex-1">
         <header>{header}</header>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </Styles>
-    </>
+      </div>
+      {/* Bottom section */}
+      <footer className="bg-teal-900 text-teal-100">
+        © {new Date().getFullYear()}, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </footer>
+    </div>
   )
 }
 

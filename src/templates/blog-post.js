@@ -3,23 +3,6 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Container from '../components/container'
-import styled from 'styled-components'
-
-const StyledArticle = styled.article`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  blockquote {
-    width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-`
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -32,20 +15,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Container>
-        <StyledArticle>
-          <header>
-            <h1>{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
-          </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr />
-          <footer>
-            <Bio />
-          </footer>
-        </StyledArticle>
-      </Container>
-
+      <article>
+        <header>
+          <h1>{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.date}</p>
+        </header>
+        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <hr />
+        <footer>
+          <Bio />
+        </footer>
+      </article>
       <nav>
         <ul>
           <li>

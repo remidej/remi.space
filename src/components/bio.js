@@ -25,15 +25,13 @@ const Bio = () => {
 
   const { author, social } = data.site.siteMetadata
   return (
-    <div>
+    <div className="flex flex-row items-center">
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
+        className="rounded-full shadow-inner mr-4"
       />
-      <p className="text-gray-600 p-16">
+      <p>
         Written by <strong>{author}</strong> who lives and works in San Francisco building useful
         things.
         {` `}
