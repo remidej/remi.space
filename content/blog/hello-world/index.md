@@ -1,5 +1,5 @@
 ---
-title: Hello World! My first fake blog article
+title: Hello World! My first fake blog article, an exciting one
 date: "2015-05-01T22:12:03.284Z"
 description: "Hello World"
 ---

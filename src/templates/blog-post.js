@@ -6,21 +6,22 @@ import SEO from '../components/seo'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
       <article className="sm:w-full lg:w-6/12 xl:w-5/12 container mx-auto text-lg">
         <header>
-          <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
-          <p className="uppercase tracking-wide text-sm font-semibold">{post.frontmatter.date}</p>
+          <h1 className="text-4xl font-bold leading-tight">{post.frontmatter.title}</h1>
+          <p className="uppercase tracking-wide text-sm font-semibold text-gray-600 my-2">
+            {post.frontmatter.date} • {post.timeToRead} min read
+          </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section dangerouslySetInnerHTML={{ __html: post.html }} className="leading-relaxed" />
         <hr className="h-1 bg-green-200 rounded-lg mt-4 border-none mb-2" />
         <footer>
           <Bio />
@@ -61,6 +62,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      timeToRead
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
