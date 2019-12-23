@@ -4,11 +4,12 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const BlogIndex = ({ data, location }) => {
+const Home = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const siteDescription = data.site.siteMetadata.description
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} description={siteDescription}>
       <SEO title="Rémi de Juvigny" />
       <Bio />
       <h1>This is my site</h1>
@@ -22,13 +23,14 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default Home
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
         title
+        description
       }
     }
   }

@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Rémi de Juvigny`,
     author: `Rémi de Juvigny`,
-    description: `Personal blog and portfolio`,
+    description: `Product Developer`,
     siteUrl: `https://remi.space`,
     social: {
       twitter: `remidej`,

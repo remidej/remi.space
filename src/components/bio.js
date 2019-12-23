@@ -29,13 +29,19 @@ const Bio = () => {
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        className="rounded-full shadow-inner mr-4"
+        className="rounded-full mr-4 flex-shrink-0"
       />
       <p>
-        Written by <strong>{author}</strong> who lives and works in San Francisco building useful
-        things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>You should follow him on Twitter</a>
+        Hi! I'm <strong>{author}</strong>, author of this blog. I'm a french developer who loves
+        building empowering products. You should{' '}
+        <a
+          href={`https://twitter.com/${social.twitter}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-200 px-1 rounded-sm"
+        >
+          follow me on Twitter
+        </a>
       </p>
     </div>
   )
