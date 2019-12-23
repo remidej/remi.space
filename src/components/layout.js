@@ -40,7 +40,7 @@ const Layout = ({ location, children }) => {
 
   const navbar = (
     <nav
-      className={`container mx-auto py-4 flex flex-row justify-between ${
+      className={`container mx-auto py-4 flex flex-row justify-between z-10 relative ${
         isRootPage ? 'text-white' : 'text-black'
       }`}
     >
