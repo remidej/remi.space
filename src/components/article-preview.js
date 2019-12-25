@@ -10,7 +10,7 @@ const ArticlePreview = ({ article }) => {
         <h3 className="text-2xl font-medium">
           <Link to={article.fields.slug}>{title}</Link>
         </h3>
-        <p className="uppercase tracking-wide text-sm text-gray-700 my-2">
+        <p className="uppercase tracking-wide text-sm font-semibold text-gray-500 my-1">
           {article.frontmatter.date} • {article.timeToRead} min read
         </p>
       </header>

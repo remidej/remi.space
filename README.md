@@ -20,3 +20,11 @@ Congrats! The app should now be running at [https://localhost:8000](localhost:80
 * Side projects
 * Professional experience
 * Twitter
+
+## 📈 Marketing
+
+* Setup [https://www.npmjs.com/package/gatsby-plugin-segment-js](Segment)
+* Connect Segment to Google Analytics
+* Connect Segment to Mailchimp
+* Subscribe to newletter in the footer
+* Auto-generate cover images for social media, if there is no header image (like Zeit does)

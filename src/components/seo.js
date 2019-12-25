@@ -20,6 +20,7 @@ function SEO({ description, lang, meta, title }) {
 
   const metaDescription = description || site.siteMetadata.description
 
+  // Always wear a Helmet
   return (
     <Helmet
       htmlAttributes={{

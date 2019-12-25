@@ -8,7 +8,7 @@ const navLinks = [
     path: '/',
   },
   {
-    title: 'Articles',
+    title: 'Blog',
     path: '/blog',
   },
   {
@@ -41,10 +41,10 @@ const Layout = ({ location, children }) => {
   const navbar = (
     <nav
       className={`container mx-auto py-4 flex flex-row justify-between z-10 relative ${
-        isRootPage ? 'text-teal-100' : 'text-black'
+        isRootPage ? 'text-teal-100' : 'text-gray-700'
       }`}
     >
-      <Link to={`/`}>
+      <Link to={`/`} className={isRootPage ? 'hover:text-white' : 'hover:text-black'}>
         {isRootPage ? (
           // Site title is the main heading on homepage
           <h1 className="inline-block font-bold text-xl">{title}</h1>
@@ -61,10 +61,10 @@ const Layout = ({ location, children }) => {
           <li
             key={_navLink.path}
             className={`ml-10 font-medium ${
-              isRootPage
-                ? 'border-white hover:text-teal-100'
-                : 'border-teal-600 hover:text-teal-600'
-            } ${_navLink.path === location.pathname ? 'border-b-2' : 'border-b-0'}`}
+              isRootPage ? 'border-white hover:text-white' : 'border-teal-600 hover:text-teal-600'
+            } ${_navLink.path === location.pathname ? 'border-b-2' : 'border-b-0'} ${
+              isRootPage && _navLink.path === location.pathname ? 'text-white' : ''
+            }`}
           >
             <Link to={_navLink.path}>{_navLink.title}</Link>
           </li>

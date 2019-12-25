@@ -22,13 +22,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} className="leading-relaxed" />
-        <hr className="h-1 bg-green-200 rounded-lg mt-4 border-none mb-2" />
-        <footer>
+        <footer className="my-12">
           <Bio />
         </footer>
       </article>
-      <nav>
-        <ul>
+      <nav className="container mx-auto">
+        <ul className="flex flex-row align-baseline justify-between">
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">

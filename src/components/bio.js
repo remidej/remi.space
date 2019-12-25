@@ -38,7 +38,7 @@ const Bio = () => {
           href={`https://twitter.com/${social.twitter}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-200 px-1 rounded-sm"
+          className="bg-teal-200 px-1 rounded-sm"
         >
           follow me on Twitter
         </a>
