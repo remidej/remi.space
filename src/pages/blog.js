@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import ArticlePreview from '../components/article-preview'
 
 const BlogIndex = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -19,6 +20,7 @@ const BlogIndex = ({ location }) => {
             fields {
               slug
             }
+            timeToRead
             frontmatter {
               date(formatString: "MMMM DD, YYYY")
               title
@@ -30,32 +32,16 @@ const BlogIndex = ({ location }) => {
     }
   `)
 
-  const posts = data.allMarkdownRemark.edges
+  const articles = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={location} title="Articles">
+    <Layout location={location}>
       <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3>
-                <Link to={node.fields.slug}>{title}</Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
+      <div className="container mx-auto sm:w-full lg:w-6/12 mt-6">
+        {articles.map(({ node }) => (
+          <ArticlePreview article={node} key={node.fields.slug} />
+        ))}
+      </div>
     </Layout>
   )
 }

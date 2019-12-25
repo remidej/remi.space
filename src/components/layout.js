@@ -41,7 +41,7 @@ const Layout = ({ location, children }) => {
   const navbar = (
     <nav
       className={`container mx-auto py-4 flex flex-row justify-between z-10 relative ${
-        isRootPage ? 'text-white' : 'text-black'
+        isRootPage ? 'text-teal-100' : 'text-black'
       }`}
     >
       <Link to={`/`}>
@@ -60,7 +60,7 @@ const Layout = ({ location, children }) => {
         {navLinks.map(_navLink => (
           <li
             key={_navLink.path}
-            className={`mr-8 last:mr-0 font-medium ${
+            className={`ml-10 font-medium ${
               isRootPage
                 ? 'border-white hover:text-teal-100'
                 : 'border-teal-600 hover:text-teal-600'
@@ -81,10 +81,8 @@ const Layout = ({ location, children }) => {
         <main>{children}</main>
       </div>
       {/* Bottom section */}
-      <footer className="bg-green-200 text-green-900 py-3">
-        <div className="container mx-auto">
-          © {new Date().getFullYear()} • built with React & Tailwind CSS
-        </div>
+      <footer className="py-3">
+        <div className="container mx-auto">© {new Date().getFullYear()} • view on Github</div>
       </footer>
     </div>
   )

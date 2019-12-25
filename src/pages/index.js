@@ -1,8 +1,10 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
+import { FiArrowRight } from 'react-icons/fi'
 import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import ArticlePreview from '../components/article-preview'
 
 const SKEW_DEGREES = -1
 
@@ -10,27 +12,39 @@ const Home = ({ location }) => {
   // Get image
   const data = useStaticQuery(graphql`
     query {
+      # Get the avatar image
       avatar: file(absolutePath: { regex: "/remi-hello.png/" }) {
         childImageSharp {
           fixed(width: 350) {
-            ...GatsbyImageSharpFixed_tracedSVG
+            ...GatsbyImageSharpFixed
           }
         }
       }
-      site {
-        siteMetadata {
-          author
-          social {
-            twitter
+      # Get last posts preview
+      allMarkdownRemark(limit: 3) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            timeToRead
+            frontmatter {
+              date(formatString: "MMMM DD, YYYY")
+              title
+              description
+            }
           }
         }
       }
     }
   `)
 
+  const articles = data.allMarkdownRemark.edges
+
   return (
     <Layout location={location}>
       <SEO title="Rémi de Juvigny" />
+      {/* Big colorful header */}
       <header
         className="text-teal-100 overflow-hidden"
         style={{
@@ -45,25 +59,43 @@ const Home = ({ location }) => {
         >
           <div className="container mx-auto pt-12">
             <div className="flex flex-row justify-between">
-              <div className="text-3xl text-teal-100 font-medium flex flex-col justify-center">
+              <div className="text-3xl text-white font-medium flex flex-col justify-center">
                 <p>Hello there! Rémi here.</p>
-                <h2>I'm a product developer based in Paris.</h2>
+                <h2>I'm a Product Developer from France.</h2>
+                <p>I study web development & UI design, and I like to share what I learn.</p>
               </div>
               <div className="w1/4 flex flex-col items-end">
-                <Image
-                  fixed={data.avatar.childImageSharp.fixed}
-                  alt={`Rémi says hello`}
-                  className
-                />
+                <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} />
               </div>
             </div>
           </div>
         </div>
       </header>
       {/* Writing section */}
-      <div className="container mt-4 mx-auto">
-        <p>Sometimes I like to write things down.</p>
-      </div>
+      <section className="container mt-8 mx-auto flex flex-row text-gray-800 items-baseline">
+        <div className="w-5/12">
+          <p className="font-bold text-3xl font-medium">
+            Sometimes I like to <span className="text-pink-500">write things down.</span>
+          </p>
+          <p className="font-bold text-3xl font-medium">
+            I work with teams to <span className="text-purple-500">build products.</span>
+          </p>
+          <p className="font-bold text-3xl font-medium">
+            I do experiments on <span className="text-indigo-500">side projects.</span>
+          </p>
+          <p className="font-bold text-3xl font-medium">
+            I spend too much time <span className="text-blue-500">on Twitter.</span>
+          </p>
+        </div>
+        <div className="ml-10 flex-1">
+          {articles.map(({ node }) => (
+            <ArticlePreview article={node} key={node.fields.slug} />
+          ))}
+          <Link to="/blog" className="hover:text-purple-500 text-lg">
+            View all articles <FiArrowRight className="inline" size="1em" />
+          </Link>
+        </div>
+      </section>
     </Layout>
   )
 }
