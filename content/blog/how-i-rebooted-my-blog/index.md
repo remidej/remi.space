@@ -4,11 +4,13 @@ date: "2019-12-26"
 description: "The story, motivation and inspiration behind remi.space v4.0"
 ---
 
-In 2015 my bother called me
+In `2015-04-23` my bother called me
 
 >My domain registrar is offering me a free *.space* domain. Do you want it?
 
-I was 15 and didn't know what to do with it, but I thought I'd figure that out along the way. So I booked remi.space, and built my first personal portfolio, despite having no projects to showcase.
+I was 15 and didn't know what to do with it, but I thought I'd figure that out along the way. So **I booked remi.space**, and built my first personal portfolio, despite having no projects to showcase.
+
+## The 2020 reboot was the greatest thing
 
 I had many sources of inspiration:
 
@@ -17,3 +19,15 @@ I had many sources of inspiration:
 * [Supermood](https://supermood.fr/) for the colorful homepage palette
 * [HeyDesigner](https://heydesigner.com/) for the minimalist desktop navbar
 * [The Outline](https://theoutline.com/) for the bold mobile hamburger menu
+
+## How I coded it
+
+```jsx{3}
+class Checkbox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isOn: true };
+  }
+  // ...
+}
+```

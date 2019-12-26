@@ -54,7 +54,7 @@ const Home = ({ location }) => {
         }}
       >
         <div
-          className="heroPattern pt-12" // Used in CSS
+          className="hero-pattern pt-12" // Used in CSS
           style={{ transform: `skewY(${-SKEW_DEGREES}deg)` }}
         >
           <div className="container mx-auto pt-12">

@@ -29,7 +29,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.date} • {post.timeToRead} min read
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} className="leading-relaxed mt-6" />
+        <section
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          className="leading-relaxed mt-4 article-content"
+        />
         <footer className="my-12">
           <Bio />
         </footer>

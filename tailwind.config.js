@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blog: colors.purple,
-        work: colors.teal,
+        blog: colors.teal,
+        work: colors.purple,
         projects: colors.indigo,
         twitter: colors.blue,
       },
