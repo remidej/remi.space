@@ -37,8 +37,8 @@ const BlogIndex = ({ location }) => {
     <Layout location={location}>
       <SEO title="All my articles" />
       <div className="container mt-6 mx-auto flex flex-row items-baseline relative">
-        <h1 className="font-bold text-4xl font-medium w-1/3 top-0 sticky">
-          All my <span className="text-purple-500">articles</span>
+        <h1 className="font-bold text-4xl font-medium w-1/3 top-0 sticky text-gray-800">
+          All my <span className="text-blog-500">articles</span>
         </h1>
         <section className="flex-1">
           {articles.map(({ node }) => (

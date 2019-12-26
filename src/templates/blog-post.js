@@ -19,7 +19,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <Link
             to="/blog"
-            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-purple-500 my-2"
+            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-blog-500 my-2"
           >
             <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
             All articles

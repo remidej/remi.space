@@ -7,7 +7,7 @@ const ArticlePreview = ({ article }) => {
   return (
     <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
       <header>
-        <h3 className="text-2xl font-medium hover:text-purple-500">
+        <h3 className="text-2xl font-medium hover:text-blog-700">
           <Link to={article.fields.slug}>{title}</Link>
         </h3>
         <p className="uppercase tracking-wide text-sm font-semibold text-gray-500 my-1">

@@ -75,7 +75,7 @@ const Home = ({ location }) => {
       <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline relative">
         <div className="w-5/12 sticky top-0">
           <p className="font-bold text-3xl font-medium">
-            Sometimes I like to <span className="text-purple-500">write things down.</span>
+            Sometimes I like to <span className="text-blog-500">write things down.</span>
           </p>
           <p className="text-lg text-gray-600 mt-4">
             I write about JavaScript, React, Node, career tips, and really just about anything I
@@ -86,7 +86,7 @@ const Home = ({ location }) => {
           {articles.map(({ node }) => (
             <ArticlePreview article={node} key={node.fields.slug} />
           ))}
-          <Link to="/blog" className="hover:text-purple-500 text-lg">
+          <Link to="/blog" className="hover:text-blog-700 text-lg">
             View all articles <FiArrowRight className="inline" size="1em" />
           </Link>
         </div>
@@ -95,28 +95,20 @@ const Home = ({ location }) => {
       <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline">
         <div className="w-5/12 sticky top-0">
           <p className="font-bold text-3xl font-medium">
-            I work with teams to <span className="text-teal-500">build products.</span>
+            I work with teams to <span className="text-work-500">build products.</span>
           </p>
         </div>
         <div className="ml-10 flex-1">
-          <p>
-            The other section Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur
-            voluptatibus rem quas animi, odit exercitationem nulla at quis eius, nobis vel iste
-            obcaecati aut eum porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem
-            earum eius eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores
-            veritatis, quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas
-            numquam maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae
-            eius ad mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi
-            laborum, deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam
-            assumenda perferendis! Nesciunt consequuntur quae officiis sapiente quam est corrupti
-            exercitationem. Possimus consequatur sapiente ullam tempora labore officia, iure et
-            dicta consequuntur incidunt maxime quia magni dolorem voluptatem obcaecati minus
-            nesciunt sit! Cupiditate, magni tempora? Nesciunt, recusandae? Hic obcaecati
-            repudiandae, impedit porro recusandae commodi cupiditate, nulla placeat modi deleniti
-            vitae ipsum nemo velit iusto dolor quae. Ab omnis ipsa repellat nisi eum. Cumque debitis
-            aliquam amet perferendis rerum hic id saepe earum praesentium qui ullam explicabo
-            pariatur consequuntur natus quas ad suscipit ab nesciunt, assumenda deserunt! Natus quia
-            commodi cupiditate provident incidunt!
+          <p className="text-lg">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus rem
+            quas animi, odit exercitationem nulla at quis eius, nobis vel iste obcaecati aut eum
+            porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem earum eius
+            eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores veritatis,
+            quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas numquam
+            maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae eius ad
+            mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi laborum,
+            deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam assumenda
+            perferendis!
           </p>
         </div>
       </section>
@@ -124,28 +116,20 @@ const Home = ({ location }) => {
       <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline">
         <div className="w-5/12 sticky top-0">
           <p className="font-bold text-3xl font-medium">
-            I do experiments on <span className="text-indigo-500">side projects.</span>
+            I do experiments on <span className="text-projects-500">side projects.</span>
           </p>
         </div>
         <div className="ml-10 flex-1">
-          <p>
-            The other section Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur
-            voluptatibus rem quas animi, odit exercitationem nulla at quis eius, nobis vel iste
-            obcaecati aut eum porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem
-            earum eius eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores
-            veritatis, quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas
-            numquam maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae
-            eius ad mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi
-            laborum, deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam
-            assumenda perferendis! Nesciunt consequuntur quae officiis sapiente quam est corrupti
-            exercitationem. Possimus consequatur sapiente ullam tempora labore officia, iure et
-            dicta consequuntur incidunt maxime quia magni dolorem voluptatem obcaecati minus
-            nesciunt sit! Cupiditate, magni tempora? Nesciunt, recusandae? Hic obcaecati
-            repudiandae, impedit porro recusandae commodi cupiditate, nulla placeat modi deleniti
-            vitae ipsum nemo velit iusto dolor quae. Ab omnis ipsa repellat nisi eum. Cumque debitis
-            aliquam amet perferendis rerum hic id saepe earum praesentium qui ullam explicabo
-            pariatur consequuntur natus quas ad suscipit ab nesciunt, assumenda deserunt! Natus quia
-            commodi cupiditate provident incidunt!
+          <p className="text-lg">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus rem
+            quas animi, odit exercitationem nulla at quis eius, nobis vel iste obcaecati aut eum
+            porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem earum eius
+            eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores veritatis,
+            quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas numquam
+            maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae eius ad
+            mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi laborum,
+            deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam assumenda
+            perferendis!
           </p>
         </div>
       </section>
@@ -157,24 +141,16 @@ const Home = ({ location }) => {
           </p>
         </div>
         <div className="ml-10 flex-1">
-          <p>
-            The other section Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur
-            voluptatibus rem quas animi, odit exercitationem nulla at quis eius, nobis vel iste
-            obcaecati aut eum porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem
-            earum eius eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores
-            veritatis, quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas
-            numquam maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae
-            eius ad mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi
-            laborum, deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam
-            assumenda perferendis! Nesciunt consequuntur quae officiis sapiente quam est corrupti
-            exercitationem. Possimus consequatur sapiente ullam tempora labore officia, iure et
-            dicta consequuntur incidunt maxime quia magni dolorem voluptatem obcaecati minus
-            nesciunt sit! Cupiditate, magni tempora? Nesciunt, recusandae? Hic obcaecati
-            repudiandae, impedit porro recusandae commodi cupiditate, nulla placeat modi deleniti
-            vitae ipsum nemo velit iusto dolor quae. Ab omnis ipsa repellat nisi eum. Cumque debitis
-            aliquam amet perferendis rerum hic id saepe earum praesentium qui ullam explicabo
-            pariatur consequuntur natus quas ad suscipit ab nesciunt, assumenda deserunt! Natus quia
-            commodi cupiditate provident incidunt!
+          <p className="text-lg">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus rem
+            quas animi, odit exercitationem nulla at quis eius, nobis vel iste obcaecati aut eum
+            porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem earum eius
+            eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores veritatis,
+            quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas numquam
+            maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae eius ad
+            mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi laborum,
+            deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam assumenda
+            perferendis!
           </p>
         </div>
       </section>
