@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { FiArrowLeft } from 'react-icons/fi'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -16,12 +17,19 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       />
       <article className="mt-6 sm:w-full lg:w-6/12 container mx-auto text-xl">
         <header>
+          <Link
+            to="/blog"
+            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-purple-500 my-2"
+          >
+            <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
+            All articles
+          </Link>
           <h1 className="text-4xl font-bold leading-tight">{post.frontmatter.title}</h1>
-          <p className="uppercase tracking-wide text-sm font-semibold text-gray-600 my-2">
+          <p className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 my-2">
             {post.frontmatter.date} • {post.timeToRead} min read
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} className="leading-relaxed" />
+        <section dangerouslySetInnerHTML={{ __html: post.html }} className="leading-relaxed mt-6" />
         <footer className="my-12">
           <Bio />
         </footer>

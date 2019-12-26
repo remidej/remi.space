@@ -7,14 +7,14 @@ const ArticlePreview = ({ article }) => {
   return (
     <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
       <header>
-        <h3 className="text-2xl font-medium">
+        <h3 className="text-2xl font-medium hover:text-purple-500">
           <Link to={article.fields.slug}>{title}</Link>
         </h3>
         <p className="uppercase tracking-wide text-sm font-semibold text-gray-500 my-1">
           {article.frontmatter.date} • {article.timeToRead} min read
         </p>
       </header>
-      <section className="text-gray-700">
+      <section className="text-gray-700 text-lg">
         <p
           dangerouslySetInnerHTML={{
             __html: article.frontmatter.description || article.excerpt,

@@ -12,8 +12,8 @@ const navLinks = [
     path: '/blog',
   },
   {
-    title: 'Portfolio',
-    path: '/folio',
+    title: 'Projects',
+    path: '/projects',
   },
   {
     title: 'Contact',
@@ -61,9 +61,13 @@ const Layout = ({ location, children }) => {
           <li
             key={_navLink.path}
             className={`ml-10 font-medium ${
-              isRootPage ? 'border-white hover:text-white' : 'border-teal-600 hover:text-teal-600'
-            } ${_navLink.path === location.pathname ? 'border-b-2' : 'border-b-0'} ${
-              isRootPage && _navLink.path === location.pathname ? 'text-white' : ''
+              isRootPage ? 'border-white hover:text-white' : 'border-black hover:text-black'
+            } ${
+              _navLink.path === location.pathname
+                ? 'border-b-2 text-black'
+                : 'border-b-0 text-gray-600'
+            } ${isRootPage && _navLink.path === location.pathname ? 'text-white' : ''}${
+              isRootPage && _navLink.path !== location.pathname ? 'text-teal-100' : ''
             }`}
           >
             <Link to={_navLink.path}>{_navLink.title}</Link>

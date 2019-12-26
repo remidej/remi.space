@@ -21,7 +21,7 @@ const Home = ({ location }) => {
         }
       }
       # Get last posts preview
-      allMarkdownRemark(limit: 3) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
         edges {
           node {
             fields {
@@ -62,7 +62,7 @@ const Home = ({ location }) => {
               <div className="text-3xl text-white font-medium flex flex-col justify-center">
                 <p>Hello there! Rémi here.</p>
                 <h2>I'm a Product Developer from France.</h2>
-                <p>I study web development & UI design, and I like to share what I learn.</p>
+                <p>I build apps users won't hate, and tell people about it.</p>
               </div>
               <div className="w1/4 flex flex-col items-end">
                 <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} />
@@ -75,7 +75,11 @@ const Home = ({ location }) => {
       <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline relative">
         <div className="w-5/12 sticky top-0">
           <p className="font-bold text-3xl font-medium">
-            Sometimes I like to <span className="text-pink-500">write things down.</span>
+            Sometimes I like to <span className="text-purple-500">write things down.</span>
+          </p>
+          <p className="text-lg text-gray-600 mt-4">
+            I write about JavaScript, React, Node, career tips, and really just about anything I
+            want.
           </p>
         </div>
         <div className="ml-10 flex-1">
@@ -91,7 +95,7 @@ const Home = ({ location }) => {
       <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline">
         <div className="w-5/12 sticky top-0">
           <p className="font-bold text-3xl font-medium">
-            I work with teams to <span className="text-purple-500">build products.</span>
+            I work with teams to <span className="text-teal-500">build products.</span>
           </p>
         </div>
         <div className="ml-10 flex-1">

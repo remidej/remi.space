@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://remi.space`,
     social: {
       twitter: `remidej`,
+      linkedin: `remi-de-juvigny`,
     },
   },
   plugins: [
