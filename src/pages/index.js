@@ -133,27 +133,6 @@ const Home = ({ location }) => {
           </p>
         </div>
       </section>
-      {/* Twitter section */}
-      <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline">
-        <div className="w-5/12 sticky top-0">
-          <p className="font-bold text-3xl font-medium">
-            I spend too much time <span className="text-blue-500">on Twitter.</span>
-          </p>
-        </div>
-        <div className="ml-10 flex-1">
-          <p className="text-lg">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus rem
-            quas animi, odit exercitationem nulla at quis eius, nobis vel iste obcaecati aut eum
-            porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem earum eius
-            eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores veritatis,
-            quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas numquam
-            maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae eius ad
-            mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi laborum,
-            deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam assumenda
-            perferendis!
-          </p>
-        </div>
-      </section>
     </Layout>
   )
 }
