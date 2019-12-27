@@ -15,7 +15,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article className="mt-6 sm:w-full lg:w-6/12 container mx-auto text-xl">
+      <article className="mt-6 sm:w-full lg:w-6/12 max-w-3xl container mx-auto text-xl">
         <header>
           <Link
             to="/blog"

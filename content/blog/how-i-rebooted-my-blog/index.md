@@ -22,6 +22,18 @@ I had many sources of inspiration:
 
 ## How I coded it
 
-```javascript
-const a = 0
+```jsx
+const BlogPostTemplate = ({ data, pageContext, location }) => {
+  const post = data.markdownRemark
+  const { previous, next } = pageContext
+
+  return (
+    <Layout location={location}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
+    </Layout>
+  )
+}
 ```

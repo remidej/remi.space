@@ -1,1 +1,1 @@
-require('prismjs/themes/prism-solarizedlight.css')
+require('prism-theme-night-owl/style.min.css')

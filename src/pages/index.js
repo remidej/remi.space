@@ -46,15 +46,15 @@ const Home = ({ location }) => {
       <SEO title="Rémi de Juvigny" />
       {/* Big colorful header */}
       <header
-        className="text-teal-100 overflow-hidden"
+        className="text-teal-100 overflow-hidden -mt-20"
         style={{
           background: 'linear-gradient(145deg, rgba(44,122,123,1) 0%, rgba(55,135,166,1) 100%)',
           transform: `skewY(${SKEW_DEGREES}deg)`,
-          marginTop: '-4.7rem',
+          // marginTop: '-4.7rem',
         }}
       >
         <div
-          className="hero-pattern pt-12" // Used in CSS
+          className="hero-pattern pt-10" // Used in CSS
           style={{ transform: `skewY(${-SKEW_DEGREES}deg)` }}
         >
           <div className="container mx-auto pt-12">
@@ -77,16 +77,12 @@ const Home = ({ location }) => {
           <p className="font-bold text-3xl font-medium">
             Sometimes I like to <span className="text-blog-500">write things down.</span>
           </p>
-          <p className="text-lg text-gray-600 mt-4">
-            I write about JavaScript, React, Node, career tips, and really just about anything I
-            want.
-          </p>
         </div>
         <div className="ml-10 flex-1">
           {articles.map(({ node }) => (
             <ArticlePreview article={node} key={node.fields.slug} />
           ))}
-          <Link to="/blog" className="hover:text-blog-700 text-lg">
+          <Link to="/blog" className="hover:text-blog-700 text-lg font-medium">
             View all articles <FiArrowRight className="inline" size="1em" />
           </Link>
         </div>
