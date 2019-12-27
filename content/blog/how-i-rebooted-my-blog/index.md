@@ -22,12 +22,6 @@ I had many sources of inspiration:
 
 ## How I coded it
 
-```jsx{3}
-class Checkbox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOn: true };
-  }
-  // ...
-}
+```javascript
+const a = 0
 ```
