@@ -19,7 +19,7 @@ Congrats! The app should now be running at [https://localhost:8000](localhost:80
 * Writing
 * Side projects
 * Professional experience
-* Twitter
+* Twitter (once I'll have tweeted more stuff)
 
 ## 📈 Marketing
 

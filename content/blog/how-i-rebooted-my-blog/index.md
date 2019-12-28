@@ -19,21 +19,61 @@ I had many sources of inspiration:
 * [Supermood](https://supermood.fr/) for the colorful homepage palette
 * [HeyDesigner](https://heydesigner.com/) for the minimalist desktop navbar
 * [The Outline](https://theoutline.com/) for the bold mobile hamburger menu
+* [Overreacted](https://overreacted.io) for the code syntax theme. I forked it to use the Tailwind color palette
 
 ## How I coded it
 
 ```jsx
-const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const { previous, next } = pageContext
+class FlavorForm extends React.Component { // highlight-line
+  constructor(props) {
+    super(props);
+    this.state = {value: 'coconut'};
 
-  return (
-    <Layout location={location}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
-    </Layout>
-  )
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    // highlight-next-line
+    this.setState({value: event.target.value});
+  }
+
+  // Cool comment
+  // highlight-start
+  handleSubmit(event) {
+    const firstName = 'Rémi'
+    alert('Your favorite flavor is: ' + this.state.value);
+    event.preventDefault();
+  }
+  // highlight-end
+
+  render() {
+    return (
+      { /* highlight-range{1undefined4-9undefined12} */ }
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Pick your favorite flavor:
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
 }
 ```
+
+Here's a close up of some code
+
+```ts
+interface Person {
+  age: number
+  name: string
+}
+```
+
+Pretty cool stuff!
