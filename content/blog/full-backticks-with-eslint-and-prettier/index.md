@@ -1,5 +1,5 @@
 ---
-title: Go full Backticks with ESLint and Prettier
+title: Go full backticks for your JS strings with ESLint and Prettier
 date: 2020-01-10
 description: Template litterals are the most powerful way to write strings in JavaScript. Here's how to use them efficiently by default.
 ---

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { FiArrowLeft } from 'react-icons/fi'
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -33,24 +33,31 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="leading-relaxed mt-4 article-content"
         />
-        <footer className="my-12">
+        <hr className="border-2 border-gray-200 my-10" />
+        <footer>
           <Bio />
         </footer>
       </article>
-      <nav className="container mx-auto">
-        <ul className="flex flex-row align-baseline justify-between">
-          <li>
+      <nav className="sm:w-full lg:w-6/12 max-w-3xl container mx-auto mt-10">
+        <ul className="flex flex-row align-baseline justify-between text-lg">
+          <li className="flex-1 flex flex-row items-start justify-start">
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
+              <>
+                <FiArrowLeft />
+                <Link className="-mt-1 ml-1" to={previous.fields.slug} rel="prev">
+                  {previous.frontmatter.title}
+                </Link>
+              </>
             )}
           </li>
-          <li>
+          <li className="flex-1 flex flex-row items-start justify-end">
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
+              <>
+                <Link className="-mt-1 mr-1" to={next.fields.slug} rel="next">
+                  {next.frontmatter.title}
+                </Link>
+                <FiArrowRight />
+              </>
             )}
           </li>
         </ul>

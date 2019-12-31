@@ -124,7 +124,7 @@
   }
 
   .gatsby-highlight-code-line {
-    background-color: hsla(207, 95%, 13%, 1);
+    background-color: hsla(207, 95%, 12%, 1);
     display: block;
     @apply -mx-4 px-4 border-red-300 border-l-4;
   }
