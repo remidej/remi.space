@@ -5,6 +5,7 @@ import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ArticlePreview from '../components/article-preview'
+import SideProject from '../components/side-project'
 
 const SKEW_DEGREES = -1
 
@@ -36,10 +37,28 @@ const Home = ({ location }) => {
           }
         }
       }
+      # Get projects from Airtable
+      allAirtable(filter: { table: { eq: "Projects" } }) {
+        nodes {
+          id
+          table
+          data {
+            name
+            type
+            tools
+            date
+            slug
+            pitch
+            link
+            repoLink
+          }
+        }
+      }
     }
   `)
 
   const articles = data.allMarkdownRemark.edges
+  const projects = data.allAirtable.nodes
 
   return (
     <Layout location={location}>
@@ -50,7 +69,6 @@ const Home = ({ location }) => {
         style={{
           background: 'linear-gradient(145deg, rgba(44,122,123,1) 0%, rgba(55,135,166,1) 100%)',
           transform: `skewY(${SKEW_DEGREES}deg)`,
-          // marginTop: '-4.7rem',
         }}
       >
         <div
@@ -116,17 +134,9 @@ const Home = ({ location }) => {
           </p>
         </div>
         <div className="ml-10 flex-1">
-          <p className="text-lg">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus rem
-            quas animi, odit exercitationem nulla at quis eius, nobis vel iste obcaecati aut eum
-            porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem earum eius
-            eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores veritatis,
-            quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas numquam
-            maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae eius ad
-            mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi laborum,
-            deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam assumenda
-            perferendis!
-          </p>
+          {projects.map(_project => (
+            <SideProject {..._project.data} key={_project.id} />
+          ))}
         </div>
       </section>
     </Layout>
