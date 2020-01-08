@@ -4,7 +4,6 @@ import { FiArrowRight } from 'react-icons/fi'
 import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import SideProject from '../components/side-project'
 
 const SKEW_DEGREES = -1
 
@@ -35,11 +34,19 @@ const Home = ({ location }) => {
   // Get image
   const data = useStaticQuery(graphql`
     query {
+      # Get social handles
+      site {
+        siteMetadata {
+          social {
+            linkedin
+          }
+        }
+      }
       # Get the avatar image
-      avatar: file(absolutePath: { regex: "/remi-hello.png/" }) {
+      avatar: file(absolutePath: { regex: "/remi-portrait.png/" }) {
         childImageSharp {
-          fixed(width: 350) {
-            ...GatsbyImageSharpFixed
+          fixed(width: 290) {
+            ...GatsbyImageSharpFixed_noBase64
           }
         }
       }
@@ -80,7 +87,7 @@ const Home = ({ location }) => {
   `)
 
   const articles = data.allMarkdownRemark.edges
-  const projects = data.allAirtable.nodes
+  const metadata = data.site.siteMetadata
 
   return (
     <Layout location={location}>
@@ -104,7 +111,7 @@ const Home = ({ location }) => {
                 <h2>I'm a Product Developer from France.</h2>
                 <p>I build apps users won't hate, and tell people about it.</p>
               </div>
-              <div className="w1/4 flex flex-col items-end">
+              <div className="w-4/12 mr-6 flex flex-col items-end">
                 <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} />
               </div>
             </div>
@@ -112,33 +119,78 @@ const Home = ({ location }) => {
         </div>
       </header>
       {/* Writing section */}
-      <section className="container flex flex-row justify-between mx-auto text-gray-800 items-baseline">
-        {/* Left text */}
-        <div className="w-5/12 mr-12 block" style={{ transform: 'translateY(4rem)' }}>
+      <section className="container flex flex-row-reverse justify-between mx-auto text-gray-800 items-baseline">
+        {/* Description column */}
+        <div className="w-5/12 ml-12 block" style={{ transform: 'translateY(4rem)' }}>
           <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
           <h3 className="text-4xl leading-tight font-semibold">
             Sometimes I write down what I learn
           </h3>
           <p className="text-gray-500 mt-4">
-            Code is a precious resource. I write about about how to use it efficiently, and how
+            Code is a precious resource. I write about about how to use it efficiently, and how to
             avoid using it at all.
           </p>
-          <div className="mt-6">
-            <Link
-              to="/blog"
-              className="px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block"
-            >
-              View all articles <FiArrowRight className="inline" size="1em" />
-            </Link>
-          </div>
+          <Link
+            to="/blog"
+            className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block hover:shadow"
+          >
+            View all articles <FiArrowRight className="inline" size="1em" />
+          </Link>
         </div>
-        {/* Right content */}
+        {/* Main content */}
         <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
           {articles.map(({ node }) => showArticlePreview(node))}
         </div>
       </section>
       {/* Work section */}
-      <section>TODO: work</section>
+      <section className="container flex flex-row justify-between mx-auto text-gray-800 items-baseline mt-24">
+        {/* Left text */}
+        <div className="w-5/12 mr-12 block">
+          <p className="uppercase tracking-wide text-work-500 font-semibold">Work</p>
+          <h3 className="text-4xl leading-tight font-semibold">
+            I work with teams to build products
+          </h3>
+          <p className="text-gray-500 mt-4">All play and no work makes me a broke boy.</p>
+          <a
+            href={`https://www.linkedin.com/in/${metadata.social.linkedin}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 px-4 py-2 text-work-800 bg-work-200 text-lg font-medium rounded-lg inline-block hover:shadow"
+          >
+            Connect on LinkedIn <FiArrowRight className="inline" size="1em" />
+          </a>
+        </div>
+        {/* Main content */}
+        <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
+          {/* Timeline */}
+          <div className="border-work-200 border-l-4 pl-4">
+            <article style={{ transform: 'translateY(-2px)' }}>
+              <header className="flex flex-row align-center">
+                <div className="rounded-full bg-work-300 -ml-6 h-3 w-3 mr-3" />
+                <p>Co-founder and CTO</p>
+              </header>
+              <section className="text-gray-500 text-lg">
+                <p>
+                  Revolt is an influencer marketing agency and platform with a focus on the gaming
+                  industry and lifestyle influencers. Our goal is to build the GoogleAds of
+                  influencer marketing by putting data at the center of every decision advertisers
+                  make.
+                </p>
+                <p className="mt-2">
+                  We are currently working at the IONIS 361 startup accelerator in Paris. Visit
+                  RevoltGaming.co or Revolt.club for more details.
+                </p>
+              </section>
+              <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                className="hover:text-work-700 text-lg text-gray-700"
+              >
+                Acquisition article <FiArrowRight className="inline" size="1em" />
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
     </Layout>
   )
 }

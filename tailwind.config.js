@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         blog: colors.teal,
-        work: colors.purple,
+        work: colors.blue,
         projects: colors.indigo,
         twitter: colors.blue,
       },
