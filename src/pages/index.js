@@ -4,10 +4,32 @@ import { FiArrowRight } from 'react-icons/fi'
 import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import ArticlePreview from '../components/article-preview'
 import SideProject from '../components/side-project'
 
 const SKEW_DEGREES = -1
+
+const showArticlePreview = article => {
+  const title = article.frontmatter.title
+  return (
+    <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
+      <header>
+        <h4 className="text-2xl font-medium hover:text-blog-700">
+          <Link to={article.fields.slug}>{title}</Link>
+        </h4>
+      </header>
+      <section className="text-gray-500 text-lg">
+        <p
+          dangerouslySetInnerHTML={{
+            __html: article.frontmatter.description || article.excerpt,
+          }}
+        />
+      </section>
+      <Link to={article.fields.slug} className="hover:text-blog-700 text-lg text-gray-700">
+        Read <FiArrowRight className="inline" size="1em" />
+      </Link>
+    </article>
+  )
+}
 
 const Home = ({ location }) => {
   // Get image
@@ -22,7 +44,7 @@ const Home = ({ location }) => {
         }
       }
       # Get last posts preview
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 4) {
         edges {
           node {
             fields {
@@ -90,55 +112,33 @@ const Home = ({ location }) => {
         </div>
       </header>
       {/* Writing section */}
-      <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline relative">
-        <div className="w-5/12 sticky top-0">
-          <p className="font-bold text-3xl font-medium">
-            Sometimes I like to <span className="text-blog-500">write things down.</span>
+      <section className="container flex flex-row justify-between mx-auto text-gray-800 items-baseline">
+        {/* Left text */}
+        <div className="w-5/12 mr-12 block" style={{ transform: 'translateY(4rem)' }}>
+          <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
+          <h3 className="text-4xl leading-tight font-semibold">
+            Sometimes I write down what I learn
+          </h3>
+          <p className="text-gray-500 mt-4">
+            Code is a precious resource. I write about about how to use it efficiently, and how
+            avoid using it at all.
           </p>
+          <div className="mt-6">
+            <Link
+              to="/blog"
+              className="px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block"
+            >
+              View all articles <FiArrowRight className="inline" size="1em" />
+            </Link>
+          </div>
         </div>
-        <div className="ml-10 flex-1">
-          {articles.map(({ node }) => (
-            <ArticlePreview article={node} key={node.fields.slug} />
-          ))}
-          <Link to="/blog" className="hover:text-blog-700 text-lg font-medium">
-            View all articles <FiArrowRight className="inline" size="1em" />
-          </Link>
+        {/* Right content */}
+        <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
+          {articles.map(({ node }) => showArticlePreview(node))}
         </div>
       </section>
       {/* Work section */}
-      <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline">
-        <div className="w-5/12 sticky top-0">
-          <p className="font-bold text-3xl font-medium">
-            I work with teams to <span className="text-work-500">build products.</span>
-          </p>
-        </div>
-        <div className="ml-10 flex-1">
-          <p className="text-lg">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus rem
-            quas animi, odit exercitationem nulla at quis eius, nobis vel iste obcaecati aut eum
-            porro accusamus repellat esse magnam. Beatae, fugiat suscipit ab autem earum eius
-            eligendi obcaecati porro, aperiam explicabo voluptates quas quam. Dolores veritatis,
-            quidem necessitatibus laudantium incidunt molestiae est assumenda voluptas numquam
-            maxime labore nostrum distinctio. Exercitationem quaerat vel, aut odio quo vitae eius ad
-            mollitia necessitatibus magnam praesentium soluta minus dicta? Eius animi laborum,
-            deserunt asperiores distinctio aut accusantium vel quasi laboriosam quam assumenda
-            perferendis!
-          </p>
-        </div>
-      </section>
-      {/* Side projects section */}
-      <section className="container mt-10 mx-auto flex flex-row text-gray-800 items-baseline">
-        <div className="w-5/12 sticky top-0">
-          <p className="font-bold text-3xl font-medium">
-            I do experiments on <span className="text-projects-500">side projects.</span>
-          </p>
-        </div>
-        <div className="ml-10 flex-1">
-          {projects.map(_project => (
-            <SideProject {..._project.data} key={_project.id} />
-          ))}
-        </div>
-      </section>
+      <section>TODO: work</section>
     </Layout>
   )
 }

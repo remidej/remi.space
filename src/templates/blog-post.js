@@ -43,20 +43,20 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <li className="flex-1 flex flex-row items-start justify-start">
             {previous && (
               <>
-                <FiArrowLeft />
+                <FiArrowLeft className="flex-shrink-0" />
                 <Link className="-mt-1 ml-1" to={previous.fields.slug} rel="prev">
                   {previous.frontmatter.title}
                 </Link>
               </>
             )}
           </li>
-          <li className="flex-1 flex flex-row items-start justify-end">
+          <li className="flex-1 flex flex-row items-start justify-end text-right">
             {next && (
               <>
                 <Link className="-mt-1 mr-1" to={next.fields.slug} rel="next">
                   {next.frontmatter.title}
                 </Link>
-                <FiArrowRight />
+                <FiArrowRight className="flex-shrink-0" />
               </>
             )}
           </li>

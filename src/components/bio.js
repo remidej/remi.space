@@ -23,7 +23,7 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
   return (
     <div className="flex flex-row items-center">
       <Image
@@ -32,11 +32,7 @@ const Bio = () => {
         className="rounded-full mr-4 flex-shrink-0"
       />
       <p>
-        Hi! I'm <strong className="font-medium">{author}</strong>, author of this blog. I'm a french
-        developer who loves building empowering products. You should{' '}
-        <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener noreferrer">
-          follow me on Twitter
-        </a>
+        Hi! I'm <strong className="font-medium">{author}</strong>, author of this blog.
       </p>
     </div>
   )
