@@ -67,7 +67,7 @@ const Home = ({ location }) => {
         }
       }
       # Get projects from Airtable
-      allAirtable(filter: { table: { eq: "Projects" } }) {
+      projects: allAirtable(filter: { table: { eq: "Projects" } }) {
         nodes {
           id
           table
@@ -83,11 +83,31 @@ const Home = ({ location }) => {
           }
         }
       }
+      # Get professional experiences from Airtable
+      experiences: allAirtable(filter: { table: { eq: "Experiences" } }) {
+        nodes {
+          id
+          table
+          data {
+            title
+            period
+            description
+            companyName
+            companyLogo {
+              url
+            }
+            buttonText
+            buttonLink
+          }
+        }
+      }
     }
   `)
 
   const articles = data.allMarkdownRemark.edges
   const metadata = data.site.siteMetadata
+  const experiences = data.experiences.nodes.map(_node => _node.data)
+  console.log(experiences)
 
   return (
     <Layout location={location}>
@@ -163,31 +183,35 @@ const Home = ({ location }) => {
         {/* Main content */}
         <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
           {/* Timeline */}
-          <div className="border-work-200 border-l-4 pl-4">
-            <article style={{ transform: 'translateY(-2px)' }}>
-              <header className="flex flex-row align-center">
-                <div className="rounded-full bg-work-300 -ml-6 h-3 w-3 mr-3" />
-                <p>Co-founder and CTO</p>
-              </header>
-              <section className="text-gray-500 text-lg">
-                <p>
-                  Revolt is an influencer marketing agency and platform with a focus on the gaming
-                  industry and lifestyle influencers. Our goal is to build the GoogleAds of
-                  influencer marketing by putting data at the center of every decision advertisers
-                  make.
-                </p>
-                <p className="mt-2">
-                  We are currently working at the IONIS 361 startup accelerator in Paris. Visit
-                  RevoltGaming.co or Revolt.club for more details.
-                </p>
-              </section>
-              <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                className="hover:text-work-700 text-lg text-gray-700"
-              >
-                Acquisition article <FiArrowRight className="inline" size="1em" />
-              </a>
-            </article>
+          <div className="border-work-200 border-l-4 pl-4 mt-2">
+            {experiences.map(_experience => (
+              <article className="mb-6 last:mb-0" style={{ transform: 'translateY(-1rem)' }}>
+                <header>
+                  <div className="flex flex-row items-center -ml-6">
+                    <div className="rounded-full bg-work-300 h-3 w-3 mr-3" />
+                    <img
+                      className="mr-2 w-8 h-8 object-contain rounded-sm"
+                      src={_experience.companyLogo[0].url}
+                      alt={_experience.companyName}
+                    />
+                    <p className="text-2xl font-medium">{_experience.companyName}</p>
+                  </div>
+                  <h4 className="text-lg mt-2">
+                    {_experience.title}{' '}
+                    <span className="text-gray-500">({_experience.period})</span>
+                  </h4>
+                </header>
+                <section className="mt-2 text-gray-500 text-lg">{_experience.description}</section>
+                <a
+                  href={_experience.buttonLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block hover:text-work-700 text-lg text-gray-700"
+                >
+                  {_experience.buttonText} <FiArrowRight className="inline" size="1em" />
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
