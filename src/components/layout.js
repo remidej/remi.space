@@ -1,4 +1,5 @@
 import React from 'react'
+import { FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import '../layout.css'
 
@@ -12,12 +13,23 @@ const navLinks = [
     path: '/blog',
   },
   {
-    title: 'Projects',
-    path: '/projects',
-  },
-  {
     title: 'Contact',
     path: '/contact',
+  },
+]
+
+const siteLinks = [
+  {
+    title: 'GitHub',
+    link: 'https://github.com/remi2j/remi.space',
+  },
+  {
+    title: 'RSS',
+    link: '/rss.xml',
+  },
+  {
+    title: 'Sitemap',
+    link: '/sitemap.xml',
   },
 ]
 
@@ -31,12 +43,48 @@ const Layout = ({ location, children }) => {
         siteMetadata {
           title
           description
+          social {
+            twitter
+            linkedin
+            github
+            email
+          }
         }
       }
     }
   `)
 
-  const { title, description } = data.site.siteMetadata
+  const { title, description, social } = data.site.siteMetadata
+
+  const contactLinks = [
+    {
+      title: 'Twitter',
+      showIcon: () => (
+        <>
+          <FiTwitter />
+        </>
+      ),
+      link: social.twitter,
+    },
+    {
+      title: 'GitHub',
+      showIcon: () => (
+        <>
+          <FiGithub />
+        </>
+      ),
+      link: `https://www.linkedin.com/in/${social.linkedin}`,
+    },
+    {
+      title: 'LinkedIn',
+      showIcon: () => (
+        <>
+          <FiLinkedin />
+        </>
+      ),
+      link: `https://www.linkedin.com/in/${social.linkedin}`,
+    },
+  ]
 
   const navbar = (
     <nav
@@ -85,8 +133,57 @@ const Layout = ({ location, children }) => {
         <main>{children}</main>
       </div>
       {/* Bottom section */}
-      <footer className="py-3">
-        <div className="container mx-auto">© {new Date().getFullYear()} • view on Github</div>
+      <footer
+        className="pt-24 pb-12"
+        style={{
+          background: `linear-gradient(0deg, #E2E8F0 0%, #F7FAFC 100%)`,
+        }}
+      >
+        <div className="container mx-auto flex flex-row justify-between">
+          {/* Contact */}
+          <div>
+            <nav className="flex flex-row items-center my-2 container mx-auto">
+              {contactLinks.map(_footerLink => (
+                <a
+                  href={_footerLink.link}
+                  title={_footerLink.title}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-100 text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center"
+                >
+                  {_footerLink.showIcon()}
+                  <span className="ml-2 inline-block">{_footerLink.title}</span>
+                </a>
+              ))}
+            </nav>
+            <p className="text-4xl font-medium text-gray-600">{social.email}</p>
+          </div>
+          {/* Lists of links */}
+          <div className="flex flex-row">
+            <div className="mr-20">
+              <p className="uppercase tracking-wide font-medium text-gray-500">Navigation</p>
+              <ul>
+                {navLinks.map(_navLink => (
+                  <li className="mt-2">
+                    <Link to={_navLink.path}>{_navLink.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mr-20">
+              <p className="uppercase tracking-wide font-medium text-gray-500">Site</p>
+              <ul>
+                {siteLinks.map(_siteLink => (
+                  <li className="mt-2">
+                    <a href={_siteLink.path} target="_blank" rel="noopener noreferrer">
+                      {_siteLink.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   )

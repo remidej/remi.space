@@ -11,6 +11,8 @@ module.exports = {
     social: {
       twitter: `remidej`,
       linkedin: `remi-de-juvigny`,
+      github: 'remi2j',
+      email: 'remidejuvigny@gmail.com',
     },
   },
   plugins: [

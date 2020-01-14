@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { FiArrowRight } from 'react-icons/fi'
-import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
@@ -129,10 +128,12 @@ const Home = ({ location }) => {
               <div className="text-3xl text-white font-medium flex flex-col justify-center">
                 <p>Hello there! Rémi here.</p>
                 <h2>I'm a Product Developer from France.</h2>
-                <p>I build apps users won't hate, and tell people about it.</p>
+                <p>I help people ship apps faster.</p>
               </div>
               <div className="w-4/12 mr-6 flex flex-col items-end">
-                <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} />
+                {/* <img src={} */}
+                <div className="h-64 mb-8" />
+                {/* <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} /> */}
               </div>
             </div>
           </div>
@@ -143,9 +144,7 @@ const Home = ({ location }) => {
         {/* Description column */}
         <div className="w-5/12 ml-12 block" style={{ transform: 'translateY(4rem)' }}>
           <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
-          <h3 className="text-4xl leading-tight font-semibold">
-            Sometimes I write down what I learn
-          </h3>
+          <h3 className="text-4xl leading-tight font-semibold">I write down what I learn</h3>
           <p className="text-gray-500 mt-4">
             Code is a precious resource. I write about about how to use it efficiently, and how to
             avoid using it at all.
@@ -175,44 +174,40 @@ const Home = ({ location }) => {
             href={`https://www.linkedin.com/in/${metadata.social.linkedin}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 px-4 py-2 text-work-800 bg-work-200 text-lg font-medium rounded-lg inline-block hover:shadow"
+            className="mt-6 px-4 py-2 text-work-800 bg-work-200 text-lg font-medium rounded-lg inline-block"
           >
             Connect on LinkedIn <FiArrowRight className="inline" size="1em" />
           </a>
         </div>
         {/* Main content */}
-        <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
+        <div className="float-right w-8/12 pt-8 pb-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
           {/* Timeline */}
-          <div className="border-work-200 border-l-4 pl-4 mt-2">
-            {experiences.map(_experience => (
-              <article className="mb-6 last:mb-0" style={{ transform: 'translateY(-1rem)' }}>
-                <header>
-                  <div className="flex flex-row items-center -ml-6">
-                    <div className="rounded-full bg-work-300 h-3 w-3 mr-3" />
-                    <img
-                      className="mr-2 w-8 h-8 object-contain rounded-sm"
-                      src={_experience.companyLogo[0].url}
-                      alt={_experience.companyName}
-                    />
-                    <p className="text-2xl font-medium">{_experience.companyName}</p>
-                  </div>
-                  <h4 className="text-lg mt-2">
-                    {_experience.title}{' '}
-                    <span className="text-gray-500">({_experience.period})</span>
-                  </h4>
-                </header>
-                <section className="mt-2 text-gray-500 text-lg">{_experience.description}</section>
-                <a
-                  href={_experience.buttonLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-block hover:text-work-700 text-lg text-gray-700"
-                >
-                  {_experience.buttonText} <FiArrowRight className="inline" size="1em" />
-                </a>
-              </article>
-            ))}
-          </div>
+          {experiences.map(_experience => (
+            <article className="mb-6 last:mb-0">
+              <header>
+                <div className="flex flex-row items-center">
+                  <img
+                    className="mr-2 w-8 h-8 object-contain rounded-sm"
+                    src={_experience.companyLogo[0].url}
+                    alt={_experience.companyName}
+                  />
+                  <p className="text-2xl font-medium">{_experience.companyName}</p>
+                </div>
+                <h4 className="text-lg mt-2">
+                  {_experience.title} <span className="text-gray-500">({_experience.period})</span>
+                </h4>
+              </header>
+              <section className="mt-2 text-gray-500 text-lg">{_experience.description}</section>
+              <a
+                href={_experience.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block hover:text-work-700 text-lg text-gray-700"
+              >
+                {_experience.buttonText} <FiArrowRight className="inline" size="1em" />
+              </a>
+            </article>
+          ))}
         </div>
       </section>
     </Layout>
