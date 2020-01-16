@@ -134,7 +134,7 @@ const Layout = ({ location, children }) => {
       </div>
       {/* Bottom section */}
       <footer
-        className="pt-24 pb-12"
+        className="pt-24 pb-12 mt-12"
         style={{
           background: `linear-gradient(0deg, #E2E8F0 0%, #F7FAFC 100%)`,
         }}
@@ -156,7 +156,7 @@ const Layout = ({ location, children }) => {
                 </a>
               ))}
             </nav>
-            <p className="text-4xl font-medium text-gray-600">{social.email}</p>
+            <p className="text-4xl font-medium text-gray-700">{social.email}</p>
           </div>
           {/* Lists of links */}
           <div className="flex flex-row">
@@ -175,7 +175,7 @@ const Layout = ({ location, children }) => {
               <ul>
                 {siteLinks.map(_siteLink => (
                   <li className="mt-2">
-                    <a href={_siteLink.path} target="_blank" rel="noopener noreferrer">
+                    <a href={_siteLink.link} target="_blank" rel="noopener noreferrer">
                       {_siteLink.title}
                     </a>
                   </li>

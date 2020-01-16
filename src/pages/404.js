@@ -1,13 +1,23 @@
 import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Link } from 'gatsby'
+import { FiArrowRight } from 'react-icons/fi'
 
 const NotFoundPage = ({ data, location }) => {
   return (
     <Layout location={location}>
       <SEO title="404: Not Found" />
-      <h1>Not Found</h1>
-      <p>You just hit a route that doesn't exist... the sadness.</p>
+      <div className="container mx-auto">
+        <h1 className="text-6xl font-bold">404</h1>
+        <p>Looks like you got lost.</p>
+        <Link
+          to="/"
+          className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block"
+        >
+          Go back home <FiArrowRight className="inline" size="1em" />
+        </Link>
+      </div>
     </Layout>
   )
 }

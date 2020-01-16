@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'gatsby-image'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { FiArrowRight } from 'react-icons/fi'
 import Layout from '../components/layout'
@@ -132,7 +133,7 @@ const Home = ({ location }) => {
               </div>
               <div className="w-4/12 mr-6 flex flex-col items-end">
                 {/* <img src={} */}
-                <div className="h-64 mb-8" />
+                {/* <div className="h-64 mb-8" /> */}
                 {/* <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} /> */}
               </div>
             </div>
@@ -169,7 +170,7 @@ const Home = ({ location }) => {
           <h3 className="text-4xl leading-tight font-semibold">
             I work with teams to build products
           </h3>
-          <p className="text-gray-500 mt-4">All play and no work makes me a broke boy.</p>
+          <p className="text-gray-600 mt-4">All play and no work makes me a broke boy.</p>
           <a
             href={`https://www.linkedin.com/in/${metadata.social.linkedin}`}
             target="_blank"
@@ -197,7 +198,7 @@ const Home = ({ location }) => {
                   {_experience.title} <span className="text-gray-500">({_experience.period})</span>
                 </h4>
               </header>
-              <section className="mt-2 text-gray-500 text-lg">{_experience.description}</section>
+              <section className="mt-2 text-gray-600 text-lg">{_experience.description}</section>
               <a
                 href={_experience.buttonLink}
                 target="_blank"

@@ -4,6 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        gray: {
+          ...colors.gray,
+          600: '#77879e',
+        },
         blog: colors.teal,
         work: colors.blue,
         projects: colors.indigo,
