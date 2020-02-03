@@ -16,7 +16,7 @@ const showArticlePreview = article => {
           <Link to={article.fields.slug}>{title}</Link>
         </h4>
       </header>
-      <section className="text-gray-500 text-lg">
+      <section className="text-gray-600 text-lg">
         <p
           dangerouslySetInnerHTML={{
             __html: article.frontmatter.description || article.excerpt,
@@ -43,7 +43,7 @@ const Home = ({ location }) => {
         }
       }
       # Get the avatar image
-      avatar: file(absolutePath: { regex: "/remi-portrait.png/" }) {
+      avatar: file(absolutePath: { regex: "/remi-hello.png/" }) {
         childImageSharp {
           fixed(width: 290) {
             ...GatsbyImageSharpFixed_noBase64
@@ -133,7 +133,7 @@ const Home = ({ location }) => {
               </div>
               <div className="w-4/12 mr-6 flex flex-col items-end">
                 {/* <img src={} */}
-                {/* <div className="h-64 mb-8" /> */}
+                <div className="h-64 mb-16 -mt-6" />
                 {/* <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} /> */}
               </div>
             </div>
@@ -146,10 +146,13 @@ const Home = ({ location }) => {
         <div className="w-5/12 ml-12 block" style={{ transform: 'translateY(4rem)' }}>
           <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
           <h3 className="text-4xl leading-tight font-semibold">I write down what I learn</h3>
-          <p className="text-gray-500 mt-4">
+          <p className="text-gray-600 mt-4">
             Code is a precious resource. I write about about how to use it efficiently, and how to
             avoid using it at all.
           </p>
+          {/* <p className="text-gray-600 mt-4">
+            
+          </p> */}
           <Link
             to="/blog"
             className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block hover:shadow"
@@ -163,7 +166,7 @@ const Home = ({ location }) => {
         </div>
       </section>
       {/* Work section */}
-      <section className="container flex flex-row justify-between mx-auto text-gray-800 items-baseline mt-24">
+      <section className="container flex flex-row justify-between mx-auto text-gray-800 items-baseline mt-32">
         {/* Left text */}
         <div className="w-5/12 mr-12 block">
           <p className="uppercase tracking-wide text-work-500 font-semibold">Work</p>
@@ -195,7 +198,7 @@ const Home = ({ location }) => {
                   <p className="text-2xl font-medium">{_experience.companyName}</p>
                 </div>
                 <h4 className="text-lg mt-2">
-                  {_experience.title} <span className="text-gray-500">({_experience.period})</span>
+                  {_experience.title} <span className="text-gray-600">({_experience.period})</span>
                 </h4>
               </header>
               <section className="mt-2 text-gray-600 text-lg">{_experience.description}</section>

@@ -73,7 +73,7 @@ const Layout = ({ location, children }) => {
           <FiGithub />
         </>
       ),
-      link: `https://www.linkedin.com/in/${social.linkedin}`,
+      link: `https://github.com/${social.github}`,
     },
     {
       title: 'LinkedIn',
