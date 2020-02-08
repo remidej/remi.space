@@ -66,48 +66,11 @@ const Home = ({ location }) => {
           }
         }
       }
-      # Get projects from Airtable
-      projects: allAirtable(filter: { table: { eq: "Projects" } }) {
-        nodes {
-          id
-          table
-          data {
-            name
-            type
-            tools
-            date
-            slug
-            pitch
-            link
-            repoLink
-          }
-        }
-      }
-      # Get professional experiences from Airtable
-      experiences: allAirtable(filter: { table: { eq: "Experiences" } }) {
-        nodes {
-          id
-          table
-          data {
-            title
-            period
-            description
-            companyName
-            companyLogo {
-              url
-            }
-            buttonText
-            buttonLink
-          }
-        }
-      }
     }
   `)
 
   const articles = data.allMarkdownRemark.edges
   const metadata = data.site.siteMetadata
-  const experiences = data.experiences.nodes.map(_node => _node.data)
-  console.log(experiences)
 
   return (
     <Layout location={location}>
@@ -163,55 +126,6 @@ const Home = ({ location }) => {
         {/* Main content */}
         <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
           {articles.map(({ node }) => showArticlePreview(node))}
-        </div>
-      </section>
-      {/* Work section */}
-      <section className="container flex flex-row justify-between mx-auto text-gray-800 items-baseline mt-32">
-        {/* Left text */}
-        <div className="w-5/12 mr-12 block">
-          <p className="uppercase tracking-wide text-work-500 font-semibold">Work</p>
-          <h3 className="text-4xl leading-tight font-semibold">
-            I work with teams to build products
-          </h3>
-          <p className="text-gray-600 mt-4">All play and no work makes me a broke boy.</p>
-          <a
-            href={`https://www.linkedin.com/in/${metadata.social.linkedin}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 px-4 py-2 text-work-800 bg-work-200 text-lg font-medium rounded-lg inline-block"
-          >
-            Connect on LinkedIn <FiArrowRight className="inline" size="1em" />
-          </a>
-        </div>
-        {/* Main content */}
-        <div className="float-right w-8/12 pt-8 pb-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
-          {/* Timeline */}
-          {experiences.map(_experience => (
-            <article className="mb-6 last:mb-0">
-              <header>
-                <div className="flex flex-row items-center">
-                  <img
-                    className="mr-2 w-8 h-8 object-contain rounded-sm"
-                    src={_experience.companyLogo[0].url}
-                    alt={_experience.companyName}
-                  />
-                  <p className="text-2xl font-medium">{_experience.companyName}</p>
-                </div>
-                <h4 className="text-lg mt-2">
-                  {_experience.title} <span className="text-gray-600">({_experience.period})</span>
-                </h4>
-              </header>
-              <section className="mt-2 text-gray-600 text-lg">{_experience.description}</section>
-              <a
-                href={_experience.buttonLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-block hover:text-work-700 text-lg text-gray-700"
-              >
-                {_experience.buttonText} <FiArrowRight className="inline" size="1em" />
-              </a>
-            </article>
-          ))}
         </div>
       </section>
     </Layout>
