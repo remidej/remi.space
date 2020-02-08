@@ -43,9 +43,9 @@ const Home = ({ location }) => {
         }
       }
       # Get the avatar image
-      avatar: file(absolutePath: { regex: "/remi-hello.png/" }) {
+      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 290) {
+          fixed(width: 90) {
             ...GatsbyImageSharpFixed_noBase64
           }
         }
@@ -70,35 +70,30 @@ const Home = ({ location }) => {
   `)
 
   const articles = data.allMarkdownRemark.edges
-  const metadata = data.site.siteMetadata
 
   return (
     <Layout location={location}>
       <SEO title="Rémi de Juvigny" />
       {/* Big colorful header */}
       <header
-        className="text-teal-100 overflow-hidden -mt-20"
+        className="bg-teal-100 overflow-hidden -mt-5 pt-20"
         style={{
-          background: 'linear-gradient(145deg, rgba(44,122,123,1) 0%, rgba(55,135,166,1) 100%)',
           transform: `skewY(${SKEW_DEGREES}deg)`,
         }}
       >
-        <div
-          className="hero-pattern pt-10" // Used in CSS
-          style={{ transform: `skewY(${-SKEW_DEGREES}deg)` }}
-        >
-          <div className="container mx-auto pt-12">
-            <div className="flex flex-row justify-between">
-              <div className="text-3xl text-white font-medium flex flex-col justify-center">
-                <p>Hello there! Rémi here.</p>
+        <div style={{ transform: `skewY(${-SKEW_DEGREES}deg)` }}>
+          <div className="container mx-auto">
+            <div className="flex flex-row justify-between py-12">
+              <div className="text-teal-900 text-3xl font-medium flex flex-col justify-center">
+                {/* <p>Hello there! Rémi here.</p> */}
                 <h2>I'm a Product Developer from France.</h2>
-                <p>I help people ship apps faster.</p>
+                <p>I build apps users won't hate, with tools I love.</p>
               </div>
-              <div className="w-4/12 mr-6 flex flex-col items-end">
-                {/* <img src={} */}
-                <div className="h-64 mb-16 -mt-6" />
-                {/* <Image fixed={data.avatar.childImageSharp.fixed} alt={`Rémi says hello`} /> */}
-              </div>
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                alt={`Rémi says hello`}
+                className="rounded-full mr-16"
+              />
             </div>
           </div>
         </div>
@@ -113,9 +108,6 @@ const Home = ({ location }) => {
             Code is a precious resource. I write about about how to use it efficiently, and how to
             avoid using it at all.
           </p>
-          {/* <p className="text-gray-600 mt-4">
-            
-          </p> */}
           <Link
             to="/blog"
             className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block hover:shadow"

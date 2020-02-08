@@ -1,4 +1,5 @@
 import React from 'react'
+import { colors } from 'tailwindcss/defaultTheme'
 import { FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import '../layout.css'
@@ -87,35 +88,21 @@ const Layout = ({ location, children }) => {
   ]
 
   const navbar = (
-    <nav
-      className={`container mx-auto py-4 flex flex-row justify-between z-10 relative ${
-        isRootPage ? 'text-teal-100' : 'text-gray-700'
-      }`}
-    >
-      <Link to={`/`} className={isRootPage ? 'hover:text-white' : 'hover:text-black'}>
-        {isRootPage ? (
-          // Site title is the main heading on homepage
-          <h1 className="inline-block font-bold text-xl">{title}</h1>
-        ) : (
-          // Site title is a secondary heading on other pages
-          <h3 className="inline-block font-bold text-xl">{title}</h3>
-        )}
-        {!isRootPage && (
-          <span className="text-gray-500 text-sm hidden sm:inline"> — {description}</span>
-        )}
+    <nav className="container mx-auto py-4 flex flex-row justify-between z-10 relative text-gray-700">
+      <Link to={`/`} className="hover:text-black">
+        <h3 className="inline-block font-bold text-xl">{title}</h3>
+        <span className="text-gray-500 text-sm hidden sm:inline"> — {description}</span>
       </Link>
       <ul className="flex flex-row">
         {navLinks.map(_navLink => (
           <li
             key={_navLink.path}
-            className={`ml-10 font-medium ${
-              isRootPage ? 'border-white hover:text-white' : 'border-black hover:text-black'
-            } ${
-              _navLink.path === location.pathname
-                ? 'border-b-2 text-black'
-                : 'border-b-0 text-gray-600'
-            } ${isRootPage && _navLink.path === location.pathname ? 'text-white' : ''}${
-              isRootPage && _navLink.path !== location.pathname ? 'text-teal-100' : ''
+            className={`ml-10 font-medium order-black hover:text-black
+              ${
+                _navLink.path === location.pathname
+                  ? 'border-b-2 text-black'
+                  : 'border-b-0 text-gray-600'
+              }
             }`}
           >
             <Link to={_navLink.path}>{_navLink.title}</Link>
@@ -126,17 +113,17 @@ const Layout = ({ location, children }) => {
   )
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100 text-gray-900">
+    <div className="flex flex-col min-h-screen bg-white text-gray-900">
       {/* Top section */}
       <div className="flex-1">
-        {navbar}
+        {!isRootPage && navbar}
         <main>{children}</main>
       </div>
       {/* Bottom section */}
       <footer
         className="pt-24 pb-12 mt-12"
         style={{
-          background: `linear-gradient(0deg, #E2E8F0 0%, #F7FAFC 100%)`,
+          background: `linear-gradient(180deg, ${colors.white} 0%, ${colors.gray[200]} 100%)`,
         }}
       >
         <div className="container mx-auto flex flex-row justify-between">
@@ -149,7 +136,7 @@ const Layout = ({ location, children }) => {
                   title={_footerLink.title}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-100 text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center"
+                  className="hover:shadow bg-white text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center"
                 >
                   {_footerLink.showIcon()}
                   <span className="ml-2 inline-block">{_footerLink.title}</span>
