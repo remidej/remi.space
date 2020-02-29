@@ -4,6 +4,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 import { FiArrowRight } from 'react-icons/fi'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import arrow from '../../content/assets/down-right-arrow.svg'
 
 const SKEW_DEGREES = -1
 
@@ -75,48 +76,37 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Rémi de Juvigny" />
       {/* Big colorful header */}
-      <header
-        className="bg-teal-100 overflow-hidden -mt-5 pt-20"
-        style={{
-          transform: `skewY(${SKEW_DEGREES}deg)`,
-        }}
-      >
-        <div style={{ transform: `skewY(${-SKEW_DEGREES}deg)` }}>
-          <div className="container mx-auto">
-            <div className="flex flex-row justify-between py-12">
-              <div className="text-teal-900 text-3xl font-medium flex flex-col justify-center">
-                {/* <p>Hello there! Rémi here.</p> */}
-                <h2>I'm a Product Developer from France.</h2>
-                <p>I build apps users won't hate, with tools I love.</p>
-              </div>
+      <header className="bg-blue-100 overflow-hiddenpt-20">
+        <div className="container mx-auto">
+          <div className="flex flex-row justify-between py-12">
+            <div>
               <Image
                 fixed={data.avatar.childImageSharp.fixed}
                 alt={`Rémi says hello`}
-                className="rounded-full mr-16"
+                className="rounded-full w-12"
               />
+              <div className="flex flex-row">
+                <img src={arrow} alt="Arrow" className="ml-8 w-16 -translate-y-" />
+                <h1>
+                  <span className="font-black text-6xl block">Rémi</span>
+                  <span className="text-right text-3xl block -mt-6">de Juvigny</span>
+                </h1>
+              </div>
             </div>
           </div>
         </div>
       </header>
       {/* Writing section */}
-      <section className="container flex flex-row-reverse justify-between mx-auto text-gray-800 items-baseline">
-        {/* Description column */}
-        <div className="w-5/12 ml-12 block" style={{ transform: 'translateY(4rem)' }}>
-          <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
-          <h3 className="text-4xl leading-tight font-semibold">I write down what I learn</h3>
-          <p className="text-gray-600 mt-4">
-            Code is a precious resource. I write about about how to use it efficiently, and how to
-            avoid using it at all.
-          </p>
-          <Link
-            to="/blog"
-            className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block hover:shadow"
-          >
-            View all articles <FiArrowRight className="inline" size="1em" />
-          </Link>
-        </div>
+      <section className="container mx-auto items-baseline mt-12">
+        <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
+        <Link
+          to="/blog"
+          className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block hover:shadow"
+        >
+          View all articles <FiArrowRight className="inline" size="1em" />
+        </Link>
         {/* Main content */}
-        <div className="float-right w-8/12 py-6 px-6 bg-white rounded-lg shadow-lg relative -mt-6">
+        <div className="w-8/12 bg-white rounded-lg relative">
           {articles.map(({ node }) => showArticlePreview(node))}
         </div>
       </section>
