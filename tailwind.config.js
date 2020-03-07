@@ -1,4 +1,4 @@
-const { colors } = require('tailwindcss/defaultTheme')
+const { colors, fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   theme: {
@@ -12,6 +12,10 @@ module.exports = {
         work: colors.blue,
         projects: colors.indigo,
         twitter: colors.blue,
+      },
+      fontFamily: {
+        ...fontFamily,
+        sans: ['Inter UI', fontFamily.sans],
       },
     },
   },

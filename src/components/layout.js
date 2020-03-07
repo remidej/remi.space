@@ -2,6 +2,7 @@ import React from 'react'
 import { colors } from 'tailwindcss/defaultTheme'
 import { FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import '../fonts/fonts.css'
 import '../layout.css'
 
 const navLinks = [

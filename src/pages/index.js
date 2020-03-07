@@ -87,10 +87,7 @@ const Home = ({ location }) => {
               />
               <div className="flex flex-row">
                 <img src={arrow} alt="Arrow" className="ml-8 w-16 -translate-y-" />
-                <h1>
-                  <span className="font-black text-6xl block">Rémi</span>
-                  <span className="text-right text-3xl block -mt-6">de Juvigny</span>
-                </h1>
+                <h1 className="font-bold text-6xl block">Rémi de Juvigny</h1>
               </div>
             </div>
           </div>
