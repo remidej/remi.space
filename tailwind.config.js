@@ -18,6 +18,9 @@ module.exports = {
         sans: ['Inter UI', fontFamily.sans],
       },
     },
+    container: {
+      center: true,
+    },
   },
   variants: [
     'responsive',

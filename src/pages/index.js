@@ -76,36 +76,34 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Rémi de Juvigny" />
       {/* Big colorful header */}
-      <header className="bg-blue-100 overflow-hiddenpt-20">
-        <div className="container mx-auto">
+      <header className="bg-blue-100 overflow-hidden">
+        <div className="max-w-screen-lg mx-auto">
           <div className="flex flex-row justify-between py-12">
             <div>
-              <Image
-                fixed={data.avatar.childImageSharp.fixed}
-                alt={`Rémi says hello`}
-                className="rounded-full w-12"
-              />
-              <div className="flex flex-row">
-                <img src={arrow} alt="Arrow" className="ml-8 w-16 -translate-y-" />
-                <h1 className="font-bold text-6xl block">Rémi de Juvigny</h1>
-              </div>
+              <h1 className="font-bold text-4xl block">Rémi de Juvigny</h1>
+              <p className="text-xl">
+                I'm a product developer from France. I use modern web technologies to build apps
+                that users won't hate. I write about things that matter to me, like web development,
+                SOMETHING and the open web
+              </p>
+              {/* </div> */}
             </div>
           </div>
         </div>
       </header>
       {/* Writing section */}
-      <section className="container mx-auto items-baseline mt-12">
+      <section className="max-w-screen-lg mx-auto items-baseline mt-12">
         <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
+        {/* Main content */}
+        <div className="w-8/12 bg-white rounded-lg relative">
+          {articles.map(({ node }) => showArticlePreview(node))}
+        </div>
         <Link
           to="/blog"
           className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block hover:shadow"
         >
           View all articles <FiArrowRight className="inline" size="1em" />
         </Link>
-        {/* Main content */}
-        <div className="w-8/12 bg-white rounded-lg relative">
-          {articles.map(({ node }) => showArticlePreview(node))}
-        </div>
       </section>
     </Layout>
   )
