@@ -1,20 +1,15 @@
 import React from 'react'
-import Image from 'gatsby-image'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { FiArrowRight } from 'react-icons/fi'
-import { colors } from 'tailwindcss/defaultTheme'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { hexToRgba } from '../utils/colors'
-
-const SKEW_DEGREES = -1
 
 const showArticlePreview = article => {
   const title = article.frontmatter.title
   return (
     <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
       <header>
-        <h4 className="text-2xl font-medium hover:text-blog-700">
+        <h4 className="text-2xl font-medium hover:underline">
           <Link to={article.fields.slug}>{title}</Link>
         </h4>
       </header>
@@ -25,7 +20,7 @@ const showArticlePreview = article => {
           }}
         />
       </section>
-      <Link to={article.fields.slug} className="hover:text-blog-700 text-lg text-gray-700">
+      <Link to={article.fields.slug} className="hover:text-black text-lg text-gray-700">
         Read <FiArrowRight className="inline" size="1em" />
       </Link>
     </article>
@@ -77,35 +72,31 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Rémi de Juvigny" />
       {/* Big colorful header */}
-      <header className="max-w-screen-md mx-auto py-6">
-        <div className="flex flex-row justify-between">
-          {/* Name as a logo */}
-          <h1
-            className="z-10 font-bold w-56 h-56 flex-shrink-0 rounded-full px-6 flex flex-col justify-center"
-            style={{ background: hexToRgba(colors.teal['400'], 0.33) }}
-          >
-            <span className="font-bold text-6xl -mt-2">Rémi</span>
-            <span className="block text-right text-3xl tracking-tight -mt-6">de Juvigny</span>
-          </h1>
+      <header className="py-6 bg-gray-100">
+        <div className="container">
+          {/* Name link */}
+          <Link href="/" className="inline-flex flex-row items-center">
+            <div className="w-16 h-16 bg-teal-200 rounded-full"></div>
+            <h1 className="font-bold -ml-10 text-3xl text-gray-800 hover:text-black">
+              Rémi de Juvigny
+            </h1>
+          </Link>
           {/* Bio */}
-          <section
-            className="text-xl font-semibold mt-6 -ml-24 pl-32 flex flex-col justify-center"
-            style={{ background: hexToRgba(colors.purple['400'], 0.33) }}
-          >
-            <p>I'm a product developer from France.</p>
+          <section className="text-xl font-semibold mt-6 flex flex-col justify-center">
+            <h2>I'm a product developer from France.</h2>
             <p>I use modern web technologies to build apps that users won't hate.</p>
             <p>
-              I write about things that matter to me, like web development, SOMETHING and the open
-              web
+              I write about things that matter to me, like web development, startups, and the open
+              web.
             </p>
           </section>
         </div>
       </header>
       {/* Writing section */}
-      <section className="max-w-screen-lg mx-auto items-baseline mt-12">
-        <p className="uppercase tracking-wide text-blog-500 font-semibold">Blog</p>
+      <section className="container items-baseline mt-12">
+        <p className="uppercase tracking-wide text-blog-500 font-bold mb-6 text-lg">Blog</p>
         {/* Main content */}
-        <div className="w-8/12 bg-white rounded-lg relative">
+        <div className="bg-white rounded-lg relative">
           {articles.map(({ node }) => showArticlePreview(node))}
         </div>
         <Link

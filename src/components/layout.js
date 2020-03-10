@@ -148,8 +148,8 @@ const Layout = ({ location, children }) => {
           </div>
           {/* Lists of links */}
           <div className="flex flex-row">
-            <div className="mr-20">
-              <p className="uppercase tracking-wide font-medium text-gray-500">Navigation</p>
+            <div className="mr-16">
+              <p className="uppercase tracking-wide font-medium text-gray-500">Pages</p>
               <ul>
                 {navLinks.map(_navLink => (
                   <li className="mt-2">
@@ -158,7 +158,7 @@ const Layout = ({ location, children }) => {
                 ))}
               </ul>
             </div>
-            <div className="mr-20">
+            <div>
               <p className="uppercase tracking-wide font-medium text-gray-500">Site</p>
               <ul>
                 {siteLinks.map(_siteLink => (

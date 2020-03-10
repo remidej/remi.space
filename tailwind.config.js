@@ -18,9 +18,6 @@ module.exports = {
         sans: ['Inter UI', fontFamily.sans],
       },
     },
-    container: {
-      center: true,
-    },
   },
   variants: [
     'responsive',
@@ -36,5 +33,30 @@ module.exports = {
     'visited',
     'disabled',
   ],
-  plugins: [],
+  corePlugins: {
+    container: false,
+  },
+  plugins: [
+    function({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          '@screen sm': {
+            maxWidth: '600px',
+          },
+          '@screen md': {
+            maxWidth: '700px',
+          },
+          '@screen lg': {
+            maxWidth: '720px',
+          },
+          '@screen xl': {
+            maxWidth: '720px',
+          },
+        },
+      })
+    },
+  ],
 }
