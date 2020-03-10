@@ -2,9 +2,10 @@ import React from 'react'
 import Image from 'gatsby-image'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { FiArrowRight } from 'react-icons/fi'
+import { colors } from 'tailwindcss/defaultTheme'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import arrow from '../../content/assets/down-right-arrow.svg'
+import { hexToRgba } from '../utils/colors'
 
 const SKEW_DEGREES = -1
 
@@ -76,19 +77,28 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Rémi de Juvigny" />
       {/* Big colorful header */}
-      <header className="bg-blue-100 overflow-hidden">
-        <div className="max-w-screen-lg mx-auto">
-          <div className="flex flex-row justify-between py-12">
-            <div>
-              <h1 className="font-bold text-4xl block">Rémi de Juvigny</h1>
-              <p className="text-xl">
-                I'm a product developer from France. I use modern web technologies to build apps
-                that users won't hate. I write about things that matter to me, like web development,
-                SOMETHING and the open web
-              </p>
-              {/* </div> */}
-            </div>
-          </div>
+      <header className="max-w-screen-md mx-auto py-6">
+        <div className="flex flex-row justify-between">
+          {/* Name as a logo */}
+          <h1
+            className="z-10 font-bold w-56 h-56 flex-shrink-0 rounded-full px-6 flex flex-col justify-center"
+            style={{ background: hexToRgba(colors.teal['400'], 0.33) }}
+          >
+            <span className="font-bold text-6xl -mt-2">Rémi</span>
+            <span className="block text-right text-3xl tracking-tight -mt-6">de Juvigny</span>
+          </h1>
+          {/* Bio */}
+          <section
+            className="text-xl font-semibold mt-6 -ml-24 pl-32 flex flex-col justify-center"
+            style={{ background: hexToRgba(colors.purple['400'], 0.33) }}
+          >
+            <p>I'm a product developer from France.</p>
+            <p>I use modern web technologies to build apps that users won't hate.</p>
+            <p>
+              I write about things that matter to me, like web development, SOMETHING and the open
+              web
+            </p>
+          </section>
         </div>
       </header>
       {/* Writing section */}
