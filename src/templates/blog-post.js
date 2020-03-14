@@ -15,23 +15,25 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article className="mt-6 container mx-auto text-xl">
+      <article className="mt-8 container mx-auto text-xl">
         <header>
           <Link
             to="/blog"
-            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-blog-500 my-2"
+            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-blog-500 py-1"
           >
             <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
             All articles
           </Link>
-          <h1 className="text-4xl font-bold leading-tight">{post.frontmatter.title}</h1>
-          <p className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 my-2">
+          <h1 className="text-4xl font-semibold leading-tight mt-2 mb-4">
+            {post.frontmatter.title}
+          </h1>
+          <p className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500">
             {post.frontmatter.date} • {post.timeToRead} min read
           </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
-          className="leading-relaxed mt-4 article-content"
+          className="leading-relaxed mt-10 article-content"
         />
         <hr className="border-2 border-gray-200 my-10" />
         <footer>

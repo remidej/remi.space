@@ -10,7 +10,7 @@ const showArticlePreview = article => {
   return (
     <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
       <header>
-        <h4 className="text-2xl font-semibold">
+        <h4 className="text-2xl font-semibold text-gray-800">
           <Link to={article.fields.slug} className="hover:underline">
             {title}
           </Link>
@@ -86,7 +86,7 @@ const Home = ({ location }) => {
           </Link>
           {/* Bio */}
           <section className="text-2xl text-gray-700 mt-6 flex flex-col justify-center">
-            <h2>
+            <h2 className="inline">
               I'm a Product Developer from France. I study computer science, design and product
               management at Hetic in Paris.
             </h2>

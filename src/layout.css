@@ -4,7 +4,11 @@
 
 .article-content {
   p {
-    @apply mt-4;
+    @apply mt-6;
+  }
+
+  strong {
+    @apply font-semibold;
   }
   
   a {
@@ -20,15 +24,23 @@
   }
   
   h2 {
-    @apply mt-6 -mb-2 text-2xl;
+    @apply mt-8 -mb-2 text-2xl;
+  }
+
+  h3 {
+    @apply mt-6;
   }
   
   ul {
     @apply list-disc list-inside mt-2;
   }
+
+  li:not(:first-child) {
+    @apply mt-2;
+  }
   
   blockquote {
-    @apply mt-4 text-2xl border-blog-500 text-blog-700 border-l-4 pl-4 leading-normal italic;
+    @apply mt-6 text-2xl border-blog-500 text-blog-700 border-l-4 pl-4 leading-normal italic;
   }
   
   /* Inline code */

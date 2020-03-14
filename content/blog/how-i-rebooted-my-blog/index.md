@@ -10,6 +10,8 @@ In `2015-04-23` my bother called me
 
 I was 15 and didn't know what to do with it, but I thought I'd figure that out along the way. So **I booked remi.space**, and built my first personal portfolio, despite having no projects to showcase.
 
+I was 15 and didn't know what to do with it, but I thought I'd figure that out along the way. So **I booked remi.space**, and built my first personal portfolio, despite having no projects to showcase.
+
 ## The 2020 reboot was the greatest thing
 
 I had many sources of inspiration:
