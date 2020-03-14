@@ -8,7 +8,7 @@ const SideProject = ({ name, type, tools, date, slug, pitch, link, repoLink }) =
   return (
     <article>
       <header>
-        <h3 className="text-2xl font-medium hover:text-projects-700">
+        <h3 className="text-2xl font-semibold hover:text-projects-700">
           <Link to={link}>{name}</Link>
         </h3>
         <p className="uppercase tracking-wide text-sm font-semibold text-gray-500 my-1">

@@ -1,9 +1,9 @@
 import React from 'react'
 import { colors } from 'tailwindcss/defaultTheme'
-import { FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import '../fonts/fonts.css'
 import '../layout.css'
+import SocialButtons from './socialButtons'
 
 const navLinks = [
   {
@@ -56,60 +56,14 @@ const Layout = ({ location, children }) => {
     }
   `)
 
-  const { title, description, social } = data.site.siteMetadata
-
-  const contactLinks = [
-    {
-      title: 'Twitter',
-      showIcon: () => (
-        <>
-          <FiTwitter />
-        </>
-      ),
-      link: social.twitter,
-    },
-    {
-      title: 'GitHub',
-      showIcon: () => (
-        <>
-          <FiGithub />
-        </>
-      ),
-      link: `https://github.com/${social.github}`,
-    },
-    {
-      title: 'LinkedIn',
-      showIcon: () => (
-        <>
-          <FiLinkedin />
-        </>
-      ),
-      link: `https://www.linkedin.com/in/${social.linkedin}`,
-    },
-  ]
+  const { title, social } = data.site.siteMetadata
 
   const navbar = (
     <nav className="container mx-auto py-4 flex flex-row justify-between z-10 relative text-gray-700">
       <Link to={`/`} className="hover:text-black">
         <h3 className="inline-block font-bold text-xl">{title}</h3>
-        <span className="text-gray-500 text-sm hidden sm:inline"> — {description}</span>
       </Link>
-      <ul className="flex flex-row">
-        {navLinks.map(_navLink => (
-          <li
-            key={_navLink.path}
-            className={`ml-10 font-medium order-black hover:text-black
-              ${
-                _navLink.path === location.pathname
-                  ? 'border-b-2 text-black'
-                  : 'border-b-0 text-gray-600'
-              }
-            }`}
-          >
-            <Link to={_navLink.path}>{_navLink.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <SocialButtons small />
     </nav>
   )
 
@@ -131,38 +85,27 @@ const Layout = ({ location, children }) => {
           {/* Contact */}
           <div>
             <nav className="flex flex-row items-center my-2 container mx-auto">
-              {contactLinks.map(_footerLink => (
-                <a
-                  href={_footerLink.link}
-                  title={_footerLink.title}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:shadow bg-white text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center"
-                >
-                  {_footerLink.showIcon()}
-                  <span className="ml-2 inline-block">{_footerLink.title}</span>
-                </a>
-              ))}
+              <SocialButtons />
             </nav>
-            <p className="text-4xl font-medium text-gray-700">{social.email}</p>
+            <p className="text-4xl font-semibold text-gray-700">{social.email}</p>
           </div>
           {/* Lists of links */}
           <div className="flex flex-row">
             <div className="mr-16">
-              <p className="uppercase tracking-wide font-medium text-gray-500">Pages</p>
+              <p className="uppercase tracking-wide font-semibold text-gray-500">Pages</p>
               <ul>
                 {navLinks.map(_navLink => (
-                  <li className="mt-2">
+                  <li className="mt-2" key={_navLink.path}>
                     <Link to={_navLink.path}>{_navLink.title}</Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p className="uppercase tracking-wide font-medium text-gray-500">Site</p>
+              <p className="uppercase tracking-wide font-semibold text-gray-500">Site</p>
               <ul>
                 {siteLinks.map(_siteLink => (
-                  <li className="mt-2">
+                  <li className="mt-2" key={_siteLink.link}>
                     <a href={_siteLink.link} target="_blank" rel="noopener noreferrer">
                       {_siteLink.title}
                     </a>

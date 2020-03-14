@@ -32,7 +32,7 @@ const Bio = () => {
         className="rounded-full mr-4 flex-shrink-0"
       />
       <p>
-        Hi! I'm <strong className="font-medium">{author}</strong>, author of this blog.
+        Hi! I'm <strong className="font-semibold">{author}</strong>, author of this blog.
       </p>
     </div>
   )

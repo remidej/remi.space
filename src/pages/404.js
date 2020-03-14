@@ -13,7 +13,7 @@ const NotFoundPage = ({ data, location }) => {
         <p>Looks like you got lost.</p>
         <Link
           to="/"
-          className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-medium rounded-lg inline-block"
+          className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-semibold rounded-lg inline-block"
         >
           Go back home <FiArrowRight className="inline" size="1em" />
         </Link>
