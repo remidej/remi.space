@@ -1,12 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
-import {
-  FiArrowRight,
-  FiArrowDown,
-  FiArrowDownCircle,
-  FiCheckCircle,
-  FiArrowLeft,
-} from 'react-icons/fi'
+import { FiArrowRight, FiCheckCircle } from 'react-icons/fi'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import SocialButtons from '../components/socialButtons'
@@ -104,31 +98,28 @@ const Home = ({ location }) => {
         <p className="uppercase tracking-wide text-work-500 font-bold mb-6 text-lg">Work</p>
         {/* Text content */}
         <div className="text-xl text-gray-900 mt-6 leading-relaxed">
-          <p>
-            I'm a 4th year student at Hetic, who spends his time playing soccer, browsing memes and
-            being a boyscout leader.
-          </p>
+          <p>I'm a 4th year student at Hetic, where I'll graduate in 2021.</p>
           <p className="mt-4">
             In 2019, I co-founded and sold Revolt Influence, a platform that helps brands build a
             presence and a community online.
           </p>
           <p className="mt-4">
-            In 2018, I worked at MadKudu, a Silicon Valley-based startup who makes predictive
-            analytics software
+            In 2018, I worked at MadKudu, a Silicon-Valley-based startup who makes predictive
+            analytics software.
           </p>
           <p className="mt-4">
-            I'm now looking for my 2020 challenge. As I'm wrapping up my studies, I'll be doing one
-            more internship from June to December. So if your company:
+            I'm now looking for my next challenge. As I'm wrapping up my studies, I'll be doing an
+            internship from June to December 2020. So if your company:
           </p>
           <ul className="mt-4">
             <li>
-              <FiCheckCircle className="inline text-green-500" /> is a large and growing startup
+              <FiCheckCircle className="inline text-work-500" /> is a large and fast-growing startup
             </li>
             <li>
-              <FiCheckCircle className="inline text-green-500" /> has a strong engineering culture
+              <FiCheckCircle className="inline text-work-500" /> has a strong engineering culture
             </li>
             <li>
-              <FiCheckCircle className="inline text-green-500" /> is located anywhere around the
+              <FiCheckCircle className="inline text-work-500" /> is located anywhere around the
               world, and can help with relocation
             </li>
           </ul>
@@ -140,7 +131,7 @@ const Home = ({ location }) => {
           rel="noopener noreferrer"
           className="mt-6 px-4 py-2 text-blog-800 bg-work-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
         >
-          Send me an email <FiArrowLeft className="inline" size="1em" />
+          Send me an email <FiArrowRight className="inline" size="1em" />
         </a>
       </section>
     </Layout>
