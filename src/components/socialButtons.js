@@ -38,7 +38,7 @@ const SocialButtons = ({ small }) => {
           <FiTwitter />
         </>
       ),
-      link: social.twitter,
+      link: `https://twitter.com/${social.twitter}`,
     },
     {
       title: 'LinkedIn',
@@ -59,9 +59,11 @@ const SocialButtons = ({ small }) => {
           title={_socialLink.title}
           target="_blank"
           rel="noopener noreferrer"
-          className={`hover:shadow ${
-            small ? '' : 'shadow-sm'
-          } bg-white text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center`}
+          className={
+            small
+              ? 'rounded-full text-gray-700 hover:black hover:bg-gray-200 p-3 ml-2'
+              : 'shadow-sm hover:shadow bg-white text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center'
+          }
         >
           {_socialLink.showIcon()}
           {!small && <span className="ml-2 inline-block">{_socialLink.title}</span>}

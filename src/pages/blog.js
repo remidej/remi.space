@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -31,17 +31,31 @@ const BlogIndex = ({ location }) => {
     }
   `)
 
+  // Filter articles based on search field
   const articles = data.allMarkdownRemark.edges
+  const [search, setSearch] = useState('')
+  const filteredArticles = articles.filter(_article =>
+    _article.node.frontmatter.title.includes(search)
+  )
 
   return (
     <Layout location={location}>
       <SEO title="All my articles" />
-      <div className="container mt-6 mx-auto flex flex-row items-baseline relative">
-        <h1 className="font-bold text-4xl font-semibold w-1/3 top-0 sticky text-gray-800">
-          All my <span className="text-blog-500">articles</span>
-        </h1>
-        <section className="flex-1">
-          {articles.map(({ node }) => (
+      <div className="container">
+        <h1 className="font-bold text-3xl font-semibold text-gray-800 mt-6">All blog posts</h1>
+        <label className="block mt-8">
+          Filter
+          <input
+            type="text"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Article name..."
+            className="block px-3 py-2 bg-gray-100 rounded-md border-2 border-gray-200 w-1/2 min-w-64 text-lg"
+          />
+        </label>
+        {filteredArticles.length === 0 && <p className="mt-8">No articles found</p>}
+        <section className="flex-1 mt-8">
+          {filteredArticles.map(({ node }) => (
             <ArticlePreview article={node} key={node.fields.slug} />
           ))}
         </section>

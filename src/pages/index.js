@@ -4,31 +4,7 @@ import { FiArrowRight } from 'react-icons/fi'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import SocialButtons from '../components/socialButtons'
-
-const showArticlePreview = article => {
-  const title = article.frontmatter.title
-  return (
-    <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
-      <header>
-        <h4 className="text-2xl font-semibold text-gray-800">
-          <Link to={article.fields.slug} className="hover:underline">
-            {title}
-          </Link>
-        </h4>
-      </header>
-      <section className="text-gray-600 text-lg">
-        <p
-          dangerouslySetInnerHTML={{
-            __html: article.frontmatter.description || article.excerpt,
-          }}
-        />
-      </section>
-      <Link to={article.fields.slug} className="hover:text-black text-lg text-gray-700">
-        Read <FiArrowRight className="inline" size="1em" />
-      </Link>
-    </article>
-  )
-}
+import ArticlePreview from '../components/article-preview'
 
 const Home = ({ location }) => {
   // Get image
@@ -106,7 +82,9 @@ const Home = ({ location }) => {
         <p className="uppercase tracking-wide text-blog-500 font-bold mb-6 text-lg">Blog</p>
         {/* Main content */}
         <div className="bg-white rounded-lg relative">
-          {articles.map(({ node }) => showArticlePreview(node))}
+          {articles.map(({ node }) => (
+            <ArticlePreview article={node} key={node.fields.slug} />
+          ))}
         </div>
         <Link
           to="/blog"
