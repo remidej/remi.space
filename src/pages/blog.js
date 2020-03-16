@@ -50,7 +50,7 @@ const BlogIndex = ({ location }) => {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Article name..."
-            className="block px-3 py-2 bg-gray-100 rounded-md border-2 border-gray-200 w-1/2 min-w-64 text-lg"
+            className="block px-3 placeholder-gray-600 py-2 bg-gray-100 rounded-md border-2 border-gray-200 w-full md:w-1/2 text-lg"
           />
         </label>
         {filteredArticles.length === 0 && <p className="mt-8">No articles found</p>}

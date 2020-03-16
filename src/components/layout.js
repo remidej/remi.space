@@ -75,23 +75,20 @@ const Layout = ({ location, children }) => {
         <main>{children}</main>
       </div>
       {/* Bottom section */}
-      <footer
-        className="pt-24 pb-12 mt-12"
-        style={{
-          background: `linear-gradient(180deg, ${colors.white} 0%, ${colors.gray[200]} 100%)`,
-        }}
-      >
-        <div className="container mx-auto flex flex-row justify-between">
+      <footer className="mt-12 py-12 mt-12 bg-gray-100">
+        <div className="container mx-auto flex flex-col md:flex-row md:justify-between">
           {/* Contact */}
           <div>
-            <nav className="flex flex-row items-center my-2 container mx-auto">
+            <nav className="flex flex-row items-center my-2 mx-auto">
               <SocialButtons />
             </nav>
-            <p className="text-4xl font-semibold text-gray-700">{social.email}</p>
+            <p className="text-2xl md:text-3xl font-semibold text-gray-700 mt-6 md:mt-0">
+              {social.email}
+            </p>
           </div>
           {/* Lists of links */}
-          <div className="flex flex-row">
-            <div className="mr-16">
+          <div className="flex flex-row mt-6 md:mt-0">
+            <div className="w-1/2 md:w-auto md:mr-16">
               <p className="uppercase tracking-wide font-semibold text-gray-500">Pages</p>
               <ul>
                 {navLinks.map(_navLink => (
@@ -101,7 +98,7 @@ const Layout = ({ location, children }) => {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="w-1/2">
               <p className="uppercase tracking-wide font-semibold text-gray-500">Site</p>
               <ul>
                 {siteLinks.map(_siteLink => (

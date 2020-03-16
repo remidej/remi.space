@@ -11,7 +11,8 @@
         "printWidth": 100,
         "semi": false
       }
-    ]
+    ],
+    "jsx-a11y/accessible-emoji": 0
   },
   "extends": ["react-app", "plugin:prettier/recommended"]
 }

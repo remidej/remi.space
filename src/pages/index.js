@@ -123,16 +123,18 @@ const Home = ({ location }) => {
               world, and can help with relocation
             </li>
           </ul>
-          <p className="mt-4">Then I would love to have a chat with you!</p>
+          <p className="mt-4">Then I would love to have a chat with you 👋</p>
         </div>
-        <a
-          href={`mailto:${data.site.siteMetadata.social.email}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 px-4 py-2 text-blog-800 bg-work-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
-        >
-          Send me an email <FiArrowRight className="inline" size="1em" />
-        </a>
+        <div className="flex flex-row">
+          <a
+            href={`mailto:${data.site.siteMetadata.social.email}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 px-4 py-2 text-blog-800 bg-work-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
+          >
+            View my resume <FiArrowRight className="inline" size="1em" />
+          </a>
+        </div>
       </section>
     </Layout>
   )
