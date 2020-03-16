@@ -24,7 +24,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
             All articles
           </Link>
-          <h1 className="text-4xl font-semibold leading-tight mt-2 mb-4">
+          <h1 className="text-4xl font-semibold leading-tight mt-2 mb-4 text-gray-800">
             {post.frontmatter.title}
           </h1>
           <p className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500">
@@ -41,7 +41,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </footer>
       </article>
       <nav className="sm:w-full lg:w-6/12 max-w-3xl container mx-auto mt-10">
-        <ul className="flex flex-row align-baseline justify-between text-lg">
+        <ul className="flex flex-row align-baseline justify-between text-lg font-semibold text-blog-700">
           <li className="flex-1 flex flex-row items-start justify-start">
             {previous && (
               <>

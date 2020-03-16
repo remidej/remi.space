@@ -59,7 +59,7 @@ const Layout = ({ location, children }) => {
   const { title, social } = data.site.siteMetadata
 
   const navbar = (
-    <nav className="container mx-auto py-4 flex flex-row items-center justify-between z-10 relative text-gray-700">
+    <nav className="container mx-auto py-4 flex flex-row items-center justify-between text-gray-700">
       <Link to={`/`} className="hover:text-black">
         <h3 className="inline-block font-bold text-xl">{title}</h3>
       </Link>

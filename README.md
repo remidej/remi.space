@@ -5,9 +5,9 @@
 Cool site that lives on the web at [remi.space](https://remi.space). In case you want it on your computer:
 
 * Clone the repo and `cd` into it
-* `gatsby develop` to start the local server.
+* `yarn dev` to start the local server.
 
-Congrats! The app should now be running at [https://localhost:8000](localhost:8000). The GraphiQL is at [https://localhost:8000/___graphql](localhost:8000/___graphql).
+The app should now be running on [https://localhost:8000](localhost:8000). GraphiQL runs on [https://localhost:8000/___graphql](localhost:8000/___graphql).
 
 ## 🛠 Tools used
 
@@ -16,10 +16,8 @@ Congrats! The app should now be running at [https://localhost:8000](localhost:80
 
 ## 📂 Sections
 
-* Writing
-* Side projects
+* Blog
 * Professional experience
-* Twitter (once I'll have tweeted more stuff)
 
 ## 📈 Marketing
 

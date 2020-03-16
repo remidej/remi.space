@@ -22,7 +22,7 @@
     @apply text-blog-700 underline;
   }
   a:hover {
-    @apply text-blog-500;
+    @apply text-blog-600;
   }
   
   /* All common heading tags */

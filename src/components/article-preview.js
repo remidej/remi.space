@@ -7,13 +7,13 @@ const ArticlePreview = ({ article }) => {
   return (
     <article key={article.fields.slug} className="text-xl mb-8 last:mb-0">
       <header>
-        <h4 className="text-2xl font-semibold text-gray-800">
+        <h4 className="text-2xl font-semibold text-gray-800 leading-tight">
           <Link to={article.fields.slug} className="hover:underline">
             {title}
           </Link>
         </h4>
       </header>
-      <section className="text-gray-600 text-lg">
+      <section className="text-gray-600 text-lg mt-2 mb-1">
         <p
           dangerouslySetInnerHTML={{
             __html: article.frontmatter.description || article.excerpt,

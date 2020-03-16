@@ -40,7 +40,7 @@ const BlogIndex = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <SEO title="All my articles" />
+      <SEO title="All articles" />
       <div className="container">
         <h1 className="font-bold text-3xl font-semibold text-gray-800 mt-6">All blog posts</h1>
         <label className="block mt-8">

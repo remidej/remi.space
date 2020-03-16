@@ -49,7 +49,7 @@ const Home = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <SEO title="Rémi de Juvigny" />
+      <SEO title="Personal blog" />
       {/* Big colorful header */}
       <header className="py-6 bg-gray-100">
         <div className="container">
@@ -132,7 +132,7 @@ const Home = ({ location }) => {
             rel="noopener noreferrer"
             className="mt-6 px-4 py-2 text-blog-800 bg-work-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
           >
-            View my resume <FiArrowRight className="inline" size="1em" />
+            Contact me <FiArrowRight className="inline" size="1em" />
           </a>
         </div>
       </section>
