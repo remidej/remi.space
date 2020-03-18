@@ -1,5 +1,4 @@
 import React from 'react'
-import { colors } from 'tailwindcss/defaultTheme'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import '../fonts/fonts.css'
 import '../layout.css'
@@ -13,10 +12,6 @@ const navLinks = [
   {
     title: 'Blog',
     path: '/blog',
-  },
-  {
-    title: 'Contact',
-    path: '/contact',
   },
 ]
 

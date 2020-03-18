@@ -19,7 +19,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <Link
             to="/blog"
-            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-blog-500 py-1"
+            className="uppercase tracking-wide tracking-wide text-sm font-semibold text-gray-500 hover:text-blog-700 py-1"
           >
             <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
             All articles
@@ -35,13 +35,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="leading-relaxed mt-10 article-content"
         />
-        <hr className="border-2 border-gray-200 my-10" />
+        <hr className="border-2 border-gray-200 my-12" />
         <footer>
           <Bio />
         </footer>
       </article>
-      <nav className="sm:w-full lg:w-6/12 max-w-3xl container mx-auto mt-10">
-        <ul className="flex flex-row align-baseline justify-between text-lg font-semibold text-blog-700">
+      <nav className="sm:w-full lg:w-6/12 max-w-3xl container mx-auto mt-12">
+        <ul className="flex flex-row align-baseline justify-between text-lg font-semibold text-blog-700 hover:underline">
           <li className="flex-1 flex flex-row items-start justify-start">
             {previous && (
               <>

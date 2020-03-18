@@ -7,7 +7,7 @@ Cool site that lives on the web at [remi.space](https://remi.space). In case you
 * Clone the repo and `cd` into it
 * `yarn dev` to start the local server.
 
-The app should now be running on [https://localhost:8000](localhost:8000). GraphiQL runs on [https://localhost:8000/___graphql](localhost:8000/___graphql).
+The app should run on [https://localhost:8000](localhost:8000). GraphiQL runs on [https://localhost:8000/___graphql](localhost:8000/___graphql).
 
 ## 🛠 Tools used
 
@@ -19,10 +19,12 @@ The app should now be running on [https://localhost:8000](localhost:8000). Graph
 * Blog
 * Professional experience
 
-## 📈 Marketing
+## 📈 Todo
 
-* Setup [https://www.npmjs.com/package/gatsby-plugin-segment-js](Segment)
-* Connect Segment to Google Analytics
-* Connect Segment to Mailchimp
-* Subscribe to newletter in the footer
-* Auto-generate cover images for social media, if there is no header image (like Zeit does)
+* [x] Functional blogging system
+* [x] Work section
+* [ ] Add a favicon
+* [ ] Setup Segment for analytics
+* [ ] Generate meta images (OG graph)
+* [ ] Tag system to filter posts by category
+* [ ] Clickable anchor links in the articles
