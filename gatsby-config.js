@@ -50,22 +50,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-source-airtable`,
-      options: {
-        apiKey: process.env.AIRTABLE_API_KEY, // may instead specify via env, see below
-        tables: [
-          {
-            baseId: `app2633jE7BM6czaV`,
-            tableName: `Projects`,
-          },
-          {
-            baseId: `app2633jE7BM6czaV`,
-            tableName: `Experiences`,
-          },
-        ],
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
