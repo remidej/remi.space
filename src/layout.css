@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection, ::-moz-selection {
+  @apply bg-blog-200 !important;
+}
 
 @media screen and (max-width: 640px) {
   html {
@@ -52,8 +55,7 @@
   
   /* Inline code */
   :not(pre) > code {
-    @apply bg-gray-200 text-gray-900 rounded px-1;
-    /* border-width: 1px; */
+    @apply bg-gray-100 text-gray-900 rounded px-1;
   }
   
   /* Code blocks */
