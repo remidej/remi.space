@@ -18,13 +18,3 @@ The app should run on [https://localhost:8000](localhost:8000). GraphiQL runs on
 
 * Blog
 * Professional experience
-
-## 📈 Todo
-
-* [x] Functional blogging system
-* [x] Work section
-* [ ] Add a favicon
-* [ ] Setup Segment for analytics
-* [ ] Generate meta images (OG graph)
-* [ ] Tag system to filter posts by category
-* [ ] Clickable anchor links in the articles
