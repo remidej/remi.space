@@ -31,7 +31,8 @@ Redux created their official template, the React team [made one for TypeScript](
 
 ## Making our own template
 
-Create a directory with the following structure:
+The template system relies on a very specific directory structure. You can reproduce [the official default template](https://github.com/facebook/create-react-app/tree/master/packages/cra-template). 
+Your directory should look like this:
 
 ```
 cra-template-[template-name]/
@@ -47,12 +48,28 @@ cra-template-[template-name]/
       index.js (or index.tsx)
 ```
 
-You can then setup the `template/` folder to be the starting point for all your future projects.
+You can then set up the `template/` folder to be the starting point for all your future projects. Note that it shouldn't have a `package.json`. If you need to install dependencies, include them in the `template.json` file, using the same syntax as a `package.json` file:
 
-The last step is to publish you template on NPM. 
+```json
+{
+  "package": {
+    "dependencies": {
+      
+    }
+  }
+}
+```
+
+You can test that your template is working properly by creating projects with it. Run this command:
+
+```shell
+npx create-react-app my-app --template file:~/path/to/your/template/cra-template-[template-name]
+```
+
+The last step is to publish your template on NPM. Make sure that the 
 
 ## The Internet is your cloud
 
-This approach goes beyond CRA's templates. There are many cases where you can use the public internet to host your files. You can publish your go-to ESLint config on NPM too. You can save your VS Code snippets as [an extension on the marketplace](https://marketplace.visualstudio.com/search?term=snippet&target=VSCode&category=Snippets&sortBy=Relevance).
+This approach goes beyond React templates. There are many cases where you can use the public internet to host your files. You can publish your go-to ESLint config on NPM too. You can save your VS Code snippets as [an extension on the marketplace](https://marketplace.visualstudio.com/search?term=snippet&target=VSCode&category=Snippets&sortBy=Relevance).
 
 This way, when you start a new project, or if you're setting up a new computer, you'll always keep the config you like. And who knows? Someone else may find it useful.
