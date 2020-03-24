@@ -4,36 +4,49 @@ date: 2020-03-17
 description: Template literals are the most powerful way to write strings in JavaScript. Here's how you can use them by default with ESLint.
 ---
 
-ES 2015 gave us a new way to write strings in JavaScript called _template literals_ — or as we like to call them, **backticks**.
-
-## Why backticks are superior
-
-Backticks provide a more readable syntax to include expressions (like variables) in our strings. They also allow us to write characters like apostrophes or quotes without worrying about `\escaping` them. They can even be used for multi-line text.
+Developers often argue over using `'single quotes'` or`"double quotes"`. But both have the same limitations. Every time we write a string that includes an expression or a line break, we have to deal with a messy syntax.
 
 ```js
-// Dynamic values with quotes
+// Expressions with quotes
 console.log("My name is " + name + ", and I'm " + age + " years old");
-
-// Dynamic values with template strings
-console.log(`My name is ${name}, and I'm ${age} years old`);
 
 // Multi-line with quotes
 const longText1 = "This is line 1\nThis is line 2";
+```
+
+## Backticks
+
+ES 2015 gave us a new way to write strings in JavaScript called _template literals_ — or as we like to call them, **backticks**. Their syntax is more readable:
+
+```js
+// Expressions with template strings
+console.log(`My name is ${name}, and I'm ${age} years old`);
 
 // Multi-line with template strings
 const longText2 = `This is line 1
 This is line2`
 ```
 
-I used to only write template literals when I needed one of these features, but kept using single or double quotes otherwise. I would just convert them to backticks when I needed to add an expression or a new line to my string.
+Besides, we can safely write apostrophes and quotes in our strings without worrying about `\escaping` them.
 
-But what's the point of converting your code from one style to the other? Can't you just use the most powerful one from the start?
+## When to use backticks
 
-A concern you may have is performance. Backticks used to be slower than regular strings when they were released. However, browsers have had time to optimize their ES 2015 support, so the difference is now neglectable. Besides, if you use a compiler like Babel, backticks will be converted to strings and concatenation.
+The standard approach among developers has been to keep using single or double quotes for all our strings. And if we need of one the unique features of backticks, only then do we convert our strings into template literals.
+
+This works fine. But what's the point of converting your code from one style to the other? Can't we use the most powerful one from the start?
+
+Two things may prevent us from going full backticks.
+
+* **Performance**. Template strings used to be slower. Since ES 2015 was released, JS engines have had time to optimize their support for template strings. They should now be _almost_ as performant as regular strings.
+* **Compatibility**. Template strings are newer than quotes, so [their browser support isn't as good](https://caniuse.com/#feat=template-literals).
+
+Both of these concerns can be resolved by using a compiler like. Then every time you write code using a fancy new syntax like backticks, it will be converted to older code that all browsers can understand.
+
+We can now start using backticks by default, for all our strings.
 
 ## Enforce backticks with ESLint
 
-Now we need to configure our tools to enforce this new style. Style rules are usually handled by Prettier, but it doesn't currently support backticks for all strings. Luckily, ESLint has just the option we need. Add this rule to your `.eslintrc`:
+We need to configure our tools to enforce this new style. Style rules are usually handled by Prettier, but it [doesn't currently support backticks for all strings](https://github.com/prettier/prettier/issues/54). Luckily, ESLint has just the option we need. Add this rule to your `.eslintrc`:
 
 ```json
 {
