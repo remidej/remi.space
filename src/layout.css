@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 ::selection, ::-moz-selection {
-  @apply bg-blog-200 !important;
+  @apply bg-blog-200 text-gray-900 !important;
 }
 
 @media screen and (max-width: 640px) {
@@ -65,7 +65,7 @@
 
   /* Code blocks */
   .gatsby-highlight {
-    @apply mt-4;
+    @apply mt-4 -mx-4;
     margin-bottom: 1.75rem;
     border-radius: 10px;
     -webkit-overflow-scrolling: touch;

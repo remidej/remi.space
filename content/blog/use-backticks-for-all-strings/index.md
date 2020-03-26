@@ -8,10 +8,10 @@ Developers often argue over using `'single quotes'` or`"double quotes"`. But bot
 
 ```js
 // Expressions with quotes
-console.log("My name is " + name + ", and I'm " + age + " years old");
+const description = "A poem by " + author + ", published in " + year;
 
 // Multi-line with quotes
-const longText1 = "This is line 1\nThis is line 2";
+const poem = "Roses are red\nViolets are blue";
 ```
 
 ## Backticks
@@ -20,11 +20,11 @@ ES 2015 gave us a new way to write strings in JavaScript called _template litera
 
 ```js
 // Expressions with template strings
-console.log(`My name is ${name}, and I'm ${age} years old`);
+const description = `A poem by ${author}, published in ${year}`;
 
 // Multi-line with template strings
-const longText2 = `This is line 1
-This is line2`
+const longText2 = `Roses are red
+Violets are blue`
 ```
 
 Besides, we can safely write apostrophes and quotes in our strings without worrying about `\escaping` them.
@@ -40,7 +40,7 @@ Two things may prevent us from going full backticks.
 * **Performance**. Template strings used to be slower. Since ES 2015 was released, JS engines have had time to optimize their support for template strings. They should now be _almost_ as performant as regular strings.
 * **Compatibility**. Template strings are newer than quotes, so [their browser support isn't as good](https://caniuse.com/#feat=template-literals).
 
-Both of these concerns can be resolved by using a compiler like. Then every time you write code using a fancy new syntax like backticks, it will be converted to older code that all browsers can understand.
+Both of these concerns can be resolved by using a compiler like Babel. Then every time you write code using a fancy new syntax like backticks, it will be converted to older code that all browsers can understand.
 
 We can now start using backticks by default, for all our strings.
 
