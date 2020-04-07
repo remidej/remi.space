@@ -20,7 +20,7 @@ To clean up a bunch of redundant commits, you need to squash them. That means co
 
 ![Squashed commits](./assets/squashed-commits.png)
 
-You can squash the commits using the CLI, but the syntax is a bit fuzzy ([from Stack Overflow](http://stackoverflow.com/a/5201642/295797)):
+You can squash the commits using the CLI, but the syntax is quite fuzzy ([from Stack Overflow](http://stackoverflow.com/a/5201642/295797)):
 
 ```sh
 git reset --soft HEAD~3 && git commit
@@ -31,11 +31,25 @@ The most convenient way to squash commits is during Pull Requests. Both GitHub a
 * Using GitHub : ![GitHub squashed commits](./assets/github-squash-and-merge.png)
 * Using GitLab :![GitLab commits](./assets/gitlab-squash-and-merge.png)
 
-## Rebase instead of merge
+## Avoid merge commits
 
-We often need to take all the changes from one branch, and apply them to another branch. Git has two commands for this: **merge** and **rebase**.
+When you're coding a new feature, it's a good practice to work on a separate branch – often called a _feature branch_. By the time you're ready, your Git tree probably looks like this:
 
+![Feature branch](./assets/feature-branch-with-changes.png)
 
+Git encourages you to work on different branches. Every time you work on something new, you Your Git may look like this: But when your changes are ready, 
+
+We often need to take changes from one branch, and apply them to another. Git has two commands for this: **merge** and **rebase**.
+
+In most cases, `git merge` will create a commit that reconciles one branch with the other, so that they don't have conflicts or lost changes.
+
+## Visualize your Git tree
+
+When you work with sevral people on several branches, it's easy to get lost. Then you make mistakes because you don't have a good understanding of how you got there. An easy way to fix that is to open a visualization of your Git history
+
+```sh
+git log --graph --oneline --al
+```
 
 ## Summary
 
