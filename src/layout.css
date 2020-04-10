@@ -52,7 +52,7 @@
   blockquote {
     @apply mt-6 text-2xl border-blog-500 text-blog-700 border-l-4 pl-4 leading-normal italic;
   }
-  
+
   /* Inline code */
   :not(pre) > code {
     @apply bg-gray-100 text-gray-900 rounded px-1;
