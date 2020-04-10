@@ -31,7 +31,7 @@ Besides, we can safely write apostrophes and quotes in our strings without worry
 
 ## When to use backticks
 
-The standard approach among developers has been to keep using single or double quotes for all our strings. And if we need of one the unique features of backticks, only then do we convert our strings into template literals.
+The standard approach among developers has been to keep using single or double quotes for most of our strings. And if we need of one the unique features of backticks, only then do we convert our strings into template literals.
 
 This works fine. But what's the point of converting your code from one style to the other? Can't we use the most powerful one from the start?
 

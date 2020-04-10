@@ -37,7 +37,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 720,
+              linkImagesToOriginal: false,
+              backgroundColor: `transparent`,
             },
           },
           {
@@ -62,13 +64,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Rémi de Juvigny | Personal website`,
+        short_name: `Rémi`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/icon.png`,
+        // icon: `content/assets/icon.png`,
       },
     },
     `gatsby-plugin-notify`,
