@@ -12,7 +12,7 @@ module.exports = {
       twitter: `remidej`,
       linkedin: `remi-de-juvigny`,
       github: 'remi2j',
-      email: 'remidejuvigny@gmail.com',
+      email: 'hello@remi.space',
     },
   },
   plugins: [
@@ -70,12 +70,13 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        // icon: `content/assets/icon.png`,
+        icon: `content/assets/icon.png`,
       },
     },
     `gatsby-plugin-notify`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-purgecss`,
   ],
 }
