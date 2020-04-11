@@ -77,6 +77,12 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
-    `gatsby-plugin-purgecss`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        tailwind: true,
+        whitelistPatternsChildren: [/token/, /namespace/, /pre/, /code/],
+      },
+    },
   ],
 }
