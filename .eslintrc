@@ -12,6 +12,7 @@
         "semi": false
       }
     ],
+    "quotes": ["error", "backtick"],
     "jsx-a11y/accessible-emoji": 0
   },
   "extends": ["react-app", "plugin:prettier/recommended"]

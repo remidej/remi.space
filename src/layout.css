@@ -27,6 +27,13 @@
   a:hover {
     @apply text-blog-600;
   }
+
+  .anchor.before {
+    top: 50% !important;
+    width: 20px;
+    height: 20px;
+    transform: translate(-120%, -40%) !important;
+  }
   
   /* All common heading tags */
   h2, h3, h4, h4, h5, h6 {

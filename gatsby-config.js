@@ -1,4 +1,4 @@
-require('dotenv').config({
+require(`dotenv`).config({
   path: `.env`,
 })
 
@@ -11,8 +11,8 @@ module.exports = {
     social: {
       twitter: `remidej`,
       linkedin: `remi-de-juvigny`,
-      github: 'remi2j',
-      email: 'hello@remi.space',
+      github: `remi2j`,
+      email: `hello@remi.space`,
     },
   },
   plugins: [
@@ -46,9 +46,24 @@ module.exports = {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {},
           },
-          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `nofollow`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.366" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 8.7c1.1 1.5 3.3 1.8 4.8.7.1-.1.3-.2.4-.3l2-2c1.3-1.4 1.3-3.5-.1-4.8a3.32 3.32 0 0 0-4.7 0L7.8 3.4m1.5 3.9c-1.1-1.5-3.2-1.8-4.8-.6-.1 0-.2.2-.3.3l-2 2c-1.3 1.4-1.3 3.5.1 4.8a3.32 3.32 0 0 0 4.7 0l1.2-1.2"/></svg>`,
+              maintainCase: false,
+              removeAccents: true,
+            },
+          },
+          `gatsby-remark-prismjs`,
         ],
       },
     },
@@ -75,16 +90,16 @@ module.exports = {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         tailwind: true,
-        whitelistPatternsChildren: [/token/, /namespace/, /pre/, /code/],
+        whitelistPatternsChildren: [/token/, /namespace/, /pre/, /code/, /anchor/],
       },
     },
     {
-      resolve: 'gatsby-plugin-ackee-tracker',
+      resolve: `gatsby-plugin-ackee-tracker`,
       options: {
         domainId: process.env.ACKEE_DOMAIN_ID,
         server: process.env.ACKEE_SERVER_URL,
         ignoreLocalhost: true,
-        detailed: true,
+        detailed: false,
       },
     },
   ],

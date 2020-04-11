@@ -1,1 +1,1 @@
-require('prism-theme-night-owl/build/style.css')
+require(`prism-theme-night-owl/build/style.css`)
