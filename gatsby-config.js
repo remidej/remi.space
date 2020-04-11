@@ -78,5 +78,14 @@ module.exports = {
         whitelistPatternsChildren: [/token/, /namespace/, /pre/, /code/],
       },
     },
+    {
+      resolve: 'gatsby-plugin-ackee-tracker',
+      options: {
+        domainId: process.env.ACKEE_DOMAIN_ID,
+        server: process.env.ACKEE_SERVER_URL,
+        ignoreLocalhost: true,
+        detailed: true,
+      },
+    },
   ],
 }

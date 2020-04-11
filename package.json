@@ -12,6 +12,7 @@
     "gatsby": "^2.18.4",
     "gatsby-cli": "^2.8.26",
     "gatsby-image": "^2.2.34",
+    "gatsby-plugin-ackee-tracker": "^1.4.0",
     "gatsby-plugin-feed": "^2.3.22",
     "gatsby-plugin-manifest": "^2.2.30",
     "gatsby-plugin-notify": "^1.0.0",
