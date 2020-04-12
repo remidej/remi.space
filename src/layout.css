@@ -29,10 +29,10 @@
   }
 
   .anchor.before {
-    top: 50% !important;
+    top: 0;
     width: 20px;
     height: 20px;
-    transform: translate(-120%, -40%) !important;
+    transform: translateX(-120%);
   }
   
   /* All common heading tags */

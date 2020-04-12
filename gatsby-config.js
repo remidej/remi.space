@@ -8,6 +8,7 @@ module.exports = {
     author: `Rémi de Juvigny`,
     description: `A blog about the open web, and how to make it better using tools like JavaScript, GraphQL and React.`,
     siteUrl: `https://remi.space`,
+    defaultOpenGraphImage: `/og-home.png`,
     social: {
       twitter: `remidej`,
       linkedin: `remi-de-juvigny`,
