@@ -5,7 +5,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const BlogPost = path.resolve(`./src/templates/blog-post.js`)
-  const OpenGraphImage = path.resolve(`./src/templates/og-image.js`)
   const result = await graphql(
     `
       {
@@ -46,31 +45,17 @@ exports.createPages = async ({ graphql, actions }) => {
         next,
       },
     })
-
-    // OpenGraph image page (for screenshot purposes only)
-    createPage({
-      path: `${post.node.fields.slug}/og-image`,
-      component: OpenGraphImage,
-      context: {
-        slug: post.node.frontmatter.slug,
-        width: 440,
-        height: 220,
-      },
-    })
   })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  // console.log(node.internal)
-
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
-      // value,
       value: `/blog${value}`,
     })
   }
