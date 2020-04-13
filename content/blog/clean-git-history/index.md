@@ -9,7 +9,7 @@ Your project's Git history is a powerful time machine. Here's how to avoid flood
 
 ## Squash your commits
 
-I like committing my changes frequently. I makes me feel safe knowing my changes are saved somewhere, so I commit every time I take a small break. But that means my commits become meaningless. They reflect what my days look like, not what's in my code.
+I like committing my changes frequently. It makes me feel safe knowing my changes are saved somewhere, so I commit every time I take a small break. But that means my commits become meaningless. They reflect what my days look like, not what's in my code.
 
 Some changes only make sense when grouped together. But they end up spread out across commits like this:
 
