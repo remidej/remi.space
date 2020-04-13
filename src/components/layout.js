@@ -6,27 +6,27 @@ import SocialButtons from './socialButtons'
 
 const navLinks = [
   {
-    title: 'Home',
-    path: '/',
+    title: `Home`,
+    path: `/`,
   },
   {
-    title: 'Blog',
-    path: '/blog',
+    title: `Blog`,
+    path: `/blog`,
   },
 ]
 
 const siteLinks = [
   {
-    title: 'GitHub',
-    link: 'https://github.com/remi2j/remi.space',
+    title: `GitHub`,
+    link: `https://github.com/remi2j/remi.space`,
   },
   {
-    title: 'RSS',
-    link: '/rss.xml',
+    title: `RSS`,
+    link: `/rss.xml`,
   },
   {
-    title: 'Sitemap',
-    link: '/sitemap.xml',
+    title: `Sitemap`,
+    link: `/sitemap.xml`,
   },
 ]
 
