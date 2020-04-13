@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import getShareImage from '@jlengstorf/get-share-image'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -9,11 +10,39 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
 
+  // Generate OG image from Cloudinary
+  const socialImage = getShareImage({
+    // Config
+    cloudName: `remispace`,
+    imagePublicID: `blog/og-template`,
+    // Content
+    title: post.frontmatter.title,
+    tagline: post.frontmatter.tags.map(tag => `#${tag}`).join(` `),
+    // Layout
+    imageWidth: 1280,
+    imageHeight: 640,
+    textAreaWidth: 812,
+    // Title
+    titleFont: `InterBold.otf`,
+    titleFontSize: 76,
+    titleColor: `234E52`,
+    titleBottomOffset: 236,
+    titleLeftOffset: 342,
+    // Tagline
+    taglineFont: `InterSemiBold.otf`,
+    taglineFontSize: 58,
+    taglineColor: `A0AEC0`,
+    taglineTopOffset: 426,
+    taglineLeftOffset: 342,
+  })
+
   return (
     <Layout location={location}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        image={socialImage}
+        type="article"
       />
       <article className="mt-8 container mx-auto text-lg md:text-xl">
         <header>
@@ -86,6 +115,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }

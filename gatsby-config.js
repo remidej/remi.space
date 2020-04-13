@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Rémi de Juvigny`,
     author: `Rémi de Juvigny`,
-    description: `A blog about the open web, and how to make it better using tools like JavaScript, GraphQL and React.`,
+    description: `A blog by Rémi de Juvigny about the open web, and how to make it better using tools like JavaScript, GraphQL and React. `,
     siteUrl: `https://remi.space`,
     defaultOpenGraphImage: `/og-home.png`,
     social: {

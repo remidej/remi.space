@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useLocation } from '@reach/router'
 
-function SEO({ description, lang, meta, title, image }) {
+function SEO({ description, lang, meta, title, image, type }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,12 +20,15 @@ function SEO({ description, lang, meta, title, image }) {
       }
     `
   )
+  const { pathname } = useLocation()
 
   const metaDescription = description || site.siteMetadata.description
-  const ogImage = image || site.siteMetadata.defaultOpenGraphImage
   const { siteUrl } = site.siteMetadata
+  const ogImage = image || `${siteUrl}${site.siteMetadata.defaultOpenGraphImage}`
 
   const fullTitle = `${title} | ${site.siteMetadata.title}`
+  const fullUrl = `${siteUrl}${pathname}`
+  const finalType = type || `website`
 
   // Always wear a Helmet
   return (
@@ -41,7 +45,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `og:url`,
-          content: `url`,
+          content: fullUrl,
         },
         {
           property: `og:title`,
@@ -53,11 +57,11 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `og:image`,
-          content: `${siteUrl}${ogImage}`,
+          content: ogImage,
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: finalType,
         },
         {
           property: `og:url`,
@@ -73,7 +77,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `twitter:image`,
-          content: `${siteUrl}${ogImage}`,
+          content: ogImage,
         },
         {
           name: `twitter:title`,
