@@ -23,8 +23,8 @@ function SEO({ description, lang, meta, title, image, type }) {
   const { pathname } = useLocation()
 
   const metaDescription = description || site.siteMetadata.description
-  const ogImage = image || site.siteMetadata.defaultOpenGraphImage
   const { siteUrl } = site.siteMetadata
+  const ogImage = image || `${siteUrl}${site.siteMetadata.defaultOpenGraphImage}`
 
   const fullTitle = `${title} | ${site.siteMetadata.title}`
   const fullUrl = `${siteUrl}${pathname}`
@@ -57,7 +57,7 @@ function SEO({ description, lang, meta, title, image, type }) {
         },
         {
           name: `og:image`,
-          content: `${siteUrl}${ogImage}`,
+          content: ogImage,
         },
         {
           property: `og:type`,
@@ -77,7 +77,7 @@ function SEO({ description, lang, meta, title, image, type }) {
         },
         {
           name: `twitter:image`,
-          content: `${siteUrl}${ogImage}`,
+          content: ogImage,
         },
         {
           name: `twitter:title`,

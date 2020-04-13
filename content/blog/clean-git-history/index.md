@@ -2,6 +2,7 @@
 title: 5 tips to keep a clean Git history
 date: 2020-04-10
 description: Your project's Git history is a powerful time machine. Avoid flooding it with useless noise.
+tags: ["git", "tips"]
 ---
 
 Your project's Git history is a powerful time machine. Here's how to avoid flooding it with useless noise.
