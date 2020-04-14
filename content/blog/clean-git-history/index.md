@@ -24,6 +24,7 @@ To clean up a bunch of redundant commits, you can squash them. That means combin
 You can squash the commits using the CLI, but the syntax is quite fuzzy ([from Stack Overflow](http://stackoverflow.com/a/5201642/295797)):
 
 ```shell
+# Squashes the last 3 commits
 git reset --soft HEAD~3 && git commit
 ```
 
