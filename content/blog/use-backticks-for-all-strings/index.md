@@ -1,5 +1,5 @@
 ---
-title: Use backticks for all your JS strings
+title: Use Backticks For All Your JS Strings
 date: 2020-03-17
 description: Template literals are the most powerful way to write strings in JavaScript. Here's how you can use them by default with ESLint.
 tags: ["javascript", "tips"]
@@ -24,8 +24,10 @@ ES 2015 gave us a new way to write strings in JavaScript called _template litera
 const description = `A poem by ${author}, published in ${year}`;
 
 // Multi-line with template strings
-const longText2 = `Roses are red
-Violets are blue`
+const longText2 = `
+  Roses are red
+  Violets are blue
+`
 ```
 
 Besides, we can safely write apostrophes and quotes in our strings without worrying about `\escaping` them.
