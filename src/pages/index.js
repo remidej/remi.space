@@ -121,8 +121,7 @@ const Home = ({ location }) => {
               engineering culture
             </li>
             <li>
-              <FiCheckCircle className="inline text-work-500 translate-y-1" /> is located anywhere
-              around the world, and can help with relocation
+              <FiCheckCircle className="inline text-work-500 translate-y-1" /> is located in Europe, and can help with relocation
             </li>
           </ul>
           <p className="mt-4">Then I would love to have a chat with you 👋</p>
