@@ -36,13 +36,13 @@ Using GitLab :![GitLab commits](./assets/gitlab-squash-and-merge.png)
 
 ## Rebase before merging
 
-When you're coding a new feature, it's a good practice to work on a separate branch – often called a _feature branch_. But by the time your feature is ready, new commits have probably been added to the master branch.
+When we're coding a new feature, it's a good practice to work on a separate branch – often called a _feature branch_. But by the time our feature is ready, new commits have probably been added to the master branch.
 
 This means Git won't be able to perform a *fast-forward* merge. Instead, it will have to create a merge commit to reconcile the history of the two branches.
 
 ![Merge commit](./assets/merge-commit.png)
 
-This adds quite a lot of complexity to your history. You get a new weird, auto-generated commit, and your tree becomes two-dimensional, making it hard to read.
+This adds quite a lot of complexity to our history. We get a new weird, auto-generated commit, and our tree becomes two-dimensional, making it hard to read.
 
 Ideally, we would have waited for the commits `B` and `C` from our diagram before making our own branch. This would be a terrible workflow, preventing us from working in parallel with our colleagues. But we can simulate this scenario with a simple command.
 
@@ -67,17 +67,17 @@ Then, we just type `git stash pop`, and our changes are restored.
 
 ## Amend your last commit
 
-It's usually right after making a commit that my mistakes stand out. Maybe it's a typo, a forgotten console log, or useless commented code. Either way, it's silly can be fixed by a one-line commit.
+It's usually right after making a commit that our mistakes stand out. Maybe it's a typo, a forgotten console log, or useless commented code. Either way, it's silly can be fixed by a one-line commit.
 
 But then our history feels wrong. It puts our original commit, which may represent a full day of work, on the same level as our tiny hotfix. We're also exposing our mistake to everyone on the project, which sucks.
 
-To avoid this, we can instead modify the history, and add our fix to the last commit. After staging your changes, run this command:
+To avoid this, we can instead modify the history, and add our fix to the last commit. After staging our changes, run this command:
 
 ```shell
 git commit --amend --no-edit
 ```
 
-And *voilà*, we sneakily corrected our mistake. Note that if we already pushed our last commit, we would have to force push our amendment. This is fine if we're working on your own branch, but we should avoid doing it on `master`.
+And *voilà*, we sneakily corrected our mistake. Note that if we already pushed our last commit, we would have to force push our amendment. This is fine if we're working on our own branch, but we should avoid doing it on `master`.
 
 ## Visualize your Git tree
 

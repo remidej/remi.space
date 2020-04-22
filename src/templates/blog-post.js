@@ -70,12 +70,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </footer>
       </article>
       <nav className="sm:w-full lg:w-6/12 max-w-3xl container mx-auto mt-12">
-        <ul className="flex flex-row align-baseline justify-between text-lg font-semibold text-blog-700 hover:underline">
-          <li className="flex-1 flex flex-row items-start justify-start">
+        <ul className="flex flex-row align-baseline justify-between text-lg font-semibold text-blog-700">
+          <li className="flex-1 flex flex-row items-start justify-starte">
             {previous && (
               <>
                 <FiArrowLeft className="flex-shrink-0" />
-                <Link className="-mt-1 ml-1" to={previous.fields.slug} rel="prev">
+                <Link className="-mt-1 ml-1 hover:underline" to={previous.fields.slug} rel="prev">
                   {previous.frontmatter.title}
                 </Link>
               </>
@@ -84,7 +84,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <li className="flex-1 flex flex-row items-start justify-end text-right">
             {next && (
               <>
-                <Link className="-mt-1 mr-1" to={next.fields.slug} rel="next">
+                <Link className="-mt-1 mr-1 hover:underline" to={next.fields.slug} rel="next">
                   {next.frontmatter.title}
                 </Link>
                 <FiArrowRight className="flex-shrink-0" />

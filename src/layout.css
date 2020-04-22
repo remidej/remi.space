@@ -48,6 +48,10 @@
     @apply mt-6;
   }
   
+  h4 {
+    @apply mt-4 -mb-1;
+  }
+  
   ul {
     @apply list-disc list-inside mt-2;
   }
@@ -72,7 +76,7 @@
 
   /* Code blocks */
   .gatsby-highlight {
-    @apply mt-4 -mx-4;
+    @apply mt-6 -mx-4;
     margin-bottom: 1.75rem;
     border-radius: 10px;
     -webkit-overflow-scrolling: touch;
