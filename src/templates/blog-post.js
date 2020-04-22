@@ -8,6 +8,7 @@ import SEO from '../components/seo'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
+  const meta = data.site.siteMetadata
   const { previous, next } = pageContext
 
   // Generate OG image from Cloudinary
@@ -36,20 +37,20 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     taglineLeftOffset: 302,
   })
 
+  const url = `${meta.siteUrl}${location.pathname}`
+
   const socialActions = [
     {
       title: `Discuss on Twitter`,
-      url: `https://twitter.com/search?q=${encodeURI(`https://remi.space/blog/clean-git-history`)}`,
+      url: `https://twitter.com/search?q=${encodeURI(url)}`,
     },
     {
       title: `Discuss on Reddit`,
-      url: `https://www.reddit.com/search/?q=url%3A${encodeURI(
-        `https://remi.space/blog/clean-git-history`
-      )}`,
+      url: `https://www.reddit.com/search/?q=url%3A${encodeURI(url)}`,
     },
     {
       title: `Edit on GitHub`,
-      url: `https://github.com/remi2j/remi.space/edit/master/content/${location.pathname}index.md`,
+      url: `https://github.com/${meta.social.github}/remi.space/edit/master/content${location.pathname}index.md`,
     },
   ]
 
@@ -144,6 +145,10 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
+        social {
+          github
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
