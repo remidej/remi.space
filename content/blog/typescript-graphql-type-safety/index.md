@@ -5,19 +5,19 @@ description: The tools you need to get a unique source of truth for your data mo
 tags: ["typescript", "graphql"]
 ---
 
-In the JavaScript community, static types often get bad press. It's because it gives a false sense of confidence, or because configuring the right tools is hard. Both are frequent issues, and happen because of mistakes in our app's architecture. Let's try to fix this.
+In the JavaScript community, static types often get bad press. Maybe because it gives a false sense of confidence, or because configuring the right tools is hard. Both are frequent issues, and happen because of mistakes in our app's architecture. Let's try to fix this.
 
 ## The problem
 
-Let's consider this codebase written in TypeScript:
+Consider this codebase written in TypeScript:
 
 (diagram) TS backend <-> Rest API <-> TS frontend
 
-We never even use the `:any` type. Should be type-safe, right? Well, no, at least not yet.
+We never even use the `any` type. It should be type-safe, right? Well, no, at least not yet.
 
-The problem is that our type safety is only as strong as its weakest point. In our case, the weak link is our API. The types from the frontend and the backend both live on their separate world. We have no guarantee that they will keep in sync. So we write types on the frontend based on what we _assume_ the backend will send, and vice versa.
+The problem is that our type safety is only as strong as its weakest point. In our case, the loose end is our API. The types from the frontend and the backend both live on their separate world. So we write types on the frontend based on what we _assume_ the backend will send, and vice versa.
 
-We have multiple sources of truth. It's already annoying for our project. But it can become a huge issue if we have an architecture based on many microservices.
+We have multiple sources of truth, and no guarantee that they will keep in sync. It's already annoying for our project. But it can become a huge issue if we have an architecture based on many microservices.
 
 ## GraphQL to the rescue
 
@@ -25,7 +25,7 @@ Unlike Rest, GraphQL has a type system in its [core principles](https://graphql.
 
 (diagram) TS backend <-> backend bridge <-> GQL <-> frontend bridge <-> TS frontend
 
-In our case, we have 3 islands of type safety, but they're not connected to each other. We need to build bridges on both sides, so that the source of truth for our models is shared from one end to the other.
+In our case, we have 3 islands of type safety, but they're not connected to each other. To share our models from one end to the other, we need to build bridges on both sides.
 
 ## The frontend bridge
 
