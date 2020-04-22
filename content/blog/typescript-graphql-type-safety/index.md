@@ -65,7 +65,9 @@ Code-first GraphQL development is also a good strategy. The process is reversed,
 Once again, several [other](https://github.com/graphql/graphql-js) [tools](https://nexus.js.org/) exist to create code-first GraphQL schemas in Node. But I'll only show the one I have used and loved, [TypeGraphQL](https://typegraphql.com/). It uses [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html) to extract a GraphQL schema from your TypeScript classes.
 
 ```ts
-import { ObjectType, Field, ID, registerEnumType, Authorized } from 'type-graphql'
+import {
+  ObjectType, Field, ID, registerEnumType, Authorized
+} from 'type-graphql'
 
 @ObjectType()
 class User {
@@ -89,7 +91,9 @@ This aproach is powerful because it's extensible by design. We can use it hand i
 
 ```ts
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { ObjectType, Field, ID, registerEnumType, Authorized } from 'type-graphql'
+import {
+  ObjectType, Field, ID, registerEnumType, Authorized
+} from 'type-graphql'
 
 @Entity()
 @ObjectType()
