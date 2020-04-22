@@ -14,26 +14,26 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const socialImage = getShareImage({
     // Config
     cloudName: `remispace`,
-    imagePublicID: `blog/og-template`,
+    imagePublicID: `blog/open-graph-template-xl`,
     // Content
     title: post.frontmatter.title,
     tagline: post.frontmatter.tags.map(tag => `#${tag}`).join(` `),
     // Layout
     imageWidth: 1280,
     imageHeight: 640,
-    textAreaWidth: 812,
+    textAreaWidth: 852,
     // Title
     titleFont: `InterBold.otf`,
     titleFontSize: 76,
     titleColor: `234E52`,
     titleBottomOffset: 236,
-    titleLeftOffset: 342,
+    titleLeftOffset: 302,
     // Tagline
     taglineFont: `InterSemiBold.otf`,
     taglineFontSize: 58,
     taglineColor: `A0AEC0`,
     taglineTopOffset: 426,
-    taglineLeftOffset: 342,
+    taglineLeftOffset: 302,
   })
 
   return (

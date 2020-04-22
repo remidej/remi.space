@@ -2,10 +2,10 @@
 title: End-to-end Type Safety with TypeScript and GraphQL
 date: 2020-04-22
 description: The tools you need to get a unique source of truth for your data models, and sync it across frontend and backend.
-tags: ["typescript", "graphql"]
+tags: ["typescript", "graphql", "dev"]
 ---
 
-In the JavaScript community, static types often get bad press. Maybe because it gives a false sense of confidence, or because configuring the right tools is hard. Both are frequent issues, and happen because of mistakes in our app's architecture. Let's try to fix this.
+In the JavaScript community, static types often get bad press. Configuring the right tools is hard, and a bad architecture can lead to a false sense of confidence. Let's try to fix this.
 
 ## The problem
 
@@ -15,9 +15,9 @@ Consider this codebase written in TypeScript:
 
 We never even use the `any` type. It should be type-safe, right? Well, no, at least not yet.
 
-The problem is that our type safety is only as strong as its weakest point. In our case, the loose end is our API. The types from the frontend and the backend both live on their separate world. So we write types on the frontend based on what we _assume_ the backend will send, and vice versa.
+The problem is that our type safety is only as strong as its weakest point. In our case, the loose end is our API. The types from both ends live on their own separate world. So we write types on the frontend based on what we _assume_ the backend will send, and vice versa.
 
-We have multiple sources of truth, and no guarantee that they will keep in sync. It's already annoying for our project. But it can become a huge issue if we have an architecture based on many microservices.
+We have multiple sources of truth, and no guarantee that they will keep in sync. It's already annoying for our small project,  and can become a huge issue if we have an architecture based on many microservices.
 
 ## GraphQL to the rescue
 
@@ -41,7 +41,7 @@ Apollo built a CLI with [this very feature](https://github.com/apollographql/apo
 }
 ```
 
-We can then type `npm run apollo:types` when there's a change in our schema or our queries and mutations. We can also keep it running in the background like this: `npm run apollo:types --watch`
+We can then type `npm run apollo:types` when there's a change in our schema or our queries and mutations. We can also keep it running in the background using `npm run apollo:types --watch`.
 
 Note that the Apollo CLI can also be replaced by other tools:
 
@@ -60,7 +60,7 @@ If we write our GraphQL schema by hand, then just like for the frontend, we will
 
 ### Code-first
 
-Code-first GraphQL development is also a good strategy. The process is reversed, you first write your types by hand in TypeScript, and they are then used to generate a GraphQL schema.
+Code-first GraphQL development is also a good strategy. The process is reversed, you first write your types by hand in TypeScript, then they are used to generate a GraphQL schema.
 
 Once again, several [other](https://github.com/graphql/graphql-js) [tools](https://nexus.js.org/) exist to create code-first GraphQL schemas in Node. But I'll only show the one I have used and loved, [TypeGraphQL](https://typegraphql.com/). It uses [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html) to extract a GraphQL schema from your TypeScript classes.
 
@@ -134,4 +134,4 @@ Let's see the architecture we ended up with:
 
 ![Type-safe GraphQL architecture](./assets/type-safe-graphql-architecture.png)
 
-I hope you get to love all the benefits that type safety brings. It improves the developer experience by making our tooling smarter. We get autocomplete in our IDE, and linters warn us when we write bugs. Most importantly, just like a good test suite, it gives us more confidence that our code is solid. Enjoy!
+I hope you get to love all the benefits that type safety brings. It improves the developer experience by making our tooling smarter. We get autocomplete in our code editor, and linters warn us when we write bugs. Most importantly, just like a good test suite, it gives us more confidence that our code is solid. Enjoy!

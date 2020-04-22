@@ -100,12 +100,30 @@ const Home = ({ location }) => {
         <div className="text-xl text-gray-900 mt-6 leading-relaxed">
           <p>I'm a 4th year student at Hetic, where I'll graduate in 2021.</p>
           <p className="mt-4">
-            In 2019, I co-founded and sold Revolt Influence, a platform that helps brands build a
-            presence and a community online.
+            In 2019, I co-founded and sold{` `}
+            <a
+              href="https://revoltgaming.co/"
+              alt="Revolt Influence"
+              className="underline text-work-700"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Revolt Influence
+            </a>
+            , a platform that helps brands build a presence and a community online.
           </p>
           <p className="mt-4">
-            In 2018, I worked at MadKudu, a Silicon-Valley-based startup who makes predictive
-            analytics software.
+            In 2018, I worked at{` `}
+            <a
+              href="https://www.madkudu.com/"
+              alt="MadKudu"
+              className="underline text-work-700"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MadKudu
+            </a>
+            , a Silicon-Valley-based startup who makes predictive analytics software.
           </p>
           <p className="mt-4">
             I'm now looking for my next challenge. As I'm wrapping up my studies, I'll be doing an
@@ -121,7 +139,8 @@ const Home = ({ location }) => {
               engineering culture
             </li>
             <li>
-              <FiCheckCircle className="inline text-work-500 translate-y-1" /> is located in Europe, and can help with relocation
+              <FiCheckCircle className="inline text-work-500 translate-y-1" /> is located in Europe,
+              and can help with relocation
             </li>
           </ul>
           <p className="mt-4">Then I would love to have a chat with you 👋</p>

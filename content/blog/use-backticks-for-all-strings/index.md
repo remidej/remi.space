@@ -2,7 +2,7 @@
 title: Use Backticks For All Your JS Strings
 date: 2020-03-17
 description: Template literals are the most powerful way to write strings in JavaScript. Here's how you can use them by default with ESLint.
-tags: ["javascript", "tips"]
+tags: ["javascript", "tips", "dev"]
 ---
 
 Developers often argue over using `'single quotes'` or`"double quotes"`. But both have the same limitations. Every time we write a string that includes an expression or a line break, we have to deal with a messy syntax.
