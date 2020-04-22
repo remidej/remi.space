@@ -1,6 +1,6 @@
 ---
 title: End-to-end Type Safety with TypeScript and GraphQL
-date: 2020-04-16
+date: 2020-04-22
 description: The tools you need to get a unique source of truth for your data models, and sync it across frontend and backend.
 tags: ["typescript", "graphql"]
 ---
@@ -11,7 +11,7 @@ In the JavaScript community, static types often get bad press. Maybe because it 
 
 Consider this codebase written in TypeScript:
 
-(diagram) TS backend <-> Rest API <-> TS frontend
+![Rest architecture](./assets/rest-architecture.png)
 
 We never even use the `any` type. It should be type-safe, right? Well, no, at least not yet.
 
@@ -21,15 +21,19 @@ We have multiple sources of truth, and no guarantee that they will keep in sync.
 
 ## GraphQL to the rescue
 
-Unlike Rest, GraphQL has a type system in its [core principles](https://graphql.org/learn/schema/). We can use it to make type-safe API calls. We can use it as a bridge to propagate our backend types to the frontend. But we're not ready yet. But once again, using the right tool isn't enough. We need to make sure there are no holes in our type safety. On both the frontend and the backend, we need a way to convert port the GraphQL schema to TypeScript types. Here's the outline of the architecture:
+Unlike Rest, GraphQL has a type system in its [core principles](https://graphql.org/learn/schema/). We can use it to make type-safe API calls. The goal is to use it to propagate our backend types to the frontend.
 
-(diagram) TS backend <-> backend bridge <-> GQL <-> frontend bridge <-> TS frontend
+But we have to make sure there are no holes in our type safety. On both the frontend and the backend, we need a way to convert port the GraphQL schema to TypeScript types. Here's the outline of the architecture:
+
+![Unsafe GraphQL architecture](./assets/unsafe-graphql-architecture.png)
 
 In our case, we have 3 islands of type safety, but they're not connected to each other. To share our models from one end to the other, we need to build bridges on both sides.
 
 ## The frontend bridge
 
-We need to introspect our GraphQL schema to generate TypeScript types. The folks at Apollo built a CLI with [this very feature](https://github.com/apollographql/apollo-tooling#apollo-clientcodegen-output). You will first need to [create an `apollo.config.js` file](https://www.apollographql.com/docs/devtools/apollo-config/) so that Apollo can find your schema. But the CLI itself also provides many options, and is not limited to TypeScript support. After some tweaking, here is the script I added to the `package.json` in my last project:
+Our frontend has access to the GraphQL schema. We need a tool that will [introspect](https://graphql.org/learn/introspection/) it, and map the types to TypeScript. Then we can use the TS types like we normally would.
+
+Apollo built a CLI with [this very feature](https://github.com/apollographql/apollo-tooling#apollo-clientcodegen-output). To help Apollo find your schema, you will first need to [create an `apollo.config.js` file](https://www.apollographql.com/docs/devtools/apollo-config/). But the CLI itself also provides many options. After some tweaking, here is the script I added to my last project's `package.json`:
 
 ```json
 "scripts": {
@@ -39,26 +43,24 @@ We need to introspect our GraphQL schema to generate TypeScript types. The folks
 
 We can then type `npm run apollo:types` when there's a change in our schema or our queries and mutations. We can also keep it running in the background like this: `npm run apollo:types --watch`
 
-The Apollo CLI can also be replaced by other tools.
+Note that the Apollo CLI can also be replaced by other tools:
 
 * [GraphQL Code Generator](https://graphql-code-generator.com/) generates queries with the types already built-in
-* [gqless](https://gqless.dev/) provides TypeScript types, and only requires code generation when your schema changes
+* [gqless](https://gqless.dev/) provides TypeScript types, and only requires code generation when our schema changes
 
 We have now fixed half of the problem. Let's see the other side!
 
 ## The backend bridge
 
-The next challenge is to make sure the GraphQL schema we generate is automatically linked to our application code, which includes the resolvers and all the business logic.
+The next challenge is to make sure our GraphQL schema is tightly linked to our backend application code, which includes the resolvers and all the business logic. The way we do this depends on our strategy to generate the schema: SDL-first or code-first.
 
-We now need to patch the other gap in our architecture. The goal is to link our GraphQL schema to our backend code, which includes our resolvers and our business logic. This will defer greatly depending on how your schema is written.
+### SDL-first
 
-### SQL-first
-
-If you write your GraphQL schema by hand, then just like for the frontend, you will need to set up code generation. This is why Prisma built [`graphqlgen`](https://github.com/prisma-labs/graphqlgen). It will make sure that your resolvers map one-to-one with your schema.
+If we write our GraphQL schema by hand, then just like for the frontend, we will need to set up code generation. This is why Prisma built [`graphqlgen`](https://github.com/prisma-labs/graphqlgen). It will make sure that our resolvers map one-to-one with our schema.
 
 ### Code-first
 
-But if type safety matters to you, code-first GraphQL development is a good strategy. The process is reversed: you first write your types by hand in TypeScript, and then they are used to generate a GraphQL schema.
+Code-first GraphQL development is also a good strategy. The process is reversed, you first write your types by hand in TypeScript, and they are then used to generate a GraphQL schema.
 
 Once again, several [other](https://github.com/graphql/graphql-js) [tools](https://nexus.js.org/) exist to create code-first GraphQL schemas in Node. But I'll only show the one I have used and loved, [TypeGraphQL](https://typegraphql.com/). It uses [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html) to extract a GraphQL schema from your TypeScript classes.
 
@@ -107,6 +109,7 @@ class User {
   passwordHash: string;
   
   // Available on both database and schema
+  @OneToMany(type => Rate, rate => rate.author)
   @Field(type => [Rate])
   ratings: Rate[];
 
@@ -123,4 +126,8 @@ We have now colocated the types required by TypeScript, our database and GraphQL
 
 ## Conclusion
 
-Once we have set up the right tools, we get to love type safety. It improves the developer experience by making our tooling smarter. We get autocomplete in our IDE, and linters warn us we write bugs. Most importantly, just like a good test suite, it gives us more confidence that our application is solid. Enjoy!
+Let's see the architecture we ended up with:
+
+![Type-safe GraphQL architecture](./assets/type-safe-graphql-architecture.png)
+
+I hope you get to love all the benefits that type safety brings. It improves the developer experience by making our tooling smarter. We get autocomplete in our IDE, and linters warn us when we write bugs. Most importantly, just like a good test suite, it gives us more confidence that our code is solid. Enjoy!
