@@ -36,6 +36,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     taglineLeftOffset: 302,
   })
 
+  const socialActions = [
+    {
+      title: `Discuss on Twitter`,
+      url: `https://twitter.com/search?q=${encodeURI(`https://remi.space/blog/clean-git-history`)}`,
+    },
+    {
+      title: `Discuss on Reddit`,
+      url: `https://www.reddit.com/search/?q=url%3A${encodeURI(
+        `https://remi.space/blog/clean-git-history`
+      )}`,
+    },
+    {
+      title: `Edit on GitHub`,
+      url: `https://github.com/remi2j/remi.space/edit/master/content/${location.pathname}index.md`,
+    },
+  ]
+
   return (
     <Layout location={location}>
       <SEO
@@ -64,6 +81,29 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="leading-relaxed mt-10 article-content"
         />
+        {/* Social media links */}
+        <div className="mt-8">
+          {socialActions.map((_action, _index) => (
+            <React.Fragment key={_index}>
+              <a
+                href={_action.url}
+                title={_action.title}
+                className="underline text-blog-700 hover:text-blog-600"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {_action.title}
+              </a>
+              {/* Add dot after all items except the last */}
+              {_index < socialActions.length - 1 && (
+                <>
+                  {` `}•{` `}
+                </>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+        {/* Footer bio */}
         <hr className="border-2 border-gray-200 my-12" />
         <footer>
           <Bio />
@@ -71,7 +111,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       </article>
       <nav className="sm:w-full lg:w-6/12 max-w-3xl container mx-auto mt-12">
         <ul className="flex flex-row align-baseline justify-between text-lg font-semibold text-blog-700">
-          <li className="flex-1 flex flex-row items-start justify-starte">
+          <li className="flex-1 flex flex-row items-start justify-start">
             {previous && (
               <>
                 <FiArrowLeft className="flex-shrink-0" />
