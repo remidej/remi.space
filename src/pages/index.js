@@ -90,7 +90,7 @@ const Home = ({ location }) => {
           to="/blog"
           className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
         >
-          View all articles <FiArrowRight className="inline translate-y-1" size="1em" />
+          View all articles <FiArrowRight className="inline transform translate-y-1" size="1em" />
         </Link>
       </section>
       {/* Work section */}
@@ -104,7 +104,7 @@ const Home = ({ location }) => {
             <a
               href="https://revoltgaming.co/"
               alt="Revolt Influence"
-              className="underline text-work-700"
+              className="underline text-work-700 hover:text-work-600"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -117,7 +117,7 @@ const Home = ({ location }) => {
             <a
               href="https://www.madkudu.com/"
               alt="MadKudu"
-              className="underline text-work-700"
+              className="underline text-work-700 hover:text-work-600"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -131,16 +131,16 @@ const Home = ({ location }) => {
           </p>
           <ul className="mt-4">
             <li>
-              <FiCheckCircle className="inline text-work-500 translate-y-1" /> is a large and
-              fast-growing startup
+              <FiCheckCircle className="inline text-work-500 transform translate-y-1" /> is a large
+              and fast-growing startup
             </li>
             <li>
-              <FiCheckCircle className="inline text-work-500 translate-y-1" /> has a strong
-              engineering culture
+              <FiCheckCircle className="inline text-work-500 transform translate-y-1" /> has a
+              strong engineering culture
             </li>
             <li>
-              <FiCheckCircle className="inline text-work-500 translate-y-1" /> is located in Europe,
-              and can help with relocation
+              <FiCheckCircle className="inline text-work-500 transform translate-y-1" /> is located
+              in Europe, and can help with relocation
             </li>
           </ul>
           <p className="mt-4">Then I would love to have a chat with you 👋</p>
@@ -152,7 +152,7 @@ const Home = ({ location }) => {
             rel="noopener noreferrer"
             className="mt-6 px-4 py-2 text-blog-800 bg-work-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
           >
-            Contact me <FiArrowRight className="inline translate-y-1" size="1em" />
+            Contact me <FiArrowRight className="inline transform translate-y-1" size="1em" />
           </a>
         </div>
       </section>
