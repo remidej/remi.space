@@ -83,23 +83,24 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           className="leading-relaxed mt-10 article-content"
         />
         {/* Social media links */}
-        <div className="mt-8">
+        <div className="mt-8 space-y-2 space-y-reverse sm:space-y-0">
           {socialActions.map((_action, _index) => (
             <React.Fragment key={_index}>
+              {_index > 0 && <br className="sm:hidden" />}
               <a
                 href={_action.url}
                 title={_action.title}
-                className="underline text-blog-700 hover:text-blog-600"
+                className="underline text-blog-700 hover:text-blog-600 sm:inline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {_action.title}
               </a>
-              {/* Add dot after all items except the last */}
+              {/* Add dot on desktop after all items except the last */}
               {_index < socialActions.length - 1 && (
-                <>
+                <span className="hidden sm:inline">
                   {` `}•{` `}
-                </>
+                </span>
               )}
             </React.Fragment>
           ))}
