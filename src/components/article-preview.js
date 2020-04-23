@@ -21,7 +21,7 @@ const ArticlePreview = ({ article }) => {
         />
       </section>
       <Link to={article.fields.slug} className="hover:text-black text-lg text-gray-700">
-        Read <FiArrowRight className="inline translate-y-1" size="1em" />
+        Read <FiArrowRight className="inline transform translate-y-1" size="1em" />
       </Link>
     </article>
   )
