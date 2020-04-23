@@ -1,4 +1,4 @@
-const { colors, fontFamily } = require('tailwindcss/defaultTheme')
+const { colors, fontFamily } = require(`tailwindcss/defaultTheme`)
 
 module.exports = {
   theme: {
@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         gray: {
           ...colors.gray,
-          600: '#77879e',
+          600: `#77879e`,
         },
         blog: colors.teal,
         work: colors.blue,
@@ -15,23 +15,23 @@ module.exports = {
       },
       fontFamily: {
         ...fontFamily,
-        sans: ['Inter UI', fontFamily.sans],
+        sans: [`Inter UI`, fontFamily.sans],
       },
     },
   },
   variants: [
-    'responsive',
-    'group-hover',
-    'focus-within',
-    'first',
-    'last',
-    'odd',
-    'even',
-    'hover',
-    'focus',
-    'active',
-    'visited',
-    'disabled',
+    `responsive`,
+    `group-hover`,
+    `focus-within`,
+    `first`,
+    `last`,
+    `odd`,
+    `even`,
+    `hover`,
+    `focus`,
+    `active`,
+    `visited`,
+    `disabled`,
   ],
   corePlugins: {
     container: false,
@@ -40,22 +40,22 @@ module.exports = {
     function({ addComponents }) {
       addComponents({
         '.container': {
-          maxWidth: '100%',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
+          maxWidth: `100%`,
+          marginLeft: `auto`,
+          marginRight: `auto`,
+          paddingLeft: `1rem`,
+          paddingRight: `1rem`,
           '@screen sm': {
-            maxWidth: '600px',
+            maxWidth: `600px`,
           },
           '@screen md': {
-            maxWidth: '700px',
+            maxWidth: `700px`,
           },
           '@screen lg': {
-            maxWidth: '720px',
+            maxWidth: `720px`,
           },
           '@screen xl': {
-            maxWidth: '720px',
+            maxWidth: `720px`,
           },
         },
       })
