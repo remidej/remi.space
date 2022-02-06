@@ -11,25 +11,47 @@ const SectionWork = () => {
       </p>
       {/* Text content */}
       <div className="text-xl text-neutral-900 mt-6 leading-relaxed">
-        <p>I'm a 4th year student at Hetic, where I'll graduate in 2021.</p>
-        <p className="mt-4">
-          In 2018, I worked at{` `}
+        <p>
+          I'm a software engineer at{" "}
           <a
-            href="https://www.madkudu.com/"
-            alt="MadKudu"
+            href="https://strapi.io/"
+            title="Strapi headless CMS"
             className="underline text-work-700 hover:text-work-600"
             target="_blank"
             rel="noopener noreferrer"
           >
-            MadKudu
+            Strapi
           </a>
-          , a Silicon-Valley-based startup who makes predictive analytics
-          software.
+          , where I started working in 2020.
+        </p>
+        <p className="mt-4">
+          There, I'm working on building the CMS for the future, with a focus on
+          the{" "}
+          <a
+            href="https://discord.strapi.io/"
+            title="Strapi Discord"
+            className="underline text-work-700 hover:text-work-600"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            community
+          </a>{" "}
+          and its{" "}
+          <a
+            href="https://market.strapi.io/"
+            title="Strapi Market"
+            className="underline text-work-700 hover:text-work-600"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ecosystem
+          </a>
+          .
         </p>
         <p className="mt-4">
           In 2019, I co-founded and sold{` `}
           <a
-            href="https://revoltgaming.co/"
+            href="https://app.revolt.club"
             alt="Revolt Influence"
             className="underline text-work-700 hover:text-work-600"
             target="_blank"
@@ -41,25 +63,19 @@ const SectionWork = () => {
           online.
         </p>
         <p className="mt-4">
-          I'm now looking for my next challenge. As I'm wrapping up my studies,
-          I'll be doing an internship from June to December 2020. So if your
-          company:
+          In 2018, I worked at{` `}
+          <a
+            href="https://www.madkudu.com/"
+            alt="MadKudu"
+            className="underline text-work-700 hover:text-work-600"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            MadKudu
+          </a>
+          , a Silicon-Valley-based startup that builds predictive analytics
+          software.
         </p>
-        <ul className="mt-4">
-          <li>
-            <FiCheckCircle className="inline text-work-500 transform translate-y-1" />{" "}
-            is a fast-growing startup
-          </li>
-          <li>
-            <FiCheckCircle className="inline text-work-500 transform translate-y-1" />{" "}
-            has a strong engineering culture
-          </li>
-          <li>
-            <FiCheckCircle className="inline text-work-500 transform translate-y-1" />{" "}
-            is located in Europe, and can help with relocation
-          </li>
-        </ul>
-        <p className="mt-4">Then I would love to have a chat with you 👋</p>
       </div>
       <ButtonLink
         href={`https://www.linkedin.com/in/${siteData.social.linkedin}`}
