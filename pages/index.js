@@ -7,7 +7,7 @@ import SocialButtons from "../components/SocialButtons";
 import ArticlePreview from "../components/ArticlePreview";
 import siteData from "../siteData";
 import Header from "../components/Header";
-import SectionWriting from "../components/SectionWriting";
+import SectionBlog from "../components/SectionBlog";
 import SectionWork from "../components/SectionWork";
 
 const Home = ({ location }) => {
@@ -17,7 +17,7 @@ const Home = ({ location }) => {
       {/* Big colorful header */}
       <Header />
       <main>
-        <SectionWriting />
+        <SectionBlog />
         <SectionWork />
       </main>
     </Layout>

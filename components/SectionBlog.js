@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import ArticlePreview from "./ArticlePreview";
+import ButtonLink from "./ButtonLink";
 
-const SectionWriting = () => {
+const SectionBlog = () => {
   const articles = [];
 
   return (
@@ -17,16 +18,13 @@ const SectionWriting = () => {
           <ArticlePreview article={node} key={node.fields.slug} />
         ))}
       </div>
-      <Link
+      <ButtonLink
         href="/blog"
-        className="mt-6 px-4 py-2 text-blog-800 bg-blog-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
-      >
-        <a>
-          View all articles{" "}
-          <FiArrowRight className="inline transform translate-y-1" size="1em" />
-        </a>
-      </Link>
+        text="View all articles"
+        title="Blog"
+        color="blog"
+      />
     </section>
   );
 };
-export default SectionWriting;
+export default SectionBlog;

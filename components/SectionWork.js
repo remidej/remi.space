@@ -1,5 +1,7 @@
 import React from "react";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
+import ButtonLink from "./ButtonLink";
+import siteData from "../siteData";
 
 const SectionWork = () => {
   return (
@@ -59,17 +61,13 @@ const SectionWork = () => {
         </ul>
         <p className="mt-4">Then I would love to have a chat with you 👋</p>
       </div>
-      <div className="flex flex-row">
-        <a
-          href={`/Resume-Remi-de-Juvigny.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 px-4 py-2 text-blog-800 bg-work-200 text-lg font-semibold rounded-lg inline-block hover:shadow"
-        >
-          View my resume{" "}
-          <FiArrowRight className="inline transform translate-y-1" size="1em" />
-        </a>
-      </div>
+      <ButtonLink
+        href={`https://www.linkedin.com/in/${siteData.social.linkedin}`}
+        text="View my resume"
+        title="LinkedIn"
+        color="work"
+        isExternal={true}
+      />
     </section>
   );
 };
