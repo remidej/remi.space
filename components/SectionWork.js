@@ -8,7 +8,7 @@ const SectionWork = () => {
         Work
       </p>
       {/* Text content */}
-      <div className="text-xl text-gray-900 mt-6 leading-relaxed">
+      <div className="text-xl text-neutral-900 mt-6 leading-relaxed">
         <p>I'm a 4th year student at Hetic, where I'll graduate in 2021.</p>
         <p className="mt-4">
           In 2018, I worked at{` `}

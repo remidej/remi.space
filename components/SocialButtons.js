@@ -45,8 +45,8 @@ const SocialButtons = ({ small }) => {
           rel="noopener noreferrer"
           className={
             small
-              ? "rounded-full text-gray-700 hover:black hover:bg-gray-200 p-3 ml-2"
-              : "shadow-sm hover:shadow bg-white text-gray-900 mr-2 py-2 px-3 rounded flex flex-row items-center"
+              ? "rounded-full text-neutral-700 hover:black hover:bg-neutral-200 p-3 ml-2"
+              : "shadow-sm hover:shadow bg-white text-neutral-900 mr-2 py-2 px-3 rounded flex flex-row items-center"
           }
         >
           {_socialLink.showIcon()}

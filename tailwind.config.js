@@ -7,14 +7,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      white: colors.white,
+      neutral: colors.slate,
+      primary: colors.teal,
+      blog: colors.teal,
+      work: colors.blue,
+    },
     extend: {
-      colors: {
-        neutral: colors.slate,
-        blog: colors.teal,
-        work: colors.blue,
-        projects: colors.indigo,
-        twitter: colors.blue,
-      },
       fontFamily: {
         ...defaultTheme.fontFamily,
         sans: [`Inter UI`, defaultTheme.fontFamily.sans],

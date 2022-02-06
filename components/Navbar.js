@@ -4,7 +4,7 @@ import SocialButtons from "./SocialButtons";
 
 const Navbar = ({ title }) => {
   return (
-    <nav className="container mx-auto py-4 flex flex-row items-center justify-between text-gray-700">
+    <nav className="container mx-auto py-4 flex flex-row items-center justify-between text-neutral-700">
       <Link href="/" className="hover:text-black">
         <a>
           <h3 className="inline-block font-bold text-xl">{title}</h3>

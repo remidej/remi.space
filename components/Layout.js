@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   const isRootPage = router.pathname === "/";
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-900">
+    <div className="flex flex-col min-h-screen bg-white text-neutral-900">
       {/* Top section */}
       <div className="flex-1">
         {!isRootPage && <Navbar title={title} />}

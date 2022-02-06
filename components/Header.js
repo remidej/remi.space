@@ -4,19 +4,19 @@ import SocialButtons from "./SocialButtons";
 
 const Header = () => {
   return (
-    <header className="py-6 bg-gray-100">
+    <header className="py-6 bg-neutral-100">
       <div className="container">
         {/* Name link */}
         <Link href="/">
           <a className="inline-flex flex-row items-center">
-            <div className="w-16 h-16 bg-teal-200 rounded-full"></div>
-            <h1 className="font-bold -ml-10 text-3xl text-gray-800 hover:text-black">
+            <div className="w-16 h-16 bg-primary-200 rounded-full"></div>
+            <h1 className="font-bold -ml-10 text-3xl text-neutral-800 hover:text-black">
               Rémi de Juvigny
             </h1>
           </a>
         </Link>
         {/* Bio */}
-        <section className="text-2xl text-gray-700 mt-6 flex flex-col justify-center">
+        <section className="text-2xl text-neutral-700 mt-6 flex flex-col justify-center">
           <h2 className="inline">
             I'm a Product Developer from France. I study computer science,
             design and product management at Hetic in Paris.
