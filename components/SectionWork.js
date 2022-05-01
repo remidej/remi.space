@@ -49,7 +49,7 @@ const SectionWork = () => {
           .
         </p>
         <p className="mt-4">
-          In 2019, I co-founded and sold{` `}
+          In 2019, I co-founded and developed{` `}
           <a
             href="https://app.revolt.club"
             alt="Revolt Influence"

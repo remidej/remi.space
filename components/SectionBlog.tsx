@@ -1,13 +1,13 @@
+import { Post } from "contentlayer/generated";
 import React from "react";
-import ArticlePreview from "./ArticlePreview";
+import BlogPostPreview from "./BlogPostPreview";
 import ButtonLink from "./ButtonLink";
-import { allPosts } from "contentlayer/generated";
 
-const SectionBlog = ({ posts }) => {
-  const articles = [];
+interface Props {
+  posts: Post[];
+}
 
-  console.log("section blog", posts);
-
+const SectionBlog: React.FC<Props> = ({ posts }) => {
   return (
     <section className="container mt-12">
       <p className="uppercase tracking-wide text-blog-500 font-bold mb-6 text-lg">
@@ -15,26 +15,18 @@ const SectionBlog = ({ posts }) => {
       </p>
       {/* Main content */}
       <div className="bg-white rounded-lg relative">
-        {articles.map(({ node }) => (
-          <ArticlePreview article={node} key={node.fields.slug} />
+        {posts.map((post) => (
+          <BlogPostPreview post={post} key={post._id} />
         ))}
       </div>
       <ButtonLink
         href="/blog"
-        text="View all articles"
+        text="View all posts"
         title="Blog"
         color="blog"
       />
     </section>
   );
 };
-
-export async function getStaticProps() {
-  return {
-    props: {
-      posts: allPosts,
-    },
-  };
-}
 
 export default SectionBlog;

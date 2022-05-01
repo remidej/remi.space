@@ -19,11 +19,16 @@ export const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
+    // tags: {
+    //   type: "list",
+    //   description: "The tags of the post",
+    //   required: true,
+    // },
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+      resolve: (doc) => `/blog/${doc._raw.sourceFileDir}`,
     },
   },
 }));
