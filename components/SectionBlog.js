@@ -1,11 +1,12 @@
 import React from "react";
-import Link from "next/link";
-import { FiArrowRight } from "react-icons/fi";
 import ArticlePreview from "./ArticlePreview";
 import ButtonLink from "./ButtonLink";
+import { allPosts } from "contentlayer/generated";
 
-const SectionBlog = () => {
+const SectionBlog = ({ posts }) => {
   const articles = [];
+
+  console.log("section blog", posts);
 
   return (
     <section className="container mt-12">
@@ -27,4 +28,13 @@ const SectionBlog = () => {
     </section>
   );
 };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      posts: allPosts,
+    },
+  };
+}
+
 export default SectionBlog;
