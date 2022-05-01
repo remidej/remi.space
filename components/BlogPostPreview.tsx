@@ -22,8 +22,7 @@ const BlogPostPreview: React.FC<Props> = ({ post }) => {
       </section>
       <Link href={post.url}>
         <a className="hover:text-black text-lg text-neutral-700">
-          Read{" "}
-          <FiArrowRight className="inline transform translate-y-1" size="1em" />
+          Read <FiArrowRight className="inline" size="1em" />
         </a>
       </Link>
     </article>

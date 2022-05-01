@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@octokit/graphql": "^4.8.0",
+    "clsx": "^1.1.1",
     "contentlayer": "^0.2.4",
     "next": "^12.1.5",
     "next-contentlayer": "^0.2.4",
