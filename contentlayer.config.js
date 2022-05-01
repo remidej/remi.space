@@ -1,4 +1,19 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
+
+const Tag = defineNestedType(() => ({
+  name: "Tag",
+  fields: {
+    title: {
+      type: "enum",
+      options: ["dev", "tips", "typescript", "graphql", "git", "javascript"],
+      required: true,
+    },
+  },
+}));
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -19,10 +34,15 @@ export const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
+    tags: {
+      type: "list",
+      of: Tag,
+      required: true,
+    },
     // tags: {
-    //   type: "list",
-    //   description: "The tags of the post",
-    //   required: true,
+    //   type: "nested",
+    //   of: [Tag],
+    //   default: [],
     // },
   },
   computedFields: {
