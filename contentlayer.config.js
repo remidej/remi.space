@@ -3,6 +3,7 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
+import readingTime from "reading-time";
 
 const Tag = defineNestedType(() => ({
   name: "Tag",
@@ -48,7 +49,11 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/blog/${doc._raw.sourceFileDir}`,
+      resolve: (doc) => `/blog/${doc._raw.flattenedPath}`,
+    },
+    readingTime: {
+      type: "json",
+      resolve: (doc) => readingTime(doc.body.raw),
     },
   },
 }));

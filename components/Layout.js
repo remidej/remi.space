@@ -1,15 +1,11 @@
 import React from "react";
-import { Link } from "next";
 import { useRouter } from "next/router";
-import SocialButtons from "./SocialButtons";
 import siteData from "../siteData";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
-  const { title, description, navLinks, social, footerLinks } = siteData;
-
-  // console.log(navLinks);
+  const { title, navLinks, social, footerLinks } = siteData;
 
   const router = useRouter();
   const isRootPage = router.pathname === "/";

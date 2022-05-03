@@ -7,14 +7,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      white: colors.white,
-      neutral: colors.slate,
-      primary: colors.teal,
-      blog: colors.teal,
-      work: colors.blue,
-    },
     extend: {
+      colors: {
+        white: colors.white,
+        neutral: colors.slate,
+        primary: colors.teal,
+        blog: colors.teal,
+        work: colors.blue,
+      },
       fontFamily: {
         ...defaultTheme.fontFamily,
         sans: [`Inter UI`, defaultTheme.fontFamily.sans],
@@ -25,6 +25,7 @@ module.exports = {
     container: false,
   },
   plugins: [
+    require("@tailwindcss/typography"),
     function ({ addComponents }) {
       addComponents({
         ".container": {
