@@ -5,6 +5,7 @@ import {
 } from "contentlayer/source-files";
 import highlight from "rehype-highlight";
 import readingTime from "reading-time";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const Tag = defineNestedType(() => ({
   name: "Tag",
@@ -60,8 +61,32 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+const options = {
+  // Use one of Shiki's packaged themes
+  theme: "one-dark-pro",
+  onVisitLine(node) {
+    // Prevent lines from collapsing in `display: grid` mode, and
+    // allow empty lines to be copy/pasted
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+  },
+  // Feel free to add classNames that suit your docs
+  onVisitHighlightedLine(node) {
+    node.properties.className.push("highlighted");
+  },
+  onVisitHighlightedWord(node) {
+    node.properties.className = ["word"];
+  },
+};
+
+// TODO: syntax highlighting: https://rehype-pretty-code.netlify.app/
+// TODO: fix mdx images
+// TODO: header bio content
+// TODO: readme
+
 export default makeSource({
   contentDirPath: "content/blog",
   documentTypes: [Post],
-  mdx: { rehypePlugins: [highlight] },
+  mdx: { rehypePlugins: [[rehypePrettyCode, options]] },
 });
