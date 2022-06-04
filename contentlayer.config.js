@@ -3,6 +3,7 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
+import highlight from "rehype-highlight";
 import readingTime from "reading-time";
 
 const Tag = defineNestedType(() => ({
@@ -18,7 +19,8 @@ const Tag = defineNestedType(() => ({
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: "**/*.mdx",
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
@@ -61,4 +63,5 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content/blog",
   documentTypes: [Post],
+  mdx: { rehypePlugins: [highlight] },
 });

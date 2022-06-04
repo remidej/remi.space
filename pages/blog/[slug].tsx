@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
 import Layout from "components/Layout";
 import { allPosts, Post } from "contentlayer/generated";
 import { FiArrowLeft } from "react-icons/fi";
 import { format, compareDesc } from "date-fns";
 import siteData from "siteData";
 import BlogPostsNavigation from "components/BlogPostsNavigation";
+import Image from "components/Image";
 
 interface Props {
   matchingPost: Post;
@@ -34,6 +36,8 @@ const BlogPostPage: React.FC<Props> = ({
     },
   ];
 
+  const MDXContent = useMDXComponent(matchingPost.body.code);
+
   return (
     <Layout>
       <article className="mt-8 container mx-auto text-lg md:text-xl">
@@ -52,10 +56,10 @@ const BlogPostPage: React.FC<Props> = ({
             {matchingPost.readingTime.text}
           </p>
         </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: matchingPost.body.html }}
-          className="mt-10 article-content"
-        />
+        {/* Article body */}
+        <main className="mt-10 article-content">
+          <MDXContent components={{ Image }} />
+        </main>
         {/* Social media links */}
         <div className="mt-8 space-y-2 space-y-reverse sm:space-y-0">
           {socialActions.map((_action, _index) => (
