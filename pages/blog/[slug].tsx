@@ -39,7 +39,7 @@ const BlogPostPage: React.FC<Props> = ({
       <article className="mt-8 container mx-auto text-lg md:text-xl">
         <header>
           <Link href="/blog">
-            <a className="uppercase tracking-wide text-sm font-semibold text-neutral-500 hover:text-blog-700 py-1">
+            <a className="uppercase tracking-wide text-sm font-semibold text-neutral-400 hover:text-blog-700 py-1">
               <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
               All articles
             </a>
@@ -47,14 +47,14 @@ const BlogPostPage: React.FC<Props> = ({
           <h1 className="text-4xl font-semibold leading-tight mt-2 mb-4 text-neutral-800">
             {matchingPost.title}
           </h1>
-          <p className="uppercase tracking-wide text-sm font-semibold text-neutral-500">
+          <p className="uppercase tracking-wide text-sm font-semibold text-neutral-400">
             {format(new Date(matchingPost.date), "MMMM dd, yyyy")} •{" "}
             {matchingPost.readingTime.text}
           </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: matchingPost.body.html }}
-          className="leading-relaxed mt-10 article-content"
+          className="mt-10 article-content"
         />
         {/* Social media links */}
         <div className="mt-8 space-y-2 space-y-reverse sm:space-y-0">
@@ -105,8 +105,8 @@ export async function getStaticProps({ params }) {
   });
   // Find matching post based on slug
   let matchingPost;
-  let previousPost;
-  let nextPost;
+  let previousPost = null;
+  let nextPost = null;
   sortedPosts.forEach((_post, index) => {
     const isMatchingPost = _post._raw.flattenedPath === params.slug;
     if (isMatchingPost) {

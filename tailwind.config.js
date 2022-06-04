@@ -19,6 +19,19 @@ module.exports = {
         ...defaultTheme.fontFamily,
         sans: [`Inter UI`, defaultTheme.fontFamily.sans],
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme("colors.blog.700"),
+              "text-decoration": "underline",
+              "&:hover": {
+                color: theme("colors.blog.600"),
+              },
+            },
+          },
+        },
+      }),
     },
   },
   corePlugins: {
