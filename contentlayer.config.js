@@ -3,9 +3,9 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
-import highlight from "rehype-highlight";
 import readingTime from "reading-time";
 import rehypePrettyCode from "rehype-pretty-code";
+import nightOwlTheme from "./styles/night-owl.json";
 
 const Tag = defineNestedType(() => ({
   name: "Tag",
@@ -61,9 +61,8 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-const options = {
-  // Use one of Shiki's packaged themes
-  theme: "one-dark-pro",
+const rehypePrettyCodeOptions = {
+  theme: nightOwlTheme,
   onVisitLine(node) {
     // Prevent lines from collapsing in `display: grid` mode, and
     // allow empty lines to be copy/pasted
@@ -80,13 +79,13 @@ const options = {
   },
 };
 
-// TODO: syntax highlighting: https://rehype-pretty-code.netlify.app/
 // TODO: fix mdx images
 // TODO: header bio content
 // TODO: readme
+// TODO: seo stuff
 
 export default makeSource({
   contentDirPath: "content/blog",
   documentTypes: [Post],
-  mdx: { rehypePlugins: [[rehypePrettyCode, options]] },
+  mdx: { rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]] },
 });
