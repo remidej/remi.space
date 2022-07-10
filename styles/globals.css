@@ -15,4 +15,16 @@
 
 .article-content {
   @apply prose prose-slate prose-lg prose-headings:font-semibold prose-headings:text-neutral-700;
+
+  h2 {
+    @apply mt-8 text-2xl;
+  }
+
+  h3 {
+    @apply mt-6;
+  }
+  
+  h4 {
+    @apply mt-4;
+  }
 }
