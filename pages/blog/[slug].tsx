@@ -8,6 +8,7 @@ import { format, compareDesc } from "date-fns";
 import siteData from "siteData";
 import BlogPostsNavigation from "components/BlogPostsNavigation";
 import Image from "components/Image";
+import Seo from "components/Seo";
 
 interface Props {
   matchingPost: Post;
@@ -40,6 +41,7 @@ const BlogPostPage: React.FC<Props> = ({
 
   return (
     <Layout>
+      <Seo title={matchingPost.title} description={matchingPost.description} />
       <article className="mt-8 container mx-auto text-lg md:text-xl">
         <header>
           <Link href="/blog">
