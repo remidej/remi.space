@@ -13,7 +13,7 @@ I like committing my changes frequently. It makes me feel safe knowing my change
 
 Some changes only make sense when grouped together. But they end up spread out across commits like this:
 
-<Image src="/assets/redundant-commits.png" alt="Redundant commits" />
+<Image src="./assets/redundant-commits.png" alt="Redundant commits" />
 
 It's hard giving each one a meaningful name, because they have no individual value. They're just here to let me go back in time if I mess up too much. And that's fine – as long as they don't stay around forever.
 
@@ -38,7 +38,7 @@ Using GitLab :![GitLab commits](./assets/gitlab-squash-and-merge.png)
 
 When we're coding a new feature, it's a good practice to work on a separate branch – often called a _feature branch_. But by the time our feature is ready, new commits have probably been added to the master branch.
 
-This means Git won't be able to perform a *fast-forward* merge. Instead, it will have to create a merge commit to reconcile the history of the two branches.
+This means Git won't be able to perform a _fast-forward_ merge. Instead, it will have to create a merge commit to reconcile the history of the two branches.
 
 ![Merge commit](./assets/merge-commit.png)
 
@@ -77,7 +77,7 @@ To avoid this, we can instead modify the history, and add our fix to the last co
 git commit --amend --no-edit
 ```
 
-And *voilà*, we sneakily corrected our mistake. Note that if we already pushed our last commit, we would have to force push our amendment. This is fine if we're working on our own branch, but we should avoid doing it on `master`.
+And _voilà_, we sneakily corrected our mistake. Note that if we already pushed our last commit, we would have to force push our amendment. This is fine if we're working on our own branch, but we should avoid doing it on `master`.
 
 ## Visualize your Git tree
 
