@@ -2,7 +2,10 @@
 title: End-to-end Type Safety with TypeScript and GraphQL
 date: 2020-04-22
 description: The tools you need to get a unique source of truth for your data models, and sync it across frontend and backend.
-tags: ["typescript", "graphql", "dev"]
+tags:
+  - title: typescript
+  - title: graphql
+  - title: dev
 ---
 
 In the JavaScript community, static types often get bad press. Configuring the right tools is hard, and a bad architecture can lead to a false sense of confidence. Let's try to fix this.
@@ -19,7 +22,7 @@ We never even use the `any` type. It should be type-safe, right? Well, no, at le
 
 The problem is that our type safety is only as strong as its weakest point. In our case, the loose end is our API. The types from both ends live on their own separate world. So we write types on the frontend based on what we _assume_ the backend will send, and vice versa.
 
-We have multiple sources of truth, and no guarantee that they will keep in sync. It's already annoying for our small project,  and can become a huge issue if we have an architecture based on many microservices.
+We have multiple sources of truth, and no guarantee that they will keep in sync. It's already annoying for our small project, and can become a huge issue if we have an architecture based on many microservices.
 
 ## GraphQL to the rescue
 
@@ -47,8 +50,8 @@ We can then type `npm run apollo:types` when there's a change in our schema or o
 
 Note that the Apollo CLI can also be replaced by other tools:
 
-* [GraphQL Code Generator](https://graphql-code-generator.com/) generates queries with the types already built-in
-* [gqless](https://gqless.dev/) provides TypeScript types, and only requires code generation when our schema changes
+- [GraphQL Code Generator](https://graphql-code-generator.com/) generates queries with the types already built-in
+- [gqless](https://gqless.dev/) provides TypeScript types, and only requires code generation when our schema changes
 
 We have now fixed half of the problem. Let's see the other side!
 
@@ -68,18 +71,22 @@ Once again, several [other](https://github.com/graphql/graphql-js) [tools](https
 
 ```ts
 import {
-  ObjectType, Field, ID, registerEnumType, Authorized
-} from 'type-graphql'
+  ObjectType,
+  Field,
+  ID,
+  registerEnumType,
+  Authorized,
+} from "type-graphql";
 
 @ObjectType()
 class User {
   @Field()
   email: string;
-  
-  @Field(type => [Rate])
+
+  @Field((type) => [Rate])
   ratings: Rate[];
 
-  @Field(type => Float, { nullable: true })
+  @Field((type) => Float, { nullable: true })
   get averageRating() {
     const sum = this.ratings.reduce((a, b) => a + b, 0);
     return sum / this.ratings.length;
@@ -92,19 +99,23 @@ Not everyone loves decorators. They're still called an _experimental_ TypeScript
 This aproach is powerful because it's extensible by design. We can use it hand in hand with a decorator-based ORM, like [TypeORM](https://github.com/typeorm/typeorm) or [Typegoose](https://github.com/typegoose/typegoose). See what that looks like:
 
 ```ts
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import {
-  ObjectType, Field, ID, registerEnumType, Authorized
-} from 'type-graphql'
+  ObjectType,
+  Field,
+  ID,
+  registerEnumType,
+  Authorized,
+} from "type-graphql";
 
 @Entity()
 @ObjectType()
 class User {
   // Available on both database and schema
   @PrimaryGeneratedColumn()
-  @Field(type => ID)
+  @Field((type) => ID)
   id: number;
-  
+
   // Available on both database and schema
   @Column({ unique: true })
   @Field()
@@ -113,14 +124,14 @@ class User {
   // Available on database but NOT on schema
   @Column()
   passwordHash: string;
-  
+
   // Available on both database and schema
-  @OneToMany(type => Rate, rate => rate.author)
-  @Field(type => [Rate])
+  @OneToMany((type) => Rate, (rate) => rate.author)
+  @Field((type) => [Rate])
   ratings: Rate[];
 
   // Available on schema but NOT database
-  @Field(type => Float, { nullable: true })
+  @Field((type) => Float, { nullable: true })
   get averageRating() {
     const sum = this.ratings.reduce((a, b) => a + b, 0);
     return sum / this.ratings.length;

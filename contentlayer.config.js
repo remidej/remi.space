@@ -43,11 +43,6 @@ export const Post = defineDocumentType(() => ({
       of: Tag,
       required: true,
     },
-    // tags: {
-    //   type: "nested",
-    //   of: [Tag],
-    //   default: [],
-    // },
   },
   computedFields: {
     url: {

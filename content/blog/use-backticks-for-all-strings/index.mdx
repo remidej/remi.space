@@ -2,7 +2,10 @@
 title: Use Backticks For All Your JS Strings
 date: 2020-03-17
 description: Template literals are the most powerful way to write strings in JavaScript. Here's how you can use them by default with ESLint.
-tags: ["javascript", "tips", "dev"]
+tags:
+  - title: javascript
+  - title: tips
+  - title: dev
 ---
 
 Developers often argue over using `'single quotes'` or`"double quotes"`. But both have the same limitations. Every time we write a string that includes an expression or a line break, we have to deal with a messy syntax.
@@ -27,7 +30,7 @@ const description = `A poem by ${author}, published in ${year}`;
 const longText2 = `
   Roses are red
   Violets are blue
-`
+`;
 ```
 
 Besides, we can safely write apostrophes and quotes in our strings without worrying about `\escaping` them.
@@ -40,8 +43,8 @@ This works fine. But what's the point of converting your code from one style to 
 
 Two things may prevent us from going full backticks.
 
-* **Performance**. Template strings used to be slower. Since ES 2015 was released, JS engines have had time to optimize their support for template strings. They should now be _almost_ as performant as regular strings.
-* **Compatibility**. Template strings are newer than quotes, so [their browser support isn't as good](https://caniuse.com/#feat=template-literals).
+- **Performance**. Template strings used to be slower. Since ES 2015 was released, JS engines have had time to optimize their support for template strings. They should now be _almost_ as performant as regular strings.
+- **Compatibility**. Template strings are newer than quotes, so [their browser support isn't as good](https://caniuse.com/#feat=template-literals).
 
 Both of these concerns can be resolved by using a compiler like Babel. Then every time you write code using a fancy new syntax like backticks, it will be converted to older code that all browsers can understand.
 
@@ -57,10 +60,8 @@ We need to configure our tools to enforce this new style. Style rules are usuall
     "ecmaVersion": 2015
   },
   "rules": {
-    "prettier/prettier": [
-      "error"
-    ],
-  // highlight-next-line
+    "prettier/prettier": ["error"],
+    // highlight-next-line
     "quotes": ["error", "backtick"]
   },
   "extends": ["plugin:prettier/recommended"]
