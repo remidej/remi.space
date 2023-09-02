@@ -14,9 +14,9 @@ In the JavaScript community, static types often get bad press. Configuring the r
 
 Consider this codebase written in TypeScript:
 
-<Image src="/assets/rest-architecture.png" />
+{/* <Image src="/assets/rest-architecture.png" /> */}
 
-![Rest architecture](./assets/rest-architecture.png)
+![Rest architecture](/content/blog/clean-git-history/assets/rest-architecture.png)
 
 We never even use the `any` type. It should be type-safe, right? Well, no, at least not yet.
 
@@ -30,7 +30,7 @@ Unlike Rest, GraphQL has a type system in its [core principles](https://graphql.
 
 But we have to make sure there are no holes in our type safety. On both the frontend and the backend, we need a way to convert port the GraphQL schema to TypeScript types. Here's the outline of the architecture:
 
-![Unsafe GraphQL architecture](./assets/unsafe-graphql-architecture.png)
+{/* ![Unsafe GraphQL architecture](./assets/unsafe-graphql-architecture.png) */}
 
 In our case, we have 3 islands of type safety, but they're not connected to each other. To share our models from one end to the other, we need to build bridges on both sides.
 
@@ -145,6 +145,6 @@ We have now colocated the types required by TypeScript, our database and GraphQL
 
 Let's see the architecture we ended up with:
 
-![Type-safe GraphQL architecture](./assets/type-safe-graphql-architecture.png)
+{/* ![Type-safe GraphQL architecture](./assets/type-safe-graphql-architecture.png) */}
 
 I hope you get to love all the benefits that type safety brings. It improves the developer experience by making our tooling smarter. We get autocomplete in our code editor, and linters warn us when we write bugs. Most importantly, just like a good test suite, it gives us more confidence that our code is solid. Enjoy!

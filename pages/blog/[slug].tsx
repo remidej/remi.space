@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import { MDXProvider } from "@mdx-js/react";
 import Layout from "components/Layout";
 import { allPosts, Post } from "contentlayer/generated";
 import { FiArrowLeft } from "react-icons/fi";
@@ -60,7 +61,8 @@ const BlogPostPage: React.FC<Props> = ({
         </header>
         {/* Article body */}
         <main className="mt-10 article-content">
-          <MDXContent components={{ Image }} />
+          <MDXContent components={{ img: Image }} />
+          {/* <MDXProvider components={{ img: Image }}> */}
         </main>
         {/* Social media links */}
         <div className="mt-8 space-y-2 space-y-reverse sm:space-y-0">
