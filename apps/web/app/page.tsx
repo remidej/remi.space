@@ -48,11 +48,6 @@ const LINKS = [
   },
 ];
 
-
-
-
-
-
 export default function Page(): JSX.Element {
-  return <p>homepage</p>
+  return <p>homepage</p>;
 }

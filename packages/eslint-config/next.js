@@ -17,7 +17,7 @@ module.exports = {
   env: {
     node: true,
   },
-  plugins: ["only-warn"],
+  plugins: ["only-warn", "prettier"],
   settings: {
     "import/resolver": {
       typescript: {
