@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_footer_links_sections",
+  "info": {
+    "displayName": "Links section",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "links": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    }
+  }
+}

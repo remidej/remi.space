@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_slices_home_heroes",
+  "info": {
+    "displayName": "Home Hero",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "intro": {
+      "type": "blocks"
+    },
+    "social_networks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social-network.social-network"
+    }
+  }
+}

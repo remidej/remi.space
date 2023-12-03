@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_slices_blog_sections",
+  "info": {
+    "displayName": "Blog section",
+    "icon": "medium",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "color": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::color.color"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.link"
+    },
+    "articleCount": {
+      "type": "integer",
+      "default": 4
+    }
+  }
+}
