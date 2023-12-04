@@ -722,42 +722,6 @@ export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
   };
 }
 
-export interface ApiAboutAbout extends Schema.SingleType {
-  collectionName: 'abouts';
-  info: {
-    singularName: 'about';
-    pluralName: 'abouts';
-    displayName: 'About';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    socialNetworks: Attribute.Relation<
-      'api::about.about',
-      'oneToMany',
-      'api::social-network.social-network'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::about.about',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::about.about',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -772,6 +736,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
+    slices: Attribute.DynamicZone<['article-slices.rich-text']>;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -809,6 +776,7 @@ export interface ApiColorColor extends Schema.CollectionType {
     darkThemeHex: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'>;
+    description: Attribute.Text & Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -827,30 +795,42 @@ export interface ApiColorColor extends Schema.CollectionType {
   };
 }
 
-export interface ApiFooterFooter extends Schema.SingleType {
-  collectionName: 'footers';
+export interface ApiGlobalGlobal extends Schema.SingleType {
+  collectionName: 'globals';
   info: {
-    singularName: 'footer';
-    pluralName: 'footers';
-    displayName: 'Footer';
+    singularName: 'global';
+    pluralName: 'globals';
+    displayName: 'Global';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    email: Attribute.Email & Attribute.Required;
-    sections: Attribute.Component<'footer.links-section', true>;
+    siteName: Attribute.String;
+    email: Attribute.Email;
+    navbarLinks: Attribute.Component<'shared.link', true>;
+    navbarSocialNetworks: Attribute.Relation<
+      'api::global.global',
+      'oneToMany',
+      'api::social-network.social-network'
+    >;
+    footerSections: Attribute.Component<'footer.links-section', true>;
+    footerSocialNetworks: Attribute.Relation<
+      'api::global.global',
+      'oneToMany',
+      'api::social-network.social-network'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::footer.footer',
+      'api::global.global',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::footer.footer',
+      'api::global.global',
       'oneToOne',
       'admin::user'
     > &
@@ -873,6 +853,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     slices: Attribute.DynamicZone<
       ['slices.home-hero', 'slices.blog-section', 'slices.work-section']
     >;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -932,10 +913,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
-      'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::color.color': ApiColorColor;
-      'api::footer.footer': ApiFooterFooter;
+      'api::global.global': ApiGlobalGlobal;
       'api::page.page': ApiPagePage;
       'api::social-network.social-network': ApiSocialNetworkSocialNetwork;
     }

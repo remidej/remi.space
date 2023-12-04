@@ -2,7 +2,8 @@
   "collectionName": "components_slices_home_heroes",
   "info": {
     "displayName": "Home Hero",
-    "icon": "crown"
+    "icon": "crown",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,7 +18,7 @@
     "intro": {
       "type": "blocks"
     },
-    "social_networks": {
+    "socialNetworks": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::social-network.social-network"
