@@ -20,10 +20,10 @@
         "slices.work-section"
       ]
     },
-    "seo": {
+    "metadata": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.metadata"
     }
   }
 }

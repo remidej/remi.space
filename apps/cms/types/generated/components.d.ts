@@ -72,31 +72,18 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
-export interface SharedSeo extends Schema.Component {
-  collectionName: 'components_shared_seos';
+export interface SharedMetadata extends Schema.Component {
+  collectionName: 'components_shared_metadata';
   info: {
-    displayName: 'seo';
-    icon: 'search';
+    displayName: 'metadata';
+    icon: 'information';
+    description: '';
   };
   attributes: {
-    metaTitle: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    metaDescription: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 50;
-        maxLength: 160;
-      }>;
-    metaImage: Attribute.Media;
-    metaSocial: Attribute.Component<'shared.meta-social', true>;
-    keywords: Attribute.Text;
-    metaRobots: Attribute.String;
-    structuredData: Attribute.JSON;
-    metaViewport: Attribute.String;
-    canonicalURL: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media;
+    type: Attribute.Enumeration<['website', 'article']>;
   };
 }
 
@@ -139,6 +126,18 @@ export interface SlicesHomeHero extends Schema.Component {
   };
 }
 
+export interface SlicesLargeImage extends Schema.Component {
+  collectionName: 'components_slices_large_images';
+  info: {
+    displayName: 'Large image';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    caption: Attribute.String;
+  };
+}
+
 export interface SlicesWorkSection extends Schema.Component {
   collectionName: 'components_slices_work_sections';
   info: {
@@ -166,9 +165,10 @@ declare module '@strapi/types' {
       'shared.button': SharedButton;
       'shared.link': SharedLink;
       'shared.meta-social': SharedMetaSocial;
-      'shared.seo': SharedSeo;
+      'shared.metadata': SharedMetadata;
       'slices.blog-section': SlicesBlogSection;
       'slices.home-hero': SlicesHomeHero;
+      'slices.large-image': SlicesLargeImage;
       'slices.work-section': SlicesWorkSection;
     }
   }

@@ -736,9 +736,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
-    seo: Attribute.Component<'shared.seo'>;
-    slices: Attribute.DynamicZone<['article-slices.rich-text']>;
+    slices: Attribute.DynamicZone<
+      ['article-slices.rich-text', 'slices.large-image']
+    >;
     description: Attribute.Text;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -853,7 +855,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     slices: Attribute.DynamicZone<
       ['slices.home-hero', 'slices.blog-section', 'slices.work-section']
     >;
-    seo: Attribute.Component<'shared.seo'>;
+    metadata: Attribute.Component<'shared.metadata'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
