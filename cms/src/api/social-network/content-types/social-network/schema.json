@@ -4,7 +4,8 @@
   "info": {
     "singularName": "social-network",
     "pluralName": "social-networks",
-    "displayName": "Social network"
+    "displayName": "Social network",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,14 +13,17 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "icon": {
       "type": "customField",
-      "customField": "plugin::react-icons.icon"
+      "customField": "plugin::react-icons.icon",
+      "required": true
     }
   }
 }

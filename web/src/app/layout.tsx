@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
+import type { APIResponse } from "@/types/types";
+import { SocialButtons } from "@/components/SocialButtons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +18,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const global = await fetcher("/api/global", {
-    populate: ["navbarSocialNetworks"],
-  });
-  console.log(global);
+  const global = (await fetcher("/api/global", {
+    populate: ["navbarSocialNetworks", "footerSocialNetworks"],
+  })) as APIResponse<"api::global.global">;
 
   return (
     <html lang="en">
@@ -36,17 +37,52 @@ export default async function RootLayout({
             >
               {global.data.attributes.siteName}
             </Link>
-            <ul className="flex flex-row justify-end gap-2">
-              {global.data.attributes.navbarSocialNetworks.data.map(
-                (network) => (
-                  <li key={network.id}>{network.attributes.name}</li>
-                )
-              )}
-            </ul>
+            <SocialButtons
+              socialNetworks={global.data.attributes.navbarSocialNetworks}
+              small
+            />
           </nav>
           {children}
         </div>
-        <footer>footer</footer>
+        <footer className="mt-12 py-12 bg-gray-100 dark:bg-gray-900">
+          <div className="container mx-auto flex flex-col md:flex-row md:justify-between">
+            {/* Contact */}
+            <div>
+              <nav className="flex flex-row items-center my-2 mx-auto">
+                <SocialButtons
+                  socialNetworks={global.data.attributes.footerSocialNetworks}
+                />
+              </nav>
+              <p className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mt-6 md:mt-0">
+                {global.data.attributes.email}
+              </p>
+            </div>
+            {/* Lists of links */}
+            <div className="flex flex-row mt-6 md:mt-0">
+              {global.data.attributes.footerSections?.map(
+                (footerSection, index) => (
+                  <div className="w-1/2 md:w-auto md:mr-16" key={index}>
+                    <p className="uppercase tracking-wide font-semibold text-gray-500">
+                      Pages
+                    </p>
+                    <ul>
+                      {footerSection.links.map((link, index) => (
+                        <li className="mt-2" key={index}>
+                          <Link
+                            href={link.url}
+                            target={link.openInNewTab ? "_blank" : "_self"}
+                          >
+                            {footerSection.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

@@ -2,15 +2,18 @@
   "collectionName": "components_shared_links",
   "info": {
     "displayName": "Link",
-    "icon": "link"
+    "icon": "link",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "text": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "openInNewTab": {
       "type": "boolean",

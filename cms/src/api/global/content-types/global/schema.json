@@ -4,7 +4,8 @@
   "info": {
     "singularName": "global",
     "pluralName": "globals",
-    "displayName": "Global"
+    "displayName": "Global",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,15 +13,18 @@
   "pluginOptions": {},
   "attributes": {
     "siteName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true
     },
     "navbarLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.link"
+      "component": "shared.link",
+      "required": true
     },
     "navbarSocialNetworks": {
       "type": "relation",
@@ -30,7 +34,8 @@
     "footerSections": {
       "type": "component",
       "repeatable": true,
-      "component": "footer.links-section"
+      "component": "footer.links-section",
+      "required": true
     },
     "footerSocialNetworks": {
       "type": "relation",

@@ -2,7 +2,7 @@ import qs from "qs";
 
 const cmsBaseUrl = process.env.CMS_URL!;
 
-const fetcher = async (url: string, paramsObject: object = {}) => {
+async function fetcher(url: string, paramsObject: object = {}) {
   const paramsString = qs.stringify(paramsObject, { encodeValuesOnly: true });
   const path = `${url}?${paramsString}`;
   const response = await fetch(
@@ -23,6 +23,6 @@ const fetcher = async (url: string, paramsObject: object = {}) => {
   }
 
   return response.json();
-};
+}
 
 export { fetcher };
