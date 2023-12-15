@@ -856,6 +856,7 @@ export interface ApiPagePage extends Schema.CollectionType {
       ['slices.home-hero', 'slices.blog-section', 'slices.work-section']
     >;
     metadata: Attribute.Component<'shared.metadata'>;
+    nickname: Attribute.String & Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

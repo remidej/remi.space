@@ -24,6 +24,10 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.metadata"
+    },
+    "nickname": {
+      "type": "string",
+      "private": true
     }
   }
 }

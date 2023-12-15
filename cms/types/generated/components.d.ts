@@ -115,13 +115,16 @@ export interface SlicesHomeHero extends Schema.Component {
   };
   attributes: {
     name: Attribute.String;
-    color: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
     intro: Attribute.Blocks;
     socialNetworks: Attribute.Relation<
       'slices.home-hero',
       'oneToMany',
       'api::social-network.social-network'
+    >;
+    color: Attribute.Relation<
+      'slices.home-hero',
+      'oneToOne',
+      'api::color.color'
     >;
   };
 }
