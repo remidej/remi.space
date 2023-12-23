@@ -20,8 +20,8 @@ export function SocialButtons({
           rel="noopener noreferrer"
           className={
             small
-              ? "rounded-full text-gray-700 dark:text-gray-300 hover:black hover:bg-gray-200 dark:hover:bg-gray-800 p-3 ml-2"
-              : "shadow-sm hover:shadow bg-white dark:bg-black text-gray-900 dark:text-gray-100 mr-2 py-2 px-3 rounded flex flex-row items-center"
+              ? "rounded-full text-gray-700 dark:text-gray-300 hover:black hover:bg-gray-200 dark:hover:bg-gray-700 p-3 ml-2"
+              : "shadow-sm hover:shadow bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 mr-2 py-2 px-3 rounded flex flex-row items-center"
           }
           key={socialNetwork.id}
         >

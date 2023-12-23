@@ -811,7 +811,6 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
   attributes: {
     siteName: Attribute.String & Attribute.Required;
     email: Attribute.Email & Attribute.Required;
-    navbarLinks: Attribute.Component<'shared.link', true> & Attribute.Required;
     navbarSocialNetworks: Attribute.Relation<
       'api::global.global',
       'oneToMany',

@@ -20,12 +20,6 @@
       "type": "email",
       "required": true
     },
-    "navbarLinks": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.link",
-      "required": true
-    },
     "navbarSocialNetworks": {
       "type": "relation",
       "relation": "oneToMany",

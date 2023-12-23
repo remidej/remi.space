@@ -19,18 +19,23 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const global = (await fetcher("/api/global", {
-    populate: ["navbarSocialNetworks", "footerSocialNetworks"],
+    populate: [
+      "navbarSocialNetworks",
+      "footerSocialNetworks",
+      "footerSections",
+      "footerSections.links",
+    ],
   })) as APIResponse<"api::global.global">;
 
   return (
     <html lang="en">
       <body
         style={inter.style}
-        className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-gray-800"
+        className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 "
       >
         {/* Top section */}
-        <div className="flex-1">
-          <nav className="container py-4 flex flex-row items-center justify-between text-gray-700 dark:text-gray-300">
+        <div className="flex-1 flex flex-col dark:bg-gray-800">
+          <nav className="container py-4 w-full flex flex-row items-center justify-between text-gray-700 dark:text-gray-300">
             <Link
               href="/"
               className="inline-block font-bold text-xl hover:text-black dark:hover:text-white"
@@ -42,9 +47,9 @@ export default async function RootLayout({
               small
             />
           </nav>
-          {children}
+          <main className="flex-1 bg-white dark:bg-gray-800">{children}</main>
         </div>
-        <footer className="mt-12 py-12 bg-gray-100 dark:bg-gray-900">
+        <footer className="py-12 bg-gray-100 dark:bg-gray-800">
           <div className="container mx-auto flex flex-col md:flex-row md:justify-between">
             {/* Contact */}
             <div>
@@ -72,7 +77,7 @@ export default async function RootLayout({
                             href={link.url}
                             target={link.openInNewTab ? "_blank" : "_self"}
                           >
-                            {footerSection.title}
+                            {link.text}
                           </Link>
                         </li>
                       ))}
