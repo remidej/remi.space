@@ -2,12 +2,14 @@
   "collectionName": "components_article_slices_rich_texts",
   "info": {
     "displayName": "Rich text",
-    "icon": "feather"
+    "icon": "feather",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "content": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     }
   }
 }

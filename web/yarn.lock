@@ -1716,6 +1716,11 @@
     webpack-hot-middleware "2.25.4"
     yup "0.32.9"
 
+"@strapi/blocks-react-renderer@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@strapi/blocks-react-renderer/-/blocks-react-renderer-1.0.0.tgz#6ca5d3c760f0c1847e291ec961e262c3695b2d3a"
+  integrity sha512-MwyjCOEGH7D9NWA1+ecApVKUx6bposzjKsPC9mebYrzaNuE6t/9hYH7rBb2ktMuPvMTjsyp9/RGfBKdKcnWC4g==
+
 "@strapi/data-transfer@4.15.5":
   version "4.15.5"
   resolved "https://registry.yarnpkg.com/@strapi/data-transfer/-/data-transfer-4.15.5.tgz#d672f962a7cb6685e68a87106ce52bad1166f5bd"

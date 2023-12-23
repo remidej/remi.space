@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.0",
     "next": "14.0.4",
     "qs": "^6.11.2",
     "react": "^18",

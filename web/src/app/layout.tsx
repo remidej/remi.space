@@ -43,6 +43,7 @@ export default async function RootLayout({
               {global.data.attributes.siteName}
             </Link>
             <SocialButtons
+              // @ts-ignore
               socialNetworks={global.data.attributes.navbarSocialNetworks}
               small
             />
@@ -55,6 +56,7 @@ export default async function RootLayout({
             <div>
               <nav className="flex flex-row items-center my-2 mx-auto">
                 <SocialButtons
+                  // @ts-ignore
                   socialNetworks={global.data.attributes.footerSocialNetworks}
                 />
               </nav>

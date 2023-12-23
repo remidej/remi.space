@@ -5,9 +5,10 @@ export interface ArticleSlicesRichText extends Schema.Component {
   info: {
     displayName: 'Rich text';
     icon: 'feather';
+    description: '';
   };
   attributes: {
-    content: Attribute.Blocks;
+    content: Attribute.Blocks & Attribute.Required;
   };
 }
 
