@@ -2,7 +2,6 @@ import type { APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { Slices } from "@/components/Slices";
 
 export async function generateStaticParams() {

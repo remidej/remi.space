@@ -858,6 +858,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     >;
     metadata: Attribute.Component<'shared.metadata'>;
     nickname: Attribute.String & Attribute.Private;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -28,6 +28,10 @@
     "nickname": {
       "type": "string",
       "private": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }
