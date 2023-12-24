@@ -131,7 +131,7 @@ export interface SlicesWorkSection extends Schema.Component {
       'api::color.color'
     >;
     content: Attribute.Blocks;
-    link: Attribute.Component<'shared.link'>;
+    link: Attribute.Component<'shared.link'> & Attribute.Required;
   };
 }
 

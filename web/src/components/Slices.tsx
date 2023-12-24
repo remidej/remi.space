@@ -11,6 +11,7 @@ import { SocialButtons } from "./SocialButtons";
 import { ArticlesSlice } from "./slices/Articles";
 import { RichText } from "./slices/RichText";
 import { HomeHero } from "./slices/HomeHero";
+import { Work } from "./slices/Work";
 
 type ArticleSlices =
   APIResponseData<"api::article.article">["attributes"]["slices"];
@@ -33,6 +34,8 @@ export function Slices({ slices }: Props) {
                 return <HomeHero slice={slice} />;
               case "slices.blog-section":
                 return <ArticlesSlice slice={slice} />;
+              case "slices.work-section":
+                return <Work slice={slice} />;
               default:
                 return null;
             }

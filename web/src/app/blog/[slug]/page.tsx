@@ -39,7 +39,7 @@ export default async function ArticlePage({
   });
 
   return (
-    <article className="mt-8 container mx-auto text-lg md:text-xl">
+    <article className="py-8 container mx-auto text-lg md:text-xl">
       <header>
         <Link
           href="/blog"

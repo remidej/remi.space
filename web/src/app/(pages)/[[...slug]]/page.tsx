@@ -35,6 +35,9 @@ export default async function ArticlePage({
           "slices.blog-section": {
             populate: "*",
           },
+          "slices.work-section": {
+            populate: "*",
+          },
         },
       },
     },

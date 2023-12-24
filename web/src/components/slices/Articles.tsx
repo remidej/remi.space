@@ -18,7 +18,7 @@ export async function ArticlesSlice({ slice }: Props) {
 
   return (
     <section className="container py-12">
-      <p className="uppercase tracking-wide text-teal-500 font-bold mb-6 text-lg">
+      <p className="uppercase tracking-wide text-blog-500 font-bold mb-6 text-lg">
         {slice.title}
       </p>
       {/* Main content */}
@@ -49,7 +49,7 @@ export async function ArticlesSlice({ slice }: Props) {
       </div>
       <Link
         href={slice.link.url}
-        className="mt-6 px-4 py-2 text-teal-800 dark:text-teal-100 bg-teal-200 dark:bg-teal-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
+        className="mt-6 px-4 py-2 text-blog-800 dark:text-blog-100 bg-blog-200 dark:bg-blog-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
       >
         {slice.link.text} <FiArrowRight className="inline" size="1em" />
       </Link>

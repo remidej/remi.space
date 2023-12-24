@@ -21,7 +21,8 @@
     "link": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.link"
+      "component": "shared.link",
+      "required": true
     }
   }
 }
