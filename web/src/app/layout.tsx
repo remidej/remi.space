@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { usePathname } from "next/navigation";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
 import type { APIResponse } from "@/types/types";
 import { SocialButtons } from "@/components/SocialButtons";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,62 +37,11 @@ export default async function RootLayout({
         className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 "
       >
         {/* Top section */}
-        <div className="flex-1 flex flex-col dark:bg-gray-800">
-          <nav className="container py-4 w-full flex flex-row items-center justify-between text-gray-700 dark:text-gray-300">
-            <Link
-              href="/"
-              className="inline-block font-bold text-xl hover:text-black dark:hover:text-white"
-            >
-              {global.data.attributes.siteName}
-            </Link>
-            <SocialButtons
-              // @ts-ignore
-              socialNetworks={global.data.attributes.navbarSocialNetworks}
-              small
-            />
-          </nav>
-          <main className="flex-1 bg-white dark:bg-gray-800">{children}</main>
+        <div className="flex-1 flex flex-col dark:bg-gray-900">
+          <Navbar global={global} />
+          <main className="flex-1 bg-white dark:bg-gray-900">{children}</main>
         </div>
-        <footer className="py-12 bg-gray-100 dark:bg-gray-800">
-          <div className="container mx-auto flex flex-col md:flex-row md:justify-between">
-            {/* Contact */}
-            <div>
-              <nav className="flex flex-row items-center my-2 mx-auto">
-                <SocialButtons
-                  // @ts-ignore
-                  socialNetworks={global.data.attributes.footerSocialNetworks}
-                />
-              </nav>
-              <p className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mt-6 md:mt-0">
-                {global.data.attributes.email}
-              </p>
-            </div>
-            {/* Lists of links */}
-            <div className="flex flex-row mt-6 md:mt-0">
-              {global.data.attributes.footerSections?.map(
-                (footerSection, index) => (
-                  <div className="w-1/2 md:w-auto md:mr-16" key={index}>
-                    <p className="uppercase tracking-wide font-semibold text-gray-500">
-                      Pages
-                    </p>
-                    <ul>
-                      {footerSection.links.map((link, index) => (
-                        <li className="mt-2" key={index}>
-                          <Link
-                            href={link.url}
-                            target={link.openInNewTab ? "_blank" : "_self"}
-                          >
-                            {link.text}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-        </footer>
+        <Footer global={global} />
       </body>
     </html>
   );

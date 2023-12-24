@@ -8,6 +8,8 @@ import {
 } from "@strapi/blocks-react-renderer";
 import { APIResponseData } from "@/types/types";
 import Image from "next/image";
+import Link from "next/link";
+import { SocialButtons } from "./SocialButtons";
 
 type ArticleSlices =
   APIResponseData<"api::article.article">["attributes"]["slices"];
@@ -85,6 +87,29 @@ export function Slices({ slices }: Props) {
                   }}
                 />
               </div>
+            );
+          case "slices.home-hero":
+            return (
+              <header className="py-6 bg-gray-100 dark:bg-gray-800">
+                <div className="container">
+                  {/* Name link */}
+                  <Link href="/" className="inline-flex flex-row items-center">
+                    <div className="w-16 h-16 bg-teal-200 dark:bg-teal-900 rounded-full"></div>
+                    <h1 className="font-bold -ml-10 text-3xl text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white">
+                      {slice.name}
+                    </h1>
+                  </Link>
+                  {/* Bio */}
+                  <section className="text-2xl text-gray-700 dark:text-gray-300 mt-6 flex flex-col gap-4 justify-center">
+                    <BlocksRenderer content={slice.intro as BlocksContent} />
+                  </section>
+                  {/* Social buttons */}
+                  <div className="mt-6">
+                    {/* @ts-ignore */}
+                    <SocialButtons socialNetworks={slice.socialNetworks} />
+                  </div>
+                </div>
+              </header>
             );
           default:
             return null;

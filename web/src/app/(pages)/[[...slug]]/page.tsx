@@ -20,7 +20,6 @@ export default async function ArticlePage({
 }: {
   params: { slug: string[] };
 }) {
-  console.log(params);
   const pages = (await fetcher("/api/pages", {
     filters: {
       slug: {
@@ -37,7 +36,6 @@ export default async function ArticlePage({
 
   return (
     <>
-      <h1>{page.attributes.slug}</h1>
       <Slices slices={page.attributes.slices} />
     </>
   );
