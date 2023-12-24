@@ -75,13 +75,8 @@ export interface SlicesBlogSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    color: Attribute.Relation<
-      'slices.blog-section',
-      'oneToOne',
-      'api::color.color'
-    >;
-    link: Attribute.Component<'shared.link'>;
+    title: Attribute.String & Attribute.Required;
+    link: Attribute.Component<'shared.link'> & Attribute.Required;
     articleCount: Attribute.Integer & Attribute.DefaultTo<4>;
   };
 }

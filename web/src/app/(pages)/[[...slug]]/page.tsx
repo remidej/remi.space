@@ -28,7 +28,14 @@ export default async function ArticlePage({
     },
     populate: {
       slices: {
-        populate: "*",
+        on: {
+          "slices.home-hero": {
+            populate: "*",
+          },
+          "slices.blog-section": {
+            populate: "*",
+          },
+        },
       },
     },
   })) as APIResponseCollection<"api::page.page">;

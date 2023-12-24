@@ -8,17 +8,14 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
-    },
-    "color": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::color.color"
+      "type": "string",
+      "required": true
     },
     "link": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.link"
+      "component": "shared.link",
+      "required": true
     },
     "articleCount": {
       "type": "integer",

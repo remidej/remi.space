@@ -21,7 +21,7 @@ export function SocialButtons({
           className={
             small
               ? "rounded-full text-gray-700 dark:text-gray-300 hover:black hover:bg-gray-200 dark:hover:bg-gray-700 p-3 ml-2"
-              : "shadow-sm hover:shadow-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 mr-2 py-2 px-3 rounded flex flex-row items-center"
+              : "shadow-sm hover:shadow bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 mr-2 py-2 px-3 rounded flex flex-row items-center"
           }
           key={socialNetwork.id}
         >
