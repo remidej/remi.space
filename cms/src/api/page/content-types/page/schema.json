@@ -23,7 +23,8 @@
     "metadata": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.metadata"
+      "component": "shared.metadata",
+      "required": true
     },
     "nickname": {
       "type": "string",

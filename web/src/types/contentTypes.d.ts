@@ -861,7 +861,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     slices: Attribute.DynamicZone<
       ['slices.home-hero', 'slices.blog-section', 'slices.work-section']
     >;
-    metadata: Attribute.Component<'shared.metadata'>;
+    metadata: Attribute.Component<'shared.metadata'> & Attribute.Required;
     nickname: Attribute.String & Attribute.Private;
     slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;

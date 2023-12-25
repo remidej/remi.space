@@ -1,7 +1,8 @@
-import type { APIResponseCollection } from "@/types/types";
+import type { APIResponse, APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
 import { Slices } from "@/components/Slices";
+import { type Metadata } from "next";
 
 export const dynamicParams = false;
 
@@ -49,4 +50,41 @@ export default async function ArticlePage({
       <Slices slices={page.attributes.slices} />
     </>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}): Promise<Metadata> {
+  const pages = (await fetcher("/api/pages", {
+    filters: {
+      slug: {
+        $eq: params.slug == null ? "_" : params.slug.join("_"),
+      },
+    },
+    // fields: ["metadata"],
+    populate: ["metadata", "metadata.image"],
+  })) as APIResponseCollection<"api::page.page">;
+  const { metadata } = pages.data[0].attributes;
+
+  const global = (await fetcher("/api/global", {
+    fields: ["siteName"],
+  })) as APIResponse<"api::global.global">;
+
+  const title = `${metadata.title} | ${global.data.attributes.siteName}`;
+  const description = metadata.description;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: global.data.attributes.siteName,
+      ...(metadata.image && {
+        images: [(metadata.image as any).url],
+      }),
+    },
+  };
 }

@@ -31,7 +31,7 @@ export const Footer = ({
             (footerSection, index) => (
               <div className="w-1/2 md:w-auto md:mr-16" key={index}>
                 <p className="uppercase tracking-wide font-semibold text-gray-500">
-                  Pages
+                  {footerSection.title}
                 </p>
                 <ul>
                   {footerSection.links.map((link, index) => (
