@@ -6,6 +6,7 @@ import {
   BlocksRenderer,
 } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   slice: GetValues<"article-slices.rich-text">;
@@ -23,7 +24,7 @@ export function RichText({ slice }: Props) {
                 alt={image.alternativeText!}
                 width={image.width}
                 height={image.height}
-                className="rounded-md"
+                className="rounded-md max-w-full"
               />
             );
           },
@@ -47,11 +48,27 @@ export function RichText({ slice }: Props) {
           },
           code: ({ children }) => {
             return (
-              <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md overflow-x-auto">
+              <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-x-auto xl:-ml-4 xl:-mr-4">
                 <code>{children}</code>
               </pre>
             );
           },
+          list: ({ children }) => {
+            return (
+              <ul className="list-disc list-outside marker:text-gray-500 dark:marker:text-gray-400 flex flex-col gap-2">
+                {children}
+              </ul>
+            );
+          },
+          link: ({ children, url }) => (
+            <Link
+              href={url}
+              target="_blank"
+              className="underline text-blog-700 dark:text-blog-100"
+            >
+              {children}
+            </Link>
+          ),
         }}
       />
     </div>

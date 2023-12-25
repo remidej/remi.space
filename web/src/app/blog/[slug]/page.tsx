@@ -43,7 +43,7 @@ export default async function ArticlePage({
       <header>
         <Link
           href="/blog"
-          className="uppercase tracking-wide text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blog-700 py-1"
+          className="uppercase tracking-wide text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white py-1"
         >
           <FiArrowLeft className="inline-block mr-1 -mt-1" size="1em" />
           All articles

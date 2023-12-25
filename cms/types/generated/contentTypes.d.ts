@@ -741,6 +741,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     >;
     description: Attribute.Text;
     image: Attribute.Media;
+    tags: Attribute.Relation<
+      'api::article.article',
+      'manyToMany',
+      'api::tag.tag'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -904,6 +909,35 @@ export interface ApiSocialNetworkSocialNetwork extends Schema.CollectionType {
   };
 }
 
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'Tag';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    articles: Attribute.Relation<
+      'api::tag.tag',
+      'manyToMany',
+      'api::article.article'
+    >;
+    slug: Attribute.UID<'api::tag.tag', 'name'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -926,6 +960,7 @@ declare module '@strapi/types' {
       'api::global.global': ApiGlobalGlobal;
       'api::page.page': ApiPagePage;
       'api::social-network.social-network': ApiSocialNetworkSocialNetwork;
+      'api::tag.tag': ApiTagTag;
     }
   }
 }
