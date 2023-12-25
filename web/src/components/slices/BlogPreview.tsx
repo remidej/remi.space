@@ -2,12 +2,13 @@ import type { APIResponseCollection, GetValues } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
+import { ArticlePreview } from "../ArticlePreview";
 
 interface Props {
   slice: GetValues<"slices.blog-section">;
 }
 
-export async function ArticlesSlice({ slice }: Props) {
+export async function BlogPreview({ slice }: Props) {
   const articles = (await fetcher("/api/articles", {
     fields: ["title", "description", "slug"],
     pagination: {
@@ -24,27 +25,7 @@ export async function ArticlesSlice({ slice }: Props) {
       {/* Main content */}
       <div className="flex flex-col gap-8">
         {articles.data.map((article) => (
-          <article className="text-xl" key={article.id}>
-            <header>
-              <h4 className="text-2xl font-semibold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white leading-tight">
-                <Link
-                  href={`/blog/${article.attributes.slug}`}
-                  className="hover:underline"
-                >
-                  {article.attributes.title}
-                </Link>
-              </h4>
-            </header>
-            <section className="text-gray-600 dark:text-gray-400 text-lg mt-2 mb-1">
-              <p>{article.attributes.description}</p>
-            </section>
-            <Link
-              href={`/blog/${article.attributes.slug}`}
-              className="text-lg text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
-            >
-              Read <FiArrowRight className="inline" size="1em" />
-            </Link>
-          </article>
+          <ArticlePreview article={article} key={article.id} />
         ))}
       </div>
       <Link

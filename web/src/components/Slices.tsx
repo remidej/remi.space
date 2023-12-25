@@ -8,7 +8,7 @@ import { APIResponseData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import { SocialButtons } from "./SocialButtons";
-import { ArticlesSlice } from "./slices/Articles";
+import { BlogPreview } from "./slices/BlogPreview";
 import { RichText } from "./slices/RichText";
 import { HomeHero } from "./slices/HomeHero";
 import { Work } from "./slices/Work";
@@ -33,7 +33,7 @@ export function Slices({ slices }: Props) {
               case "slices.home-hero":
                 return <HomeHero slice={slice} />;
               case "slices.blog-section":
-                return <ArticlesSlice slice={slice} />;
+                return <BlogPreview slice={slice} />;
               case "slices.work-section":
                 return <Work slice={slice} />;
               default:
