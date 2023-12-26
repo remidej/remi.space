@@ -14,8 +14,8 @@ export function HomeHero({ slice }: Props) {
       <div className="container">
         {/* Name link */}
         <Link href="/" className="inline-flex flex-row items-center">
-          <div className="w-16 h-16 bg-primary-200 dark:bg-primary-900 rounded-full"></div>
-          <h1 className="font-bold -ml-10 text-3xl text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white">
+          <div className="w-14 md:w-16 h-14 md:h-16 bg-primary-200 dark:bg-primary-900 rounded-full"></div>
+          <h1 className="font-bold -ml-8 md:-ml-10 text-2xl md:text-3xl text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white">
             {slice.name}
           </h1>
         </Link>
