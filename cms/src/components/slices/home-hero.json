@@ -17,11 +17,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::social-network.social-network"
-    },
-    "color": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::color.color"
     }
   }
 }

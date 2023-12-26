@@ -50,7 +50,7 @@ export default async function BlogPage({
       </h1>
       <Filters tags={tags} resultsCount={filteredArticles.length} />
       {articles.data.length === 0 && <p className="mt-8">No articles found</p>}
-      <section className="flex-1 mt-8">
+      <section className="flex-1 mt-8 flex flex-col gap-8">
         {filteredArticles.map((article) => (
           <ArticlePreview article={article} key={article.id} />
         ))}
