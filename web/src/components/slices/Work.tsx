@@ -15,7 +15,7 @@ interface Props {
 export function Work({ slice }: Props) {
   return (
     <section className="container py-12">
-      <p className="uppercase tracking-wide text-work-500 dark:text-work-500 font-bold text-lg">
+      <p className="uppercase tracking-wide text-work-400 dark:text-work-500 font-bold text-lg">
         {slice.title}
       </p>
       <div className="flex flex-col gap-3 text-lg text-gray-700 dark:text-gray-300 mt-6">

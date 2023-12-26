@@ -1,9 +1,10 @@
 import * as React from "react";
 import { ArticlePreview } from "@/components/ArticlePreview";
-import type { APIResponseCollection } from "@/types/types";
+import type { APIResponse, APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import { Filters } from "./Filters";
 import { URLSearchParams } from "url";
+import { type Metadata } from "next";
 
 export default async function BlogPage({
   searchParams,
@@ -56,4 +57,27 @@ export default async function BlogPage({
       </section>
     </div>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}): Promise<Metadata> {
+  const global = (await fetcher("/api/global", {
+    fields: ["siteName"],
+  })) as APIResponse<"api::global.global">;
+
+  const title = `All articles | ${global.data.attributes.siteName}`;
+  const description = `View all the blog post from ${global.data.attributes.siteName}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: global.data.attributes.siteName,
+    },
+  };
 }

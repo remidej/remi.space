@@ -1,8 +1,9 @@
-import type { APIResponseCollection } from "@/types/types";
+import type { APIResponse, APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { Slices } from "@/components/Slices";
+import { type Metadata } from "next";
 
 export async function generateStaticParams() {
   const articles = (await fetcher("/api/articles", {
@@ -60,4 +61,38 @@ export default async function ArticlePage({
       </main>
     </article>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const articles = (await fetcher("/api/articles", {
+    filter: {
+      slug: params.slug,
+    },
+  })) as APIResponseCollection<"api::article.article">;
+  const article = articles.data[0];
+
+  const global = (await fetcher("/api/global", {
+    fields: ["siteName"],
+  })) as APIResponse<"api::global.global">;
+
+  const title = `${article.attributes.title} | ${global.data.attributes.siteName}`;
+  const description = article.attributes.description;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: global.data.attributes.siteName,
+      ...(article.attributes.image && {
+        images: [(article.attributes.image as any).url],
+      }),
+    },
+    metadataBase: new URL("https://remi.space"),
+  };
 }

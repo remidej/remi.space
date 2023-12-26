@@ -63,7 +63,6 @@ export async function generateMetadata({
         $eq: params.slug == null ? "_" : params.slug.join("_"),
       },
     },
-    // fields: ["metadata"],
     populate: ["metadata", "metadata.image"],
   })) as APIResponseCollection<"api::page.page">;
   const { metadata } = pages.data[0].attributes;
@@ -86,5 +85,6 @@ export async function generateMetadata({
         images: [(metadata.image as any).url],
       }),
     },
+    metadataBase: new URL("https://remi.space"),
   };
 }
