@@ -24,6 +24,7 @@ export default async function BlogPage({
         $containsi: searchParams.search,
       },
     },
+    sort: ["createdAt:desc"],
     pagination: {
       page: 1,
       pageSize: 40,

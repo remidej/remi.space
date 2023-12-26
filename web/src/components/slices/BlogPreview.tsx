@@ -11,6 +11,7 @@ interface Props {
 export async function BlogPreview({ slice }: Props) {
   const articles = (await fetcher("/api/articles", {
     fields: ["title", "description", "slug"],
+    sort: ["createdAt:desc"],
     pagination: {
       page: 1,
       pageSize: slice.articleCount || 4,
