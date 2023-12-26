@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import { usePathname } from "next/navigation";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -32,6 +34,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <SpeedInsights />
+      <Analytics />
       <body
         style={inter.style}
         className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 "
