@@ -96,11 +96,6 @@ export interface SlicesHomeHero extends Schema.Component {
       'oneToMany',
       'api::social-network.social-network'
     >;
-    color: Attribute.Relation<
-      'slices.home-hero',
-      'oneToOne',
-      'api::color.color'
-    >;
   };
 }
 
@@ -125,11 +120,6 @@ export interface SlicesWorkSection extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    color: Attribute.Relation<
-      'slices.work-section',
-      'oneToOne',
-      'api::color.color'
-    >;
     content: Attribute.Blocks;
     link: Attribute.Component<'shared.link'> & Attribute.Required;
   };
