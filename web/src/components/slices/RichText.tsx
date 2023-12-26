@@ -24,7 +24,7 @@ export function RichText({ slice }: Props) {
                 alt={image.alternativeText!}
                 width={image.width}
                 height={image.height}
-                className="rounded-md max-w-full"
+                className="rounded-md max-h-[600px] max-w-full object-contain"
               />
             );
           },

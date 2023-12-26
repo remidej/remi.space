@@ -79,5 +79,6 @@ export async function generateMetadata({
       description,
       siteName: global.data.attributes.siteName,
     },
+    metadataBase: new URL("https://remi.space"),
   };
 }

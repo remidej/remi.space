@@ -21,7 +21,7 @@ export default async function ArticlePage({
   params: { slug: string };
 }) {
   const articles = (await fetcher("/api/articles", {
-    filter: {
+    filters: {
       slug: params.slug,
     },
     populate: {
@@ -69,7 +69,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const articles = (await fetcher("/api/articles", {
-    filter: {
+    filters: {
       slug: params.slug,
     },
   })) as APIResponseCollection<"api::article.article">;
