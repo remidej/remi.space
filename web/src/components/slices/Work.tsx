@@ -18,7 +18,7 @@ export function Work({ slice }: Props) {
       <p className="uppercase tracking-wide text-work-400 dark:text-work-500 font-bold text-lg">
         {slice.title}
       </p>
-      <div className="flex flex-col gap-3 text-lg text-gray-700 dark:text-gray-300 mt-6">
+      <div className="flex flex-col gap-3 md:text-lg text-gray-700 dark:text-gray-300 mt-6">
         <BlocksRenderer
           content={slice.content as BlocksContent}
           blocks={{
@@ -27,7 +27,6 @@ export function Work({ slice }: Props) {
                 {children}
               </ul>
             ),
-            // "list-item": ({ children }) => <li className="">{children}</li>,
           }}
         />
       </div>

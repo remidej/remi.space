@@ -20,7 +20,7 @@ export function HomeHero({ slice }: Props) {
           </h1>
         </Link>
         {/* Bio */}
-        <section className="text-2xl text-gray-700 dark:text-gray-300 mt-6 flex flex-col gap-3">
+        <section className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mt-6 flex flex-col gap-3">
           <BlocksRenderer
             content={slice.intro as BlocksContent}
             blocks={{
