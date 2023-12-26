@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_slices_home_heroes",
+  "info": {
+    "displayName": "Home Hero",
+    "icon": "crown",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "blocks"
+    },
+    "socialNetworks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social-network.social-network"
+    }
+  }
+}

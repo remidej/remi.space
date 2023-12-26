@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_slices_large_images",
+  "info": {
+    "displayName": "Large image",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}

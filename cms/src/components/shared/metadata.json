@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_metadata",
+  "info": {
+    "displayName": "metadata",
+    "icon": "information",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "website",
+        "article"
+      ]
+    }
+  }
+}

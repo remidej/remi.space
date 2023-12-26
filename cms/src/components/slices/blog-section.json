@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_slices_blog_sections",
+  "info": {
+    "displayName": "Blog section",
+    "icon": "medium",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.link",
+      "required": true
+    },
+    "articleCount": {
+      "type": "integer",
+      "default": 4
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "node copyTypes && next dev",
+    "develop": "yarn dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.0",
+    "clsx": "^2.0.0",
+    "next": "14.0.4",
+    "qs": "^6.11.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^4.12.0"
+  },
+  "devDependencies": {
+    "@strapi/strapi": "^4.15.5",
+    "@types/node": "^20",
+    "@types/qs": "^6.9.10",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-icons": "^3.0.0",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
