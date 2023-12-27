@@ -9,14 +9,17 @@ interface Props {
 }
 
 export async function BlogPreview({ slice }: Props) {
-  const articles = (await fetcher("/api/articles", {
-    fields: ["title", "description", "slug"],
-    sort: ["createdAt:desc"],
-    pagination: {
-      page: 1,
-      pageSize: slice.articleCount || 4,
-    },
-  })) as APIResponseCollection<"api::article.article">;
+  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
+    "/api/articles",
+    {
+      fields: ["title", "description", "slug"],
+      sort: ["createdAt:desc"],
+      pagination: {
+        page: 1,
+        pageSize: slice.articleCount || 4,
+      },
+    }
+  );
 
   return (
     <section className="container py-12">

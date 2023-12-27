@@ -6,9 +6,12 @@ import { Slices } from "@/components/Slices";
 import { type Metadata } from "next";
 
 export async function generateStaticParams() {
-  const articles = (await fetcher("/api/articles", {
-    fields: ["slug"],
-  })) as APIResponseCollection<"api::article.article">;
+  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
+    "/api/articles",
+    {
+      fields: ["slug"],
+    }
+  );
 
   return articles.data.map((article) => ({
     slug: article.attributes.slug,
@@ -20,16 +23,19 @@ export default async function ArticlePage({
 }: {
   params: { slug: string };
 }) {
-  const articles = (await fetcher("/api/articles", {
-    filters: {
-      slug: params.slug,
-    },
-    populate: {
-      slices: {
-        populate: "*",
+  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
+    "/api/articles",
+    {
+      filters: {
+        slug: params.slug,
       },
-    },
-  })) as APIResponseCollection<"api::article.article">;
+      populate: {
+        slices: {
+          populate: "*",
+        },
+      },
+    }
+  );
   const article = articles.data[0];
 
   const createdAt = new Date(article.attributes.createdAt!);
@@ -68,17 +74,21 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const articles = (await fetcher("/api/articles", {
-    filters: {
-      slug: params.slug,
-    },
-  })) as APIResponseCollection<"api::article.article">;
+  const [articles, global] = await Promise.all([
+    await fetcher<APIResponseCollection<"api::article.article">>(
+      "/api/articles",
+      {
+        filters: {
+          slug: params.slug,
+        },
+      }
+    ),
+    await fetcher<APIResponse<"api::global.global">>("/api/global", {
+      fields: ["siteName"],
+    }),
+  ]);
+
   const article = articles.data[0];
-
-  const global = (await fetcher("/api/global", {
-    fields: ["siteName"],
-  })) as APIResponse<"api::global.global">;
-
   const title = `${article.attributes.title} | ${global.data.attributes.siteName}`;
   const description = article.attributes.description;
 

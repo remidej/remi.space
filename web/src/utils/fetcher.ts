@@ -2,7 +2,7 @@ import qs from "qs";
 
 const cmsBaseUrl = process.env.CMS_URL!;
 
-async function fetcher(url: string, paramsObject: object = {}) {
+async function fetcher<T>(url: string, paramsObject: object = {}): Promise<T> {
   const paramsString = qs.stringify(paramsObject, { encodeValuesOnly: true });
   const path = `${url}?${paramsString}`;
   const response = await fetch(
@@ -22,7 +22,7 @@ async function fetcher(url: string, paramsObject: object = {}) {
     throw new Error(response.statusText);
   }
 
-  return response.json();
+  return response.json() as Promise<T>;
 }
 
 export { fetcher };

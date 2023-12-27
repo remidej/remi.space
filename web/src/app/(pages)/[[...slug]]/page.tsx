@@ -7,9 +7,12 @@ import { type Metadata } from "next";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const pages = (await fetcher("/api/pages", {
-    fields: ["slug"],
-  })) as APIResponseCollection<"api::page.page">;
+  const pages = await fetcher<APIResponseCollection<"api::page.page">>(
+    "/api/pages",
+    {
+      fields: ["slug"],
+    }
+  );
 
   return pages.data.map((page) => ({
     slug: page.attributes.slug === "_" ? [] : page.attributes.slug.split("_"),
@@ -21,28 +24,31 @@ export default async function ArticlePage({
 }: {
   params: { slug: string[] };
 }) {
-  const pages = (await fetcher("/api/pages", {
-    filters: {
-      slug: {
-        $eq: params.slug == null ? "_" : params.slug.join("_"),
+  const pages = await fetcher<APIResponseCollection<"api::page.page">>(
+    "/api/pages",
+    {
+      filters: {
+        slug: {
+          $eq: params.slug == null ? "_" : params.slug.join("_"),
+        },
       },
-    },
-    populate: {
-      slices: {
-        on: {
-          "slices.home-hero": {
-            populate: "*",
-          },
-          "slices.blog-section": {
-            populate: "*",
-          },
-          "slices.work-section": {
-            populate: "*",
+      populate: {
+        slices: {
+          on: {
+            "slices.home-hero": {
+              populate: "*",
+            },
+            "slices.blog-section": {
+              populate: "*",
+            },
+            "slices.work-section": {
+              populate: "*",
+            },
           },
         },
       },
-    },
-  })) as APIResponseCollection<"api::page.page">;
+    }
+  );
   const page = pages.data[0];
 
   return (
@@ -57,20 +63,21 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] };
 }): Promise<Metadata> {
-  const pages = (await fetcher("/api/pages", {
-    filters: {
-      slug: {
-        $eq: params.slug == null ? "_" : params.slug.join("_"),
+  const [pages, global] = await Promise.all([
+    await fetcher<APIResponseCollection<"api::page.page">>("/api/pages", {
+      filters: {
+        slug: {
+          $eq: params.slug == null ? "_" : params.slug.join("_"),
+        },
       },
-    },
-    populate: ["metadata", "metadata.image"],
-  })) as APIResponseCollection<"api::page.page">;
+      populate: ["metadata", "metadata.image"],
+    }),
+    await fetcher<APIResponse<"api::global.global">>("/api/global", {
+      fields: ["siteName"],
+    }),
+  ]);
+
   const { metadata } = pages.data[0].attributes;
-
-  const global = (await fetcher("/api/global", {
-    fields: ["siteName"],
-  })) as APIResponse<"api::global.global">;
-
   const title = `${metadata.title} | ${global.data.attributes.siteName}`;
   const description = metadata.description;
 

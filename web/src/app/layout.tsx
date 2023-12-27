@@ -23,14 +23,17 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const global = (await fetcher("/api/global", {
-    populate: [
-      "navbarSocialNetworks",
-      "footerSocialNetworks",
-      "footerSections",
-      "footerSections.links",
-    ],
-  })) as APIResponse<"api::global.global">;
+  const global = await fetcher<APIResponse<"api::global.global">>(
+    "/api/global",
+    {
+      populate: [
+        "navbarSocialNetworks",
+        "footerSocialNetworks",
+        "footerSections",
+        "footerSections.links",
+      ],
+    }
+  );
 
   return (
     <html lang="en">

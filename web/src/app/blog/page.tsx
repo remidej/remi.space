@@ -12,28 +12,34 @@ export default async function BlogPage({
   searchParams: Record<string, string>;
 }) {
   const tagsParam = searchParams.tags?.split(",").filter(Boolean) ?? [];
-  const articles = (await fetcher("/api/articles", {
-    fields: ["title", "description", "slug"],
-    populate: {
-      tags: {
-        fields: ["name", "slug"],
+  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
+    "/api/articles",
+    {
+      fields: ["title", "description", "slug"],
+      populate: {
+        tags: {
+          fields: ["name", "slug"],
+        },
       },
-    },
-    filters: {
-      title: {
-        $containsi: searchParams.search,
+      filters: {
+        title: {
+          $containsi: searchParams.search,
+        },
       },
-    },
-    sort: ["createdAt:desc"],
-    pagination: {
-      page: 1,
-      pageSize: 40,
-    },
-  })) as APIResponseCollection<"api::article.article">;
+      sort: ["createdAt:desc"],
+      pagination: {
+        page: 1,
+        pageSize: 40,
+      },
+    }
+  );
 
-  const tags = (await fetcher("/api/tags", {
-    fields: ["name", "slug"],
-  })) as APIResponseCollection<"api::tag.tag">;
+  const tags = await fetcher<APIResponseCollection<"api::tag.tag">>(
+    "/api/tags",
+    {
+      fields: ["name", "slug"],
+    }
+  );
 
   const filteredArticles =
     tagsParam.length > 0
@@ -65,9 +71,12 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] };
 }): Promise<Metadata> {
-  const global = (await fetcher("/api/global", {
-    fields: ["siteName"],
-  })) as APIResponse<"api::global.global">;
+  const global = await fetcher<APIResponse<"api::global.global">>(
+    "/api/global",
+    {
+      fields: ["siteName"],
+    }
+  );
 
   const title = `All articles | ${global.data.attributes.siteName}`;
   const description = `View all the blog post from ${global.data.attributes.siteName}`;
