@@ -17,7 +17,7 @@ export function SocialButtons({
           href={socialNetwork.attributes.url}
           title={socialNetwork.attributes.name}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="me"
           className={
             small
               ? "rounded-full text-gray-700 dark:text-gray-300 hover:black hover:bg-gray-200 dark:hover:bg-gray-700 p-3 ml-2"
