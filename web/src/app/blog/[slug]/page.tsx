@@ -1,7 +1,7 @@
 import type { APIResponse, APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiMail } from "react-icons/fi";
 import { Slices } from "@/components/Slices";
 import { type Metadata } from "next";
 
@@ -23,9 +23,8 @@ export default async function ArticlePage({
 }: {
   params: { slug: string };
 }) {
-  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
-    "/api/articles",
-    {
+  const [articles, global] = await Promise.all([
+    fetcher<APIResponseCollection<"api::article.article">>("/api/articles", {
       filters: {
         slug: params.slug,
       },
@@ -34,10 +33,13 @@ export default async function ArticlePage({
           populate: "*",
         },
       },
-    }
-  );
-  const article = articles.data[0];
+    }),
+    fetcher<APIResponse<"api::global.global">>("/api/global", {
+      fields: ["email"],
+    }),
+  ]);
 
+  const article = articles.data[0];
   const createdAt = new Date(article.attributes.createdAt!);
   const createdAtString = createdAt.toLocaleDateString("en-US", {
     year: "numeric",
@@ -65,6 +67,25 @@ export default async function ArticlePage({
       <main>
         <Slices slices={article.attributes.slices} />
       </main>
+      <footer className="mt-8 py-8 border-t-4 border-blog-900 decoration-wavy">
+        <p>
+          Hey, I&apos;m Rémi, author of this blog. If you liked this post,
+          don&apos;t hesitate to reply, or to{" "}
+          <Link
+            href="/blog"
+            className="underline text-blog-700 dark:text-blog-100"
+          >
+            check out my other articles
+          </Link>
+          .
+        </p>
+        <a
+          href={`mailto:${global.data.attributes.email}?subject=Reply to "${article.attributes.title}"`}
+          className="mt-6 px-4 py-2 text-blog-800 dark:text-work-100 bg-blog-200 dark:bg-blog-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
+        >
+          Reply by email <FiMail className="inline -mt-[2px] ml-1" size="1em" />
+        </a>
+      </footer>
     </article>
   );
 }
