@@ -13,7 +13,6 @@ const config: Config = {
       colors: {
         primary: colors.teal,
         blog: colors.teal,
-        work: colors.blue,
       },
     },
   },

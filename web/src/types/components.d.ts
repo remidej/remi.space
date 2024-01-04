@@ -114,14 +114,16 @@ export interface SlicesLargeImage extends Schema.Component {
 export interface SlicesWorkSection extends Schema.Component {
   collectionName: 'components_slices_work_sections';
   info: {
-    displayName: 'Work section';
+    displayName: 'Rich text section';
     icon: 'briefcase';
     description: '';
   };
   attributes: {
     title: Attribute.String;
     content: Attribute.Blocks;
-    link: Attribute.Component<'shared.link'> & Attribute.Required;
+    link: Attribute.Component<'shared.link'>;
+    color: Attribute.Enumeration<['green', 'blue', 'purple', 'rose', 'amber']> &
+      Attribute.Required;
   };
 }
 

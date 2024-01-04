@@ -1,7 +1,7 @@
 {
   "collectionName": "components_slices_work_sections",
   "info": {
-    "displayName": "Work section",
+    "displayName": "Rich text section",
     "icon": "briefcase",
     "description": ""
   },
@@ -17,6 +17,17 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.link",
+      "required": false
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "green",
+        "blue",
+        "purple",
+        "rose",
+        "amber"
+      ],
       "required": true
     }
   }
