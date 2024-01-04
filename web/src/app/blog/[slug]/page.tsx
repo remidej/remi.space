@@ -40,8 +40,8 @@ export default async function ArticlePage({
   ]);
 
   const article = articles.data[0];
-  const createdAt = new Date(article.attributes.createdAt!);
-  const createdAtString = createdAt.toLocaleDateString("en-US", {
+  const publishedAt = new Date(article.attributes.publishedAt!);
+  const publishedAtString = publishedAt.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -61,7 +61,7 @@ export default async function ArticlePage({
           {article.attributes.title}
         </h1>
         <p className="uppercase tracking-wide text-sm font-semibold text-gray-500 dark:text-gray-400">
-          {createdAtString}
+          {publishedAtString}
         </p>
       </header>
       <main>
