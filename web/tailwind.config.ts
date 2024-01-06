@@ -11,6 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        gray: colors.slate,
         primary: colors.teal,
         blog: colors.teal,
       },

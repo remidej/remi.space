@@ -102,6 +102,7 @@ export async function generateMetadata({
         filters: {
           slug: params.slug,
         },
+        populate: ["image"],
       }
     ),
     await fetcher<APIResponse<"api::global.global">>("/api/global", {
