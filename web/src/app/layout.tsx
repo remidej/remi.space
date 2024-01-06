@@ -10,6 +10,7 @@ import type { APIResponse } from "@/types/types";
 import { SocialButtons } from "@/components/SocialButtons";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { ServiceWorker } from "./ServiceWorker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,7 @@ export default async function RootLayout({
     <html lang="en">
       <SpeedInsights />
       <Analytics />
+      <ServiceWorker />
       <body
         style={inter.style}
         className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 "
