@@ -16,7 +16,6 @@ const unregisterServiceWorkers = async () => {
  */
 export const ServiceWorker = () => {
   React.useEffect(() => {
-    console.log("dealing with SW");
     unregisterServiceWorkers();
   }, []);
 

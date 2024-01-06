@@ -89,7 +89,7 @@ export async function generateMetadata({
       description,
       siteName: global.data.attributes.siteName,
       ...(metadata.image && {
-        images: [(metadata.image as any).url],
+        images: [(metadata.image as any).data.attributes.url],
       }),
     },
     metadataBase: new URL("https://remi.space"),
