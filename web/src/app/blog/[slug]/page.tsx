@@ -67,7 +67,7 @@ export default async function ArticlePage({
       <main>
         <Slices slices={article.attributes.slices} />
       </main>
-      <footer className="mt-8 py-8 border-t-4 border-blog-900 decoration-wavy">
+      <footer className="mt-8 py-8 border-t-4 border-gray-200 dark:border-gray-700 decoration-wavy">
         <p>
           Hey, I&apos;m Rémi, author of this blog. If you liked this post,
           don&apos;t hesitate to reply, or to{" "}
