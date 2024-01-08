@@ -4,6 +4,7 @@ import type { APIResponse, APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import { URLSearchParams } from "url";
 import { type Metadata } from "next";
+import { url } from "@/utils/url";
 
 export default async function BlogPage({
   searchParams,
@@ -59,6 +60,6 @@ export async function generateMetadata({
       description,
       siteName: global.data.attributes.siteName,
     },
-    metadataBase: new URL(process.env.VERCEL_URL!),
+    metadataBase: new URL(url),
   };
 }

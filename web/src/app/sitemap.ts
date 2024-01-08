@@ -1,8 +1,7 @@
 import type { APIResponseCollection } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
+import { url } from "@/utils/url";
 import type { MetadataRoute } from "next";
-
-const url = process.env.VERCEL_URL as string;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, pages] = await Promise.all([

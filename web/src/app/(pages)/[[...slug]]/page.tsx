@@ -3,6 +3,7 @@ import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
 import { Slices } from "@/components/Slices";
 import { type Metadata } from "next";
+import { url } from "@/utils/url";
 
 export const dynamicParams = false;
 
@@ -92,6 +93,6 @@ export async function generateMetadata({
         images: [(metadata.image as any).data.attributes.url],
       }),
     },
-    metadataBase: new URL(process.env.VERCEL_URL!),
+    metadataBase: new URL(url),
   };
 }

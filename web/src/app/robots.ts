@@ -1,3 +1,4 @@
+import { url } from "@/utils/url";
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${process.env.VERCEL_URL!}/sitemap.xml`,
+    sitemap: `${url}/sitemap.xml`,
   };
 }

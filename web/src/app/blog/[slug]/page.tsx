@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FiArrowLeft, FiMail } from "react-icons/fi";
 import { Slices } from "@/components/Slices";
 import { type Metadata } from "next";
+import { url } from "@/utils/url";
 
 export async function generateStaticParams() {
   const articles = await fetcher<APIResponseCollection<"api::article.article">>(
@@ -133,6 +134,6 @@ export async function generateMetadata({
         images: [(article.attributes.image as any).data.attributes.url],
       }),
     },
-    metadataBase: new URL(process.env.VERCEL_URL!),
+    metadataBase: new URL(url),
   };
 }
