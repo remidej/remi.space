@@ -80,7 +80,11 @@ export default async function ArticlePage({
           .
         </p>
         <a
-          href={`mailto:${global.data.attributes.email}?subject=Reply to "${article.attributes.title}"`}
+          href={`mailto:${encodeURIComponent(
+            global.data.attributes.email
+          )}?subject=Reply to "${encodeURIComponent(
+            article.attributes.title
+          )}"`}
           className="mt-6 px-4 py-2 text-blog-800 dark:text-blog-100 bg-blog-200 dark:bg-blog-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
         >
           Reply by email <FiMail className="inline -mt-[2px] ml-1" size="1em" />
