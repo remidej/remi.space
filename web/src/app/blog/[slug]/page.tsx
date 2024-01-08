@@ -10,6 +10,10 @@ export async function generateStaticParams() {
     "/api/articles",
     {
       fields: ["slug"],
+      pagination: {
+        page: 1,
+        pageSize: 99,
+      },
     }
   );
 
@@ -129,6 +133,6 @@ export async function generateMetadata({
         images: [(article.attributes.image as any).data.attributes.url],
       }),
     },
-    metadataBase: new URL("https://remi.space"),
+    metadataBase: new URL(process.env.VERCEL_URL!),
   };
 }

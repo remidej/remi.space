@@ -17,7 +17,7 @@ export default async function BlogPage({
       sort: ["createdAt:desc"],
       pagination: {
         page: 1,
-        pageSize: 40,
+        pageSize: 99,
       },
     }
   );
@@ -59,6 +59,6 @@ export async function generateMetadata({
       description,
       siteName: global.data.attributes.siteName,
     },
-    metadataBase: new URL("https://remi.space"),
+    metadataBase: new URL(process.env.VERCEL_URL!),
   };
 }

@@ -92,6 +92,6 @@ export async function generateMetadata({
         images: [(metadata.image as any).data.attributes.url],
       }),
     },
-    metadataBase: new URL("https://remi.space"),
+    metadataBase: new URL(process.env.VERCEL_URL!),
   };
 }
