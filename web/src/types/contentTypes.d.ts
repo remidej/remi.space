@@ -830,7 +830,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     slices: Attribute.DynamicZone<
       ['article-slices.rich-text', 'slices.large-image']
     >;
-    description: Attribute.Text;
+    description: Attribute.Text & Attribute.Required;
     image: Attribute.Media;
     tags: Attribute.Relation<
       'api::article.article',

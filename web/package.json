@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@strapi/blocks-react-renderer": "^1.0.0",
+    "@types/rss": "^0.0.32",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.2",
     "clsx": "^2.0.0",
@@ -18,7 +19,8 @@
     "qs": "^6.11.2",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "rss": "^1.2.2"
   },
   "devDependencies": {
     "@strapi/strapi": "^4.15.5",
