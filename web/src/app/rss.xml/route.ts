@@ -8,7 +8,7 @@ export async function GET() {
     await fetcher<APIResponseCollection<"api::article.article">>(
       "/api/articles",
       {
-        fields: ["title", "description", "slug"],
+        fields: ["title", "description", "slug", "publishedAt"],
         populate: {
           tags: {
             fields: ["name"],
@@ -38,7 +38,7 @@ export async function GET() {
       title: article.attributes.title,
       description: article.attributes.description,
       url: `${url}/blog/${article.attributes.slug}`,
-      date: new Date(article.attributes.createdAt!),
+      date: new Date(article.attributes.publishedAt!),
       ...(article.attributes.tags && {
         categories: article.attributes.tags.data.map(
           (tag) => tag.attributes.name
