@@ -6,6 +6,7 @@ import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import colorPicker from "@strapi/plugin-color-picker/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
+import previewButton from "strapi-plugin-preview-button/strapi-admin";
 import reactIcons from "strapi-plugin-react-icons/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
@@ -15,6 +16,7 @@ renderAdmin(document.getElementById("strapi"), {
     "color-picker": colorPicker,
     i18n: i18N,
     "users-permissions": usersPermissions,
+    "preview-button": previewButton,
     "react-icons": reactIcons,
   },
 });

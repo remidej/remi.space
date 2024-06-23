@@ -1,34 +1,49 @@
 "use client";
 
+import * as React from "react";
 import { SocialButtons } from "@/components/SocialButtons";
 import type { APIResponse } from "@/types/types";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { clearDraftMode } from "./actions";
+import { useFormStatus } from "react-dom";
+
+const DisableDraftMode = () => {
+  const { pending } = useFormStatus();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!pending) {
+      router.refresh();
+    }
+  }, [pending, router]);
+
+  return <button type="submit">{pending ? "Disabling..." : "Disable"}</button>;
+};
 
 export const Navbar = ({
-  global,
+  children,
+  isDraftMode,
 }: {
-  global: APIResponse<"api::global.global">;
+  isDraftMode: boolean;
+  children: React.ReactNode;
 }) => {
   const pathname = usePathname();
 
-  if (pathname === "/") {
-    return null;
-  }
-
   return (
-    <nav className="container py-4 w-full flex flex-row items-center justify-between text-gray-700 dark:text-gray-300">
-      <Link
-        href="/"
-        className="inline-block font-bold text-xl hover:text-black dark:hover:text-white"
-      >
-        {global.data.attributes.siteName}
-      </Link>
-      <SocialButtons
-        // @ts-ignore
-        socialNetworks={global.data.attributes.navbarSocialNetworks}
-        small
-      />
-    </nav>
+    <>
+      {isDraftMode && (
+        <div className="bg-pink-800 text-pink-200 p-2 text-center font-mono uppercase">
+          <form
+            className="container flex justify-between"
+            action={clearDraftMode}
+          >
+            <span>Draft Mode enabled</span>
+            <DisableDraftMode />
+          </form>
+        </div>
+      )}
+      {pathname !== "/" && children}
+    </>
   );
 };

@@ -62,7 +62,7 @@ export interface SharedMetadata extends Schema.Component {
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
-    image: Attribute.Media;
+    image: Attribute.Media<'images'>;
     type: Attribute.Enumeration<['website', 'article']>;
   };
 }
@@ -106,7 +106,7 @@ export interface SlicesLargeImage extends Schema.Component {
     icon: 'picture';
   };
   attributes: {
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
     caption: Attribute.String;
   };
 }

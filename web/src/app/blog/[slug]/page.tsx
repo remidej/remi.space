@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FiArrowLeft, FiMail } from "react-icons/fi";
 import { Slices } from "@/components/Slices";
 import { type Metadata } from "next";
+import { draftMode } from "next/headers";
 import { url } from "@/utils/url";
 
 export async function generateStaticParams() {
@@ -15,6 +16,7 @@ export async function generateStaticParams() {
         page: 1,
         pageSize: 99,
       },
+      // publicationState: draftMode().isEnabled ? "preview" : "live",
     }
   );
 
@@ -38,6 +40,7 @@ export default async function ArticlePage({
           populate: "*",
         },
       },
+      publicationState: draftMode().isEnabled ? "preview" : "live",
     }),
     fetcher<APIResponse<"api::global.global">>("/api/global", {
       fields: ["email"],
@@ -112,6 +115,7 @@ export async function generateMetadata({
           slug: params.slug,
         },
         populate: ["image"],
+        publicationState: draftMode().isEnabled ? "preview" : "live",
       }
     ),
     await fetcher<APIResponse<"api::global.global">>("/api/global", {
