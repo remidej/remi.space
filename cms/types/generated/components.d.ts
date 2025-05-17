@@ -1,135 +1,139 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface ArticleSlicesRichText extends Schema.Component {
+export interface ArticleSlicesRichText extends Struct.ComponentSchema {
   collectionName: 'components_article_slices_rich_texts';
   info: {
+    description: '';
     displayName: 'Rich text';
     icon: 'feather';
-    description: '';
   };
   attributes: {
-    content: Attribute.Blocks & Attribute.Required;
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
-export interface FooterLinksSection extends Schema.Component {
+export interface FooterLinksSection extends Struct.ComponentSchema {
   collectionName: 'components_footer_links_sections';
   info: {
+    description: '';
     displayName: 'Links section';
     icon: 'bulletList';
-    description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    links: Attribute.Component<'shared.link', true> & Attribute.Required;
+    links: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SharedButton extends Schema.Component {
+export interface SharedButton extends Struct.ComponentSchema {
   collectionName: 'components_shared_buttons';
   info: {
+    description: '';
     displayName: 'button';
     icon: 'cursor';
-    description: '';
   };
   attributes: {
-    link: Attribute.Component<'shared.link'> & Attribute.Required;
-    icon: Attribute.String & Attribute.CustomField<'plugin::react-icons.icon'>;
+    icon: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'shared.link', false> &
+      Schema.Attribute.Required;
   };
 }
 
-export interface SharedLink extends Schema.Component {
+export interface SharedLink extends Struct.ComponentSchema {
   collectionName: 'components_shared_links';
   info: {
+    description: '';
     displayName: 'Link';
     icon: 'link';
-    description: '';
   };
   attributes: {
-    url: Attribute.String & Attribute.Required;
-    text: Attribute.String & Attribute.Required;
-    openInNewTab: Attribute.Boolean & Attribute.DefaultTo<false>;
+    openInNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SharedMetadata extends Schema.Component {
+export interface SharedMetadata extends Struct.ComponentSchema {
   collectionName: 'components_shared_metadata';
   info: {
+    description: '';
     displayName: 'metadata';
     icon: 'information';
-    description: '';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    image: Attribute.Media<'images'>;
-    type: Attribute.Enumeration<['website', 'article']>;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['website', 'article']>;
   };
 }
 
-export interface SlicesBlogSection extends Schema.Component {
+export interface SlicesBlogSection extends Struct.ComponentSchema {
   collectionName: 'components_slices_blog_sections';
   info: {
+    description: '';
     displayName: 'Blog section';
     icon: 'medium';
-    description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    link: Attribute.Component<'shared.link'> & Attribute.Required;
-    articleCount: Attribute.Integer & Attribute.DefaultTo<4>;
+    articleCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<4>;
+    link: Schema.Attribute.Component<'shared.link', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SlicesHomeHero extends Schema.Component {
+export interface SlicesHomeHero extends Struct.ComponentSchema {
   collectionName: 'components_slices_home_heroes';
   info: {
+    description: '';
     displayName: 'Home Hero';
     icon: 'crown';
-    description: '';
   };
   attributes: {
-    name: Attribute.String;
-    intro: Attribute.Blocks;
-    socialNetworks: Attribute.Relation<
-      'slices.home-hero',
+    intro: Schema.Attribute.Blocks;
+    name: Schema.Attribute.String;
+    socialNetworks: Schema.Attribute.Relation<
       'oneToMany',
       'api::social-network.social-network'
     >;
   };
 }
 
-export interface SlicesLargeImage extends Schema.Component {
+export interface SlicesLargeImage extends Struct.ComponentSchema {
   collectionName: 'components_slices_large_images';
   info: {
     displayName: 'Large image';
     icon: 'picture';
   };
   attributes: {
-    image: Attribute.Media<'images'> & Attribute.Required;
-    caption: Attribute.String;
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
   };
 }
 
-export interface SlicesWorkSection extends Schema.Component {
+export interface SlicesWorkSection extends Struct.ComponentSchema {
   collectionName: 'components_slices_work_sections';
   info: {
+    description: '';
     displayName: 'Rich text section';
     icon: 'briefcase';
-    description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.Blocks;
-    link: Attribute.Component<'shared.link'>;
-    color: Attribute.Enumeration<['green', 'blue', 'purple', 'rose', 'amber']> &
-      Attribute.Required;
+    color: Schema.Attribute.Enumeration<
+      ['green', 'blue', 'purple', 'rose', 'amber']
+    > &
+      Schema.Attribute.Required;
+    content: Schema.Attribute.Blocks;
+    link: Schema.Attribute.Component<'shared.link', false>;
+    title: Schema.Attribute.String;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'article-slices.rich-text': ArticleSlicesRichText;
       'footer.links-section': FooterLinksSection;
       'shared.button': SharedButton;

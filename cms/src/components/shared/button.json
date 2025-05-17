@@ -14,8 +14,9 @@
       "required": true
     },
     "icon": {
-      "type": "customField",
-      "customField": "plugin::react-icons.icon"
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
     }
   }
 }
