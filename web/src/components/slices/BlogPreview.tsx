@@ -1,25 +1,21 @@
-import type { APIResponseCollection, GetValues } from "@/types/types";
-import { fetcher } from "@/utils/fetcher";
+import { client } from "@/utils/cms";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import { ArticlePreview } from "../ArticlePreview";
 
 interface Props {
-  slice: GetValues<"slices.blog-section">;
+  slice: any;
 }
 
 export async function BlogPreview({ slice }: Props) {
-  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
-    "/api/articles",
-    {
-      fields: ["title", "description", "slug"],
-      sort: ["createdAt:desc"],
-      pagination: {
-        page: 1,
-        pageSize: slice.articleCount || 4,
-      },
-    }
-  );
+  const articles = await client.collection("articles").find({
+    fields: ["title", "description", "slug"],
+    sort: ["createdAt:desc"],
+    pagination: {
+      page: 1,
+      pageSize: slice.articleCount || 4,
+    },
+  });
 
   return (
     <section className="container py-12">

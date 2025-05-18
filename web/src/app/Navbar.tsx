@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { SocialButtons } from "@/components/SocialButtons";
-import type { APIResponse } from "@/types/types";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { clearDraftMode } from "./actions";

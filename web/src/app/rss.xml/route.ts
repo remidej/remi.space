@@ -1,25 +1,30 @@
-import type { APIResponse, APIResponseCollection } from "@/types/types";
-import { fetcher } from "@/utils/fetcher";
+import { client } from "@/utils/cms";
 import { url } from "@/utils/url";
 import RSS from "rss";
 
 export async function GET() {
   const [articles, tags, global] = await Promise.all([
-    await fetcher<APIResponseCollection<"api::article.article">>(
-      "/api/articles",
-      {
-        fields: ["title", "description", "slug", "publishedAt"],
-        populate: {
-          tags: {
-            fields: ["name"],
-          },
+    client.collection("articles").find({
+      fields: ["title", "description", "slug", "publishedAt"],
+      sort: ["publishedAt:desc"],
+      populate: {
+        tags: {
+          fields: ["name"],
         },
-      }
-    ),
-    await fetcher<APIResponseCollection<"api::tag.tag">>("/api/tags", {
-      fields: ["name"],
+      },
+      pagination: {
+        page: 1,
+        pageSize: 99,
+      },
     }),
-    await fetcher<APIResponse<"api::global.global">>("/api/global", {
+    client.collection("tags").find({
+      fields: ["name"],
+      pagination: {
+        page: 1,
+        pageSize: 99,
+      },
+    }),
+    client.single("global").find({
       fields: ["siteName"],
     }),
   ]);
@@ -28,21 +33,19 @@ export async function GET() {
     feed_url: `${url}/rss.xml`,
     site_url: url,
     language: "en",
-    title: global.data.attributes.siteName,
-    description: `All the articles from ${global.data.attributes.siteName}`,
-    categories: tags.data.map((tag) => tag.attributes.name),
+    title: global.data.siteName,
+    description: `All the articles from ${global.data.siteName}`,
+    categories: tags.data.map((tag) => tag.name),
   });
 
   articles.data.forEach((article) => {
     feed.item({
-      title: article.attributes.title,
-      description: article.attributes.description,
-      url: `${url}/blog/${article.attributes.slug}`,
-      date: new Date(article.attributes.publishedAt!),
-      ...(article.attributes.tags && {
-        categories: article.attributes.tags.data.map(
-          (tag) => tag.attributes.name
-        ),
+      title: article.title,
+      description: article.description,
+      url: `${url}/blog/${article.slug}`,
+      date: new Date(article.publishedAt!),
+      ...(article.tags && {
+        categories: article.tags.data.map((tag) => tag.name),
       }),
     });
   });

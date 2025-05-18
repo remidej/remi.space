@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { usePathname } from "next/navigation";
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import Link from "next/link";
 import "./globals.css";
-import { fetcher } from "@/utils/fetcher";
-import type { APIResponse } from "@/types/types";
+import { client } from "@/utils/cms";
 import { SocialButtons } from "@/components/SocialButtons";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
@@ -26,17 +24,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const global = await fetcher<APIResponse<"api::global.global">>(
-    "/api/global",
-    {
-      populate: [
-        "navbarSocialNetworks",
-        "footerSocialNetworks",
-        "footerSections",
-        "footerSections.links",
-      ],
-    }
-  );
+  const global = await client.single("global").find({
+    populate: [
+      "navbarSocialNetworks",
+      "navbarSocialNetworks.icon",
+      "footerSocialNetworks",
+      "footerSections",
+      "footerSections.links",
+    ],
+  });
 
   return (
     <html lang="en">
@@ -55,11 +51,11 @@ export default async function RootLayout({
                 href="/"
                 className="inline-block font-bold text-xl hover:text-black dark:hover:text-white"
               >
-                {global.data.attributes.siteName}
+                {global.data.siteName}
               </Link>
               <SocialButtons
                 // @ts-ignore
-                socialNetworks={global.data.attributes.navbarSocialNetworks}
+                socialNetworks={global.data.navbarSocialNetworks}
                 small
               />
             </nav>

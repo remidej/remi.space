@@ -1,5 +1,4 @@
-import type { APIResponse, APIResponseCollection } from "@/types/types";
-import { fetcher } from "@/utils/fetcher";
+import { client } from "@/utils/cms";
 import Link from "next/link";
 import { FiArrowLeft, FiMail } from "react-icons/fi";
 import { Slices } from "@/components/Slices";
@@ -8,20 +7,16 @@ import { draftMode } from "next/headers";
 import { url } from "@/utils/url";
 
 export async function generateStaticParams() {
-  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
-    "/api/articles",
-    {
-      fields: ["slug"],
-      pagination: {
-        page: 1,
-        pageSize: 99,
-      },
-      // publicationState: draftMode().isEnabled ? "preview" : "live",
-    }
-  );
+  const articles = await client.collection("articles").find({
+    fields: ["slug"],
+    pagination: {
+      page: 1,
+      pageSize: 99,
+    },
+  });
 
   return articles.data.map((article) => ({
-    slug: article.attributes.slug,
+    slug: article.slug,
   }));
 }
 
@@ -31,7 +26,7 @@ export default async function ArticlePage({
   params: { slug: string };
 }) {
   const [articles, global] = await Promise.all([
-    fetcher<APIResponseCollection<"api::article.article">>("/api/articles", {
+    client.collection("articles").find({
       filters: {
         slug: params.slug,
       },
@@ -40,15 +35,15 @@ export default async function ArticlePage({
           populate: "*",
         },
       },
-      publicationState: draftMode().isEnabled ? "preview" : "live",
+      status: draftMode().isEnabled ? "draft" : "published",
     }),
-    fetcher<APIResponse<"api::global.global">>("/api/global", {
+    client.single("global").find({
       fields: ["email"],
     }),
   ]);
 
   const article = articles.data[0];
-  const publishedAt = new Date(article.attributes.publishedAt!);
+  const publishedAt = new Date(article.publishedAt);
   const publishedAtString = publishedAt.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -66,14 +61,14 @@ export default async function ArticlePage({
           All articles
         </Link>
         <h1 className="text-4xl font-semibold leading-tight mt-2 mb-4 text-gray-800 dark:text-gray-200">
-          {article.attributes.title}
+          {article.title}
         </h1>
         <p className="uppercase tracking-wide text-sm font-semibold text-gray-500 dark:text-gray-400">
           {publishedAtString}
         </p>
       </header>
       <main>
-        <Slices slices={article.attributes.slices} />
+        <Slices slices={article.slices} />
       </main>
       <footer className="mt-8 py-8 border-t-4 border-gray-200 dark:border-gray-700 decoration-wavy">
         <p>
@@ -89,10 +84,8 @@ export default async function ArticlePage({
         </p>
         <a
           href={`mailto:${encodeURIComponent(
-            global.data.attributes.email
-          )}?subject=Reply to "${encodeURIComponent(
-            article.attributes.title
-          )}"`}
+            global.data.email
+          )}?subject=Reply to "${encodeURIComponent(article.title)}"`}
           className="mt-6 px-4 py-2 text-blog-800 dark:text-blog-100 bg-blog-200 dark:bg-blog-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
         >
           Reply by email <FiMail className="inline -mt-[2px] ml-1" size="1em" />
@@ -108,24 +101,21 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const [articles, global] = await Promise.all([
-    await fetcher<APIResponseCollection<"api::article.article">>(
-      "/api/articles",
-      {
-        filters: {
-          slug: params.slug,
-        },
-        populate: ["image"],
-        publicationState: draftMode().isEnabled ? "preview" : "live",
-      }
-    ),
-    await fetcher<APIResponse<"api::global.global">>("/api/global", {
+    client.collection("articles").find({
+      filters: {
+        slug: params.slug,
+      },
+      populate: ["image"],
+      status: draftMode().isEnabled ? "draft" : "published",
+    }),
+    client.single("global").find({
       fields: ["siteName"],
     }),
   ]);
 
   const article = articles.data[0];
-  const title = `${article.attributes.title} | ${global.data.attributes.siteName}`;
-  const description = article.attributes.description;
+  const title = `${article.title} | ${global.data.siteName}`;
+  const description = article.description;
 
   return {
     title,
@@ -133,9 +123,9 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      siteName: global.data.attributes.siteName,
-      ...(article.attributes.image && {
-        images: [(article.attributes.image as any).data.attributes.url],
+      siteName: global.data.siteName,
+      ...(article.image && {
+        images: [article.image.url],
       }),
     },
     metadataBase: new URL(url),

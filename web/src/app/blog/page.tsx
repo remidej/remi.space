@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ArticlePreview } from "@/components/ArticlePreview";
-import type { APIResponse, APIResponseCollection } from "@/types/types";
-import { fetcher } from "@/utils/fetcher";
+import { client } from "@/utils/cms";
 import { URLSearchParams } from "url";
 import { type Metadata } from "next";
 import { url } from "@/utils/url";
@@ -11,17 +10,14 @@ export default async function BlogPage({
 }: {
   searchParams: Record<string, string>;
 }) {
-  const articles = await fetcher<APIResponseCollection<"api::article.article">>(
-    "/api/articles",
-    {
-      fields: ["title", "description", "slug"],
-      sort: ["createdAt:desc"],
-      pagination: {
-        page: 1,
-        pageSize: 99,
-      },
-    }
-  );
+  const articles = await client.collection("articles").find({
+    fields: ["title", "description", "slug"],
+    sort: ["createdAt:desc"],
+    pagination: {
+      page: 1,
+      pageSize: 99,
+    },
+  });
 
   return (
     <div className="container py-8">
@@ -42,15 +38,12 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] };
 }): Promise<Metadata> {
-  const global = await fetcher<APIResponse<"api::global.global">>(
-    "/api/global",
-    {
-      fields: ["siteName"],
-    }
-  );
+  const global = await client.single("global").find({
+    fields: ["siteName"],
+  });
 
-  const title = `All articles | ${global.data.attributes.siteName}`;
-  const description = `View all the blog post from ${global.data.attributes.siteName}`;
+  const title = `All articles | ${global.data.siteName}`;
+  const description = `View all the blog post from ${global.data.siteName}`;
 
   return {
     title,
@@ -58,7 +51,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      siteName: global.data.attributes.siteName,
+      siteName: global.data.siteName,
     },
     metadataBase: new URL(url),
   };

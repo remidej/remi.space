@@ -1,5 +1,4 @@
-import type { APIResponse, APIResponseCollection } from "@/types/types";
-import { fetcher } from "@/utils/fetcher";
+import { client, fetcher } from "@/utils/cms";
 import Link from "next/link";
 import { Slices } from "@/components/Slices";
 import { type Metadata } from "next";
@@ -8,15 +7,10 @@ import { url } from "@/utils/url";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const pages = await fetcher<APIResponseCollection<"api::page.page">>(
-    "/api/pages",
-    {
-      fields: ["slug"],
-    }
-  );
+  const pages = await client.collection("pages").find({ fields: ["slug"] });
 
   return pages.data.map((page) => ({
-    slug: page.attributes.slug === "_" ? [] : page.attributes.slug.split("_"),
+    slug: page.slug === "_" ? [] : page.slug.split("_"),
   }));
 }
 
@@ -25,36 +19,33 @@ export default async function ArticlePage({
 }: {
   params: { slug: string[] };
 }) {
-  const pages = await fetcher<APIResponseCollection<"api::page.page">>(
-    "/api/pages",
-    {
-      filters: {
-        slug: {
-          $eq: params.slug == null ? "_" : params.slug.join("_"),
-        },
+  const pages = await client.collection("pages").find({
+    filters: {
+      slug: {
+        $eq: params.slug == null ? "_" : params.slug.join("_"),
       },
-      populate: {
-        slices: {
-          on: {
-            "slices.home-hero": {
-              populate: "*",
-            },
-            "slices.blog-section": {
-              populate: "*",
-            },
-            "slices.work-section": {
-              populate: "*",
-            },
+    },
+    populate: {
+      slices: {
+        on: {
+          "slices.home-hero": {
+            populate: "*",
+          },
+          "slices.blog-section": {
+            populate: "*",
+          },
+          "slices.work-section": {
+            populate: "*",
           },
         },
       },
-    }
-  );
+    },
+  });
   const page = pages.data[0];
 
   return (
     <>
-      <Slices slices={page.attributes.slices} />
+      <Slices slices={page.slices} />
     </>
   );
 }
@@ -65,7 +56,7 @@ export async function generateMetadata({
   params: { slug: string[] };
 }): Promise<Metadata> {
   const [pages, global] = await Promise.all([
-    await fetcher<APIResponseCollection<"api::page.page">>("/api/pages", {
+    client.collection("pages").find({
       filters: {
         slug: {
           $eq: params.slug == null ? "_" : params.slug.join("_"),
@@ -73,13 +64,13 @@ export async function generateMetadata({
       },
       populate: ["metadata", "metadata.image"],
     }),
-    await fetcher<APIResponse<"api::global.global">>("/api/global", {
+    client.single("global").find({
       fields: ["siteName"],
     }),
   ]);
 
-  const { metadata } = pages.data[0].attributes;
-  const title = `${metadata.title} | ${global.data.attributes.siteName}`;
+  const { metadata } = pages.data[0];
+  const title = `${metadata.title} | ${global.data.siteName}`;
   const description = metadata.description;
 
   return {
@@ -88,9 +79,9 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      siteName: global.data.attributes.siteName,
+      siteName: global.data.siteName,
       ...(metadata.image && {
-        images: [(metadata.image as any).data.attributes.url],
+        images: [metadata.image.url],
       }),
     },
     metadataBase: new URL(url),
