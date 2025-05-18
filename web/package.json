@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "node copyTypes && next dev",
+    "dev": "next dev",
     "develop": "yarn dev",
     "lint": "next lint",
     "start": "next start"
@@ -37,5 +37,8 @@
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.0",
+  "engines": {
+    "node": ">=20.18.2 <=22.x.x"
+  }
 }
