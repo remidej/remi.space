@@ -1,4 +1,4 @@
-import { client } from "@/utils/cms";
+import { getClient } from "@/utils/cms";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import { ArticlePreview } from "../ArticlePreview";
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export async function BlogPreview({ slice }: Props) {
-  const articles = await client.collection("articles").find({
+  const articles = await getClient().collection("articles").find({
     fields: ["title", "description", "slug"],
     sort: ["createdAt:desc"],
     pagination: {

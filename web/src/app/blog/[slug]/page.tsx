@@ -1,4 +1,4 @@
-import { client } from "@/utils/cms";
+import { getClient } from "@/utils/cms";
 import Link from "next/link";
 import { FiArrowLeft, FiMail } from "react-icons/fi";
 import { Slices } from "@/components/Slices";
@@ -7,13 +7,15 @@ import { draftMode } from "next/headers";
 import { url } from "@/utils/url";
 
 export async function generateStaticParams() {
-  const articles = await client.collection("articles").find({
-    fields: ["slug"],
-    pagination: {
-      page: 1,
-      pageSize: 99,
-    },
-  });
+  const articles = await getClient()
+    .collection("articles")
+    .find({
+      fields: ["slug"],
+      pagination: {
+        page: 1,
+        pageSize: 99,
+      },
+    });
 
   return articles.data.map((article) => ({
     slug: article.slug,
@@ -26,20 +28,24 @@ export default async function ArticlePage({
   params: { slug: string };
 }) {
   const [articles, global] = await Promise.all([
-    client.collection("articles").find({
-      filters: {
-        slug: params.slug,
-      },
-      populate: {
-        slices: {
-          populate: "*",
+    getClient()
+      .collection("articles")
+      .find({
+        filters: {
+          slug: params.slug,
         },
-      },
-      status: draftMode().isEnabled ? "draft" : "published",
-    }),
-    client.single("global").find({
-      fields: ["email"],
-    }),
+        populate: {
+          slices: {
+            populate: "*",
+          },
+        },
+        status: draftMode().isEnabled ? "draft" : "published",
+      }),
+    getClient()
+      .single("global")
+      .find({
+        fields: ["email"],
+      }),
   ]);
 
   const article = articles.data[0];
@@ -101,16 +107,20 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const [articles, global] = await Promise.all([
-    client.collection("articles").find({
-      filters: {
-        slug: params.slug,
-      },
-      populate: ["image"],
-      status: draftMode().isEnabled ? "draft" : "published",
-    }),
-    client.single("global").find({
-      fields: ["siteName"],
-    }),
+    getClient()
+      .collection("articles")
+      .find({
+        filters: {
+          slug: params.slug,
+        },
+        populate: ["image"],
+        status: draftMode().isEnabled ? "draft" : "published",
+      }),
+    getClient()
+      .single("global")
+      .find({
+        fields: ["siteName"],
+      }),
   ]);
 
   const article = articles.data[0];

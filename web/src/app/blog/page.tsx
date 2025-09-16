@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ArticlePreview } from "@/components/ArticlePreview";
-import { client } from "@/utils/cms";
+import { getClient } from "@/utils/cms";
 import { URLSearchParams } from "url";
 import { type Metadata } from "next";
 import { url } from "@/utils/url";
@@ -10,7 +10,7 @@ export default async function BlogPage({
 }: {
   searchParams: Record<string, string>;
 }) {
-  const articles = await client.collection("articles").find({
+  const articles = await getClient().collection("articles").find({
     fields: ["title", "description", "slug"],
     sort: ["createdAt:desc"],
     pagination: {
@@ -38,7 +38,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] };
 }): Promise<Metadata> {
-  const global = await client.single("global").find({
+  const global = await getClient().single("global").find({
     fields: ["siteName"],
   });
 

@@ -1,10 +1,10 @@
-import { client } from "@/utils/cms";
+import { getClient } from "@/utils/cms";
 import { url } from "@/utils/url";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, pages] = await Promise.all([
-    client.collection("articles").find({
+    getClient().collection("articles").find({
       fields: ["slug", "updatedAt"],
       sort: ["createdAt:desc"], // used for blog page lastModified
       pagination: {
@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         pageSize: 99,
       },
     }),
-    client.collection("pages").find({
+    getClient().collection("pages").find({
       fields: ["slug", "updatedAt"],
       sort: ["createdAt:desc"],
       pagination: {

@@ -1,10 +1,10 @@
-import { client } from "@/utils/cms";
+import { getClient } from "@/utils/cms";
 import { url } from "@/utils/url";
 import RSS from "rss";
 
 export async function GET() {
   const [articles, tags, global] = await Promise.all([
-    client.collection("articles").find({
+    getClient().collection("articles").find({
       fields: ["title", "description", "slug", "publishedAt"],
       sort: ["publishedAt:desc"],
       populate: {
@@ -17,14 +17,14 @@ export async function GET() {
         pageSize: 99,
       },
     }),
-    client.collection("tags").find({
+    getClient().collection("tags").find({
       fields: ["name"],
       pagination: {
         page: 1,
         pageSize: 99,
       },
     }),
-    client.single("global").find({
+    getClient().single("global").find({
       fields: ["siteName"],
     }),
   ]);

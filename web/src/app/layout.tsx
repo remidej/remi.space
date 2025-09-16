@@ -5,12 +5,13 @@ import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import Link from "next/link";
 import "./globals.css";
-import { client } from "@/utils/cms";
 import { SocialButtons } from "@/components/SocialButtons";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ServiceWorker } from "./ServiceWorker";
 import { revalidatePath } from "next/cache";
+import LivePreview from "@/components/LivePreview";
+import { getClient } from "@/utils/cms";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,28 +25,31 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const global = await client.single("global").find({
-    populate: [
-      "navbarSocialNetworks",
-      "navbarSocialNetworks.icon",
-      "footerSocialNetworks",
-      "footerSections",
-      "footerSections.links",
-    ],
-  });
+  const global = await getClient()
+    .single("global")
+    .find({
+      populate: [
+        "navbarSocialNetworks",
+        "navbarSocialNetworks.icon",
+        "footerSocialNetworks",
+        "footerSections",
+        "footerSections.links",
+      ],
+    });
 
   return (
     <html lang="en">
       <SpeedInsights />
       <Analytics />
       <ServiceWorker />
+      <LivePreview />
       <body
         style={inter.style}
         className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 "
       >
         {/* Top section */}
         <div className="flex-1 flex flex-col dark:bg-gray-900">
-          <Navbar isDraftMode={draftMode().isEnabled}>
+          <Navbar>
             <nav className="container py-4 w-full flex flex-row items-center justify-between text-gray-700 dark:text-gray-300">
               <Link
                 href="/"
