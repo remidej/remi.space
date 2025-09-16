@@ -1,0 +1,24 @@
+{
+  "name": "remi.space",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal website monorepo",
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:cms": "pnpm --filter cms dev",
+    "build": "pnpm run --recursive build",
+    "build:web": "pnpm --filter web build",
+    "build:cms": "pnpm --filter cms build",
+    "start:web": "pnpm --filter web start",
+    "start:cms": "pnpm --filter cms start",
+    "lint": "pnpm --filter web lint",
+    "clean": "pnpm run --recursive clean && rm -rf node_modules",
+    "install:clean": "rm -rf node_modules web/node_modules cms/node_modules pnpm-lock.yaml && pnpm install"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@9.12.3"
+}

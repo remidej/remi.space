@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "strapi build",
-    "dev": "yarn develop",
+    "dev": "pnpm develop",
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi"
@@ -26,11 +26,12 @@
     "styled-components": "^6.0.0"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
+    "node": ">=18.0.0 <=22.x.x"
   },
   "strapi": {
     "uuid": "12b83d95-78fa-4bc1-80f3-ed7af3c28d93"
   },
-  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
+  "devDependencies": {
+    "@strapi/typescript-utils": "^5.23.4"
+  }
 }
