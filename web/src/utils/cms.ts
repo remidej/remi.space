@@ -12,6 +12,7 @@ export function getClient() {
       return "false";
     }
   };
+
   return strapi({
     baseURL: `${process.env.CMS_URL!}/api`,
     auth: process.env.CMS_API_TOKEN,

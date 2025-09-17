@@ -10,10 +10,6 @@ export default function LivePreview() {
     const handleMessage = async (message: MessageEvent<any>) => {
       const { origin, data } = message;
 
-      if (origin !== process.env.NEXT_PUBLIC_API_URL) {
-        return;
-      }
-
       if (data.type === "strapiUpdate") {
         router.refresh();
       } else if (data.type === "strapiScript") {
