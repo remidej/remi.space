@@ -1,0 +1,42 @@
+---
+interface SocialNetwork {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+interface Props {
+  socialNetworks: SocialNetwork[];
+  small?: boolean;
+}
+
+const { socialNetworks, small = false } = Astro.props;
+---
+
+<div class="flex flex-row gap-2">
+  {
+    socialNetworks.map((socialNetwork) => (
+      <a
+        href={socialNetwork.url}
+        title={socialNetwork.name}
+        target="_blank"
+        rel="me"
+        class:list={[
+          "flex flex-row items-center gap-2",
+          small
+            ? "rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 p-3"
+            : "shadow-xs hover:shadow bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 py-2 px-3 rounded",
+        ]}
+      >
+        <img
+          src={socialNetwork.icon}
+          alt={socialNetwork.name}
+          width="16"
+          height="16"
+          class="dark:invert invert-0 opacity-80"
+        />
+        {!small && <span class="ml-2 inline-block">{socialNetwork.name}</span>}
+      </a>
+    ))
+  }
+</div>

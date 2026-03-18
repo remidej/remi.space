@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import global from "../../data/global.json";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const publishedAtString = post.data.date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="py-8 container mx-auto text-lg md:text-xl">
+    <header>
+      <a
+        href="/blog"
+        class="uppercase tracking-wide text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white py-1"
+      >
+        <svg
+          class="inline-block mr-1 -mt-1"
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+            points="12 19 5 12 12 5"></polyline></svg
+        >
+        All articles
+      </a>
+      <h1
+        class="text-4xl font-semibold leading-tight mt-2 mb-4 text-gray-800 dark:text-gray-200"
+      >
+        {post.data.title}
+      </h1>
+      <p
+        class="uppercase tracking-wide text-sm font-semibold text-gray-500 dark:text-gray-400"
+      >
+        {publishedAtString}
+      </p>
+    </header>
+    <main>
+      <div
+        class="leading-relaxed py-4 flex flex-col gap-6 dark:text-gray-300 prose dark:prose-invert prose-headings:font-bold prose-img:rounded-md prose-a:text-blog-700 dark:prose-a:text-blog-100 prose-a:underline max-w-none"
+      >
+        <Content />
+      </div>
+    </main>
+    <footer
+      class="mt-8 py-8 border-t-4 border-gray-200 dark:border-gray-700"
+    >
+      <p>
+        Hey, I'm Rémi, author of this blog. If you liked this post, don't
+        hesitate to reply, or to <a
+          href="/blog"
+          class="underline text-blog-700 dark:text-blog-100">check out my other articles</a
+        >.
+      </p>
+      <a
+        href={`mailto:${encodeURIComponent(global.email)}?subject=Reply to "${encodeURIComponent(post.data.title)}"`}
+        class="mt-6 px-4 py-2 text-blog-800 dark:text-blog-100 bg-blog-200 dark:bg-blog-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
+      >
+        Reply by email
+        <svg
+          class="inline -mt-[2px] ml-1"
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+          ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+        >
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

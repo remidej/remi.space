@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-gray-50: var(--color-slate-50);
+  --color-gray-100: var(--color-slate-100);
+  --color-gray-200: var(--color-slate-200);
+  --color-gray-300: var(--color-slate-300);
+  --color-gray-400: var(--color-slate-400);
+  --color-gray-500: var(--color-slate-500);
+  --color-gray-600: var(--color-slate-600);
+  --color-gray-700: var(--color-slate-700);
+  --color-gray-800: var(--color-slate-800);
+  --color-gray-900: var(--color-slate-900);
+  --color-gray-950: var(--color-slate-950);
+  --color-primary-50: var(--color-teal-50);
+  --color-primary-100: var(--color-teal-100);
+  --color-primary-200: var(--color-teal-200);
+  --color-primary-300: var(--color-teal-300);
+  --color-primary-400: var(--color-teal-400);
+  --color-primary-500: var(--color-teal-500);
+  --color-primary-600: var(--color-teal-600);
+  --color-primary-700: var(--color-teal-700);
+  --color-primary-800: var(--color-teal-800);
+  --color-primary-900: var(--color-teal-900);
+  --color-primary-950: var(--color-teal-950);
+  --color-blog-50: var(--color-teal-50);
+  --color-blog-100: var(--color-teal-100);
+  --color-blog-200: var(--color-teal-200);
+  --color-blog-300: var(--color-teal-300);
+  --color-blog-400: var(--color-teal-400);
+  --color-blog-500: var(--color-teal-500);
+  --color-blog-600: var(--color-teal-600);
+  --color-blog-700: var(--color-teal-700);
+  --color-blog-800: var(--color-teal-800);
+  --color-blog-900: var(--color-teal-900);
+  --color-blog-950: var(--color-teal-950);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 100%;
+  @media (width >= 40rem) {
+    max-width: 600px;
+  }
+  @media (width >= 48rem) {
+    max-width: 700px;
+  }
+  @media (width >= 64rem) {
+    max-width: 720px;
+  }
+  @media (width >= 80rem) {
+    max-width: 720px;
+  }
+}

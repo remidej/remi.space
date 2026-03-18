@@ -1,0 +1,86 @@
+---
+interface Props {
+  slice: {
+    title: string;
+    color: string;
+    content: string;
+    link?: { text: string; url: string } | null;
+  };
+}
+
+const { slice } = Astro.props;
+
+const colorMap: Record<string, { title: string; marker: string; button: string }> = {
+  green: {
+    title: "text-green-400 dark:text-green-500",
+    marker: "marker:text-green-500 dark:marker:text-green-400",
+    button:
+      "text-green-800 dark:text-green-100 bg-green-200 dark:bg-green-800",
+  },
+  blue: {
+    title: "text-blue-400 dark:text-blue-500",
+    marker: "marker:text-blue-500 dark:marker:text-blue-400",
+    button: "text-blue-800 dark:text-blue-100 bg-blue-200 dark:bg-blue-800",
+  },
+  purple: {
+    title: "text-purple-400 dark:text-purple-500",
+    marker: "marker:text-purple-500 dark:marker:text-purple-400",
+    button:
+      "text-purple-800 dark:text-purple-100 bg-purple-200 dark:bg-purple-800",
+  },
+  rose: {
+    title: "text-rose-400 dark:text-rose-500",
+    marker: "marker:text-rose-500 dark:marker:text-rose-400",
+    button: "text-rose-800 dark:text-rose-100 bg-rose-200 dark:bg-rose-800",
+  },
+  amber: {
+    title: "text-amber-400 dark:text-amber-500",
+    marker: "marker:text-amber-500 dark:marker:text-amber-400",
+    button:
+      "text-amber-800 dark:text-amber-100 bg-amber-200 dark:bg-amber-800",
+  },
+};
+
+const colors = colorMap[slice.color] || colorMap.blue;
+---
+
+<section class="container py-12">
+  <p class:list={["uppercase tracking-wide font-bold text-lg", colors.title]}>
+    {slice.title}
+  </p>
+  <div
+    class:list={[
+      "flex flex-col gap-3 md:text-lg text-gray-700 dark:text-gray-300 mt-6",
+      "[&_ul]:list-disc [&_ul]:list-inside [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2",
+      colors.marker,
+    ]}
+    set:html={slice.content}
+  />
+  {
+    slice.link && (
+      <a
+        href={slice.link.url}
+        class:list={[
+          "mt-6 px-4 py-2 text-lg font-semibold rounded-lg inline-block hover:shadow",
+          colors.button,
+        ]}
+      >
+        {slice.link.text}{" "}
+        <svg
+          class="inline -mt-[2px] ml-1"
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+    )
+  }
+</section>

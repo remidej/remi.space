@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  description: string;
+}
+
+const { title, slug, description } = Astro.props;
+---
+
+<article class="text-xl">
+  <header>
+    <h4
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white leading-tight"
+    >
+      <a href={`/blog/${slug}`} class="hover:underline">{title}</a>
+    </h4>
+  </header>
+  <section class="text-gray-600 dark:text-gray-400 text-lg mt-2 mb-1">
+    <p>{description}</p>
+  </section>
+  <a
+    href={`/blog/${slug}`}
+    class="text-lg text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
+  >
+    Read <svg
+      class="inline"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"
+      ></line><polyline points="12 5 19 12 12 19"></polyline></svg
+    >
+  </a>
+</article>

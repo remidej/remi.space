@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SliceRenderer from "../components/SliceRenderer.astro";
+import homepage from "../data/homepage.json";
+---
+
+<BaseLayout isHomepage>
+  <SliceRenderer slices={homepage.slices} />
+</BaseLayout>

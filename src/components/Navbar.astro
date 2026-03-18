@@ -1,0 +1,16 @@
+---
+import SocialButtons from "./SocialButtons.astro";
+import global from "../data/global.json";
+---
+
+<nav
+  class="container py-4 w-full flex flex-row items-center justify-between text-gray-700 dark:text-gray-300"
+>
+  <a
+    href="/"
+    class="inline-block font-bold text-xl hover:text-black dark:hover:text-white"
+  >
+    {global.siteName}
+  </a>
+  <SocialButtons socialNetworks={global.navbarSocialNetworks} small />
+</nav>

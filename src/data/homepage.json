@@ -1,0 +1,22 @@
+{
+  "slices": [
+    {
+      "type": "home-hero",
+      "name": "Rémi de Juvigny",
+      "intro": "<p>I'm a software engineer based in Paris. I currently work at <a href=\"https://strapi.io\" target=\"_blank\">Strapi</a>, building the leading open-source headless CMS.</p><p>I love building things for the web and sharing what I learn along the way.</p>"
+    },
+    {
+      "type": "blog-section",
+      "title": "From the blog",
+      "articleCount": 4,
+      "link": { "text": "All articles", "url": "/blog" }
+    },
+    {
+      "type": "work-section",
+      "title": "Work",
+      "color": "blue",
+      "content": "<ul><li><strong>Strapi</strong> — Software engineer since 2020. Building the leading open-source headless CMS.</li><li><strong>HETIC</strong> — Taught web development to master's students in 2021.</li><li><strong>Revolt Influence</strong> — Fullstack developer in 2019. Built an influencer marketing platform.</li><li><strong>MadKudu</strong> — Frontend engineering intern in San Francisco, 2018.</li></ul>",
+      "link": null
+    }
+  ]
+}

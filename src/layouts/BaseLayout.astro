@@ -1,0 +1,66 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  isHomepage?: boolean;
+}
+
+const { title, description, image, isHomepage = false } = Astro.props;
+
+import global from "../data/global.json";
+const siteName = global.siteName;
+const pageTitle = title ? `${title} | ${siteName}` : siteName;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:title" content={pageTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:site_name" content={siteName} />
+    {image && <meta property="og:image" content={image} />}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={siteName}
+      href="/rss.xml"
+    />
+    <script is:inline>
+      // Unregister old service workers from previous Gatsby version
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        });
+      }
+    </script>
+  </head>
+  <body
+    style="font-family: 'Inter', sans-serif;"
+    class="flex flex-col min-h-screen text-gray-800 dark:text-gray-100"
+  >
+    <div class="flex-1 flex flex-col dark:bg-gray-900">
+      {!isHomepage && <Navbar />}
+      <main class="flex-1 bg-white dark:bg-gray-900">
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>

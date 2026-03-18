@@ -1,0 +1,30 @@
+{
+  "siteName": "Rémi de Juvigny",
+  "email": "remi@hey.com",
+  "navbarSocialNetworks": [
+    { "name": "GitHub", "url": "https://github.com/remidej", "icon": "/icons/github.svg" },
+    { "name": "Bluesky", "url": "https://bsky.app/profile/remi.space", "icon": "/icons/bluesky.svg" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/remidejuvigny/", "icon": "/icons/linkedin.svg" }
+  ],
+  "footerSocialNetworks": [
+    { "name": "GitHub", "url": "https://github.com/remidej", "icon": "/icons/github.svg" },
+    { "name": "Bluesky", "url": "https://bsky.app/profile/remi.space", "icon": "/icons/bluesky.svg" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/remidejuvigny/", "icon": "/icons/linkedin.svg" }
+  ],
+  "footerSections": [
+    {
+      "title": "Pages",
+      "links": [
+        { "text": "Home", "url": "/", "openInNewTab": false },
+        { "text": "Blog", "url": "/blog", "openInNewTab": false }
+      ]
+    },
+    {
+      "title": "Site",
+      "links": [
+        { "text": "GitHub", "url": "https://github.com/remidej/remi.space", "openInNewTab": true },
+        { "text": "RSS", "url": "/rss.xml", "openInNewTab": false }
+      ]
+    }
+  ]
+}

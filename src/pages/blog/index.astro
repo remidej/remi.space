@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticlePreview from "../../components/ArticlePreview.astro";
+import { getCollection } from "astro:content";
+import global from "../../data/global.json";
+
+const allPosts = await getCollection("blog");
+const posts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout
+  title="All articles"
+  description={`View all the blog posts from ${global.siteName}`}
+>
+  <div class="container py-8">
+    <h1
+      class="uppercase tracking-wide text-blog-500 font-bold mb-6 text-lg"
+    >
+      All blog posts
+    </h1>
+    <section class="flex-1 flex flex-col gap-8">
+      {
+        posts.map((post) => (
+          <ArticlePreview
+            title={post.data.title}
+            slug={post.data.slug}
+            description={post.data.description}
+          />
+        ))
+      }
+    </section>
+  </div>
+</BaseLayout>
