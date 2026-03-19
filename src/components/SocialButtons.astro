@@ -11,6 +11,12 @@ interface Props {
 }
 
 const { socialNetworks, small = false } = Astro.props;
+
+const icons: Record<string, string> = {
+  github: `<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>`,
+  linkedin: `<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>`,
+  bluesky: `<path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.643 3.593 3.519 6.173 3.175-4.413.671-8.321 2.304-3.489 8.095C7.67 26.208 11.5 19.274 12 17.895c.5 1.38 3.263 7.397 8.692 3.622 4.832-5.791.924-7.424-3.489-8.095 2.58.344 5.388-.532 6.173-3.175C23.622 9.418 24 4.458 24 3.768c0-.688-.139-1.86-.902-2.203-.659-.3-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/>`,
+};
 ---
 
 <div class="flex flex-row gap-2">
@@ -28,12 +34,18 @@ const { socialNetworks, small = false } = Astro.props;
             : "shadow-xs hover:shadow bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 py-2 px-3 rounded",
         ]}
       >
-        <img
-          src={socialNetwork.icon}
-          alt={socialNetwork.name}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
-          class="dark:invert invert-0 opacity-80"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="opacity-80"
+          set:html={icons[socialNetwork.icon]}
         />
         {!small && <span class="ml-2 inline-block">{socialNetwork.name}</span>}
       </a>

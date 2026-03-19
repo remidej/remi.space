@@ -1,15 +1,15 @@
 {
   "siteName": "Rémi de Juvigny",
-  "email": "remi@hey.com",
+  "email": "hi@remi.space",
   "navbarSocialNetworks": [
-    { "name": "GitHub", "url": "https://github.com/remidej", "icon": "/icons/github.svg" },
-    { "name": "Bluesky", "url": "https://bsky.app/profile/remi.space", "icon": "/icons/bluesky.svg" },
-    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/remidejuvigny/", "icon": "/icons/linkedin.svg" }
+    { "name": "GitHub", "url": "https://github.com/remidej", "icon": "github" },
+    { "name": "Bluesky", "url": "https://bsky.app/profile/remi.space", "icon": "bluesky" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/remidejuvigny/", "icon": "linkedin" }
   ],
   "footerSocialNetworks": [
-    { "name": "GitHub", "url": "https://github.com/remidej", "icon": "/icons/github.svg" },
-    { "name": "Bluesky", "url": "https://bsky.app/profile/remi.space", "icon": "/icons/bluesky.svg" },
-    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/remidejuvigny/", "icon": "/icons/linkedin.svg" }
+    { "name": "GitHub", "url": "https://github.com/remidej", "icon": "github" },
+    { "name": "Bluesky", "url": "https://bsky.app/profile/remi.space", "icon": "bluesky" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/remidejuvigny/", "icon": "linkedin" }
   ],
   "footerSections": [
     {
