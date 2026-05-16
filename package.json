@@ -17,5 +17,9 @@
     "astro": "^6.0.5",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.37.1",
+    "wrangler": "^4.92.0"
   }
 }
