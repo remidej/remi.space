@@ -37,20 +37,26 @@
   --color-blog-950: var(--color-teal-950);
 }
 
+@layer base {
+  html {
+    font-size: 17px;
+  }
+}
+
 @utility container {
   margin-inline: auto;
   padding-inline: 1rem;
   max-width: 100%;
   @media (width >= 40rem) {
-    max-width: 600px;
+    max-width: 660px;
   }
   @media (width >= 48rem) {
-    max-width: 700px;
+    max-width: 770px;
   }
   @media (width >= 64rem) {
-    max-width: 720px;
+    max-width: 790px;
   }
   @media (width >= 80rem) {
-    max-width: 720px;
+    max-width: 790px;
   }
 }

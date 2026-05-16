@@ -29,8 +29,8 @@ const posts = allPosts
       <section
         class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mt-6 flex flex-col gap-3 [&_a]:underline [&_a]:decoration-primary-300 dark:[&_a]:decoration-primary-700 [&_a]:decoration-[3px]"
       >
-        <p>I'm a software engineer based in Paris. I currently work at <a href="https://strapi.io" target="_blank">Strapi</a>, building the leading open-source headless CMS.</p>
-        <p>I love building things for the web and sharing what I learn along the way.</p>
+        <p>I'm a Product Engineer from France. I build open-source apps for developers. After five years at Strapi, I'm now working on <a href="https://camox.ai" target="_blank">Camox</a>, an agent-native CMS framework.</p>
+        <p>I write about making products for the web, using technologies like TypeScript and AI.</p>
       </section>
       <div class="mt-6">
         <SocialButtons socialNetworks={global.footerSocialNetworks} />
@@ -41,7 +41,7 @@ const posts = allPosts
   <!-- Blog -->
   <section class="container py-12">
     <p class="uppercase tracking-wide text-blog-500 font-bold mb-6 text-lg">
-      From the blog
+      Writing
     </p>
     <div class="flex flex-col gap-8">
       {
@@ -77,22 +77,37 @@ const posts = allPosts
 
   <!-- Work -->
   <section class="container py-12">
-    <p class="uppercase tracking-wide font-bold text-lg text-blue-400 dark:text-blue-500">
+    <p class="uppercase tracking-wide font-bold mb-6 text-lg text-blue-400 dark:text-blue-500">
       Work
     </p>
-    <div
-      class:list={[
-        "flex flex-col gap-3 md:text-lg text-gray-700 dark:text-gray-300 mt-6",
-        "[&_ul]:list-disc [&_ul]:list-inside [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2",
-        "marker:text-blue-500 dark:marker:text-blue-400",
-      ]}
+    <p class="md:text-lg text-gray-700 dark:text-gray-300">
+      I'm building Camox full time.
+    </p>
+    <p class="md:text-lg text-gray-700 dark:text-gray-300 mt-4">
+      Camox is my take on what a next-gen CMS should look like. One that unleashes the power of coding agents without generating slop. One that is opinionated, extensible, fully type-safe, all while providing full visual editing.
+    </p>
+    <p class="md:text-lg text-gray-700 dark:text-gray-300 mt-4">
+      Previously engineer at Strapi, where I worked on growing the ecosystem, and building content management features like History and Preview.
+    </p>
+    <a
+      href="https://camox.ai"
+      target="_blank"
+      class="mt-6 px-4 py-2 text-blue-800 dark:text-blue-100 bg-blue-200 dark:bg-blue-800 text-lg font-semibold rounded-lg inline-block hover:shadow"
     >
-      <ul>
-        <li><strong>Strapi</strong> — Software engineer since 2020. Building the leading open-source headless CMS.</li>
-        <li><strong>HETIC</strong> — Taught web development to master's students in 2021.</li>
-        <li><strong>Revolt Influence</strong> — Fullstack developer in 2019. Built an influencer marketing platform.</li>
-        <li><strong>MadKudu</strong> — Frontend engineering intern in San Francisco, 2018.</li>
-      </ul>
-    </div>
+      Visit camox.ai
+      <svg
+        class="inline -mt-[2px] ml-1"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+          points="12 5 19 12 12 19"></polyline></svg
+      >
+    </a>
   </section>
 </BaseLayout>
