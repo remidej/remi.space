@@ -3,12 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialButtons from "../components/SocialButtons.astro";
 import ArticlePreview from "../components/ArticlePreview.astro";
 import global from "../data/global.json";
-import { getCollection } from "astro:content";
+import {
+  getPublishedBlogPosts,
+  sortBlogPostsByDateDesc,
+} from "../utils/blog";
 
-const allPosts = await getCollection("blog");
-const posts = allPosts
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 4);
+const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts()).slice(0, 4);
 ---
 
 <BaseLayout isHomepage>
@@ -84,7 +84,7 @@ const posts = allPosts
       I'm building Camox full time.
     </p>
     <p class="md:text-lg text-gray-700 dark:text-gray-300 mt-4">
-      Camox is my take on what a next-gen CMS should look like. One that unleashes the power of coding agents without generating slop. One that is opinionated, extensible, fully type-safe, all while providing full visual editing.
+      Camox is my take on what a next-gen CMS should look like. It leverages the power of coding agents without generating slop. It's opinionated, extensible, fully type-safe, all while providing full visual editing.
     </p>
     <p class="md:text-lg text-gray-700 dark:text-gray-300 mt-4">
       Previously engineer at Strapi, where I worked on growing the ecosystem, and building content management features like History and Preview.

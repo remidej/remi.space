@@ -1,0 +1,45 @@
+---
+type Variant = "warning" | "tip" | "note";
+
+interface Props {
+  variant?: Variant;
+  title?: string;
+}
+
+const { variant = "note", title } = Astro.props;
+
+const variants: Record<Variant, { label: string; icon: string; classes: string }> = {
+  warning: {
+    label: "Warning",
+    icon: "⚠️",
+    classes:
+      "border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-500/50 dark:bg-amber-950/40 dark:text-amber-100",
+  },
+  tip: {
+    label: "Tip",
+    icon: "💡",
+    classes:
+      "border-teal-300 bg-teal-50 text-teal-950 dark:border-teal-500/50 dark:bg-teal-950/40 dark:text-teal-100",
+  },
+  note: {
+    label: "Note",
+    icon: "ℹ️",
+    classes:
+      "border-sky-300 bg-sky-50 text-sky-950 dark:border-sky-500/50 dark:bg-sky-950/40 dark:text-sky-100",
+  },
+};
+
+const config = variants[variant];
+---
+
+<aside class:list={["not-prose my-6 rounded-lg border p-4", config.classes]}>
+  <div class="flex gap-3">
+    <span aria-hidden="true" class="shrink-0 leading-normal">{config.icon}</span>
+    <div>
+      <p class="m-0 font-semibold leading-normal">{title ?? config.label}</p>
+      <div class="mt-2 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+        <slot />
+      </div>
+    </div>
+  </div>
+</aside>

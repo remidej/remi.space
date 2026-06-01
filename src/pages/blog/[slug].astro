@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import global from "../../data/global.json";
+import { getPublishedBlogPosts } from "../../utils/blog";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getPublishedBlogPosts();
   return posts.map((post) => ({
     params: { slug: post.data.slug },
     props: { post },

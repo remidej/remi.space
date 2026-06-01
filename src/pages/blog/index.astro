@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArticlePreview from "../../components/ArticlePreview.astro";
-import { getCollection } from "astro:content";
 import global from "../../data/global.json";
+import {
+  getPublishedBlogPosts,
+  sortBlogPostsByDateDesc,
+} from "../../utils/blog";
 
-const allPosts = await getCollection("blog");
-const posts = allPosts.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts());
 ---
 
 <BaseLayout
