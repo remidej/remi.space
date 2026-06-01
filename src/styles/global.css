@@ -39,7 +39,13 @@
 
 @layer base {
   html {
-    font-size: 17px;
+    font-size: 16px;
+  }
+
+  @media (width >= 40rem) {
+    html {
+      font-size: 17px;
+    }
   }
 }
 
