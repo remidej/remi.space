@@ -14,9 +14,4 @@ const blog = defineCollection({
   }),
 });
 
-// Copy for static pages, shared by the HTML and markdown versions
-const pages = defineCollection({
-  loader: glob({ pattern: "*.md", base: "./src/content/pages" }),
-});
-
-export const collections = { blog, pages };
+export const collections = { blog };

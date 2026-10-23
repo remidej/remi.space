@@ -28,7 +28,10 @@ const siteName = global.siteName;
 const pageTitle = title ? `${title} | ${siteName}` : siteName;
 
 // Cloudflare serves pages with a trailing slash (e.g. /blog/)
-const canonicalUrl = new URL(`${Astro.url.pathname.replace(/\/$/, "")}/`, Astro.site);
+const pathWithoutSlash = Astro.url.pathname.replace(/\/$/, "");
+const canonicalUrl = new URL(`${pathWithoutSlash}/`, Astro.site);
+// Every page has a markdown twin at the same path + `.md`
+const markdownUrl = new URL(`${pathWithoutSlash || "/index"}.md`, Astro.site);
 const imageUrl = image ? new URL(image, Astro.site).href : undefined;
 ---
 
@@ -58,6 +61,8 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
         <meta property="article:published_time" content={publishedAt.toISOString()} />
       )
     }
+    <link rel="alternate" type="text/markdown" href={markdownUrl.href} />
+    <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
     <link
       rel="alternate"
       type="application/rss+xml"
