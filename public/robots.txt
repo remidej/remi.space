@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://remi.space/sitemap-index.xml
+
+# Agents: see https://remi.space/llms.txt for a markdown index of this site

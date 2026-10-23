@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialButtons from "../components/SocialButtons.astro";
 import ArticlePreview from "../components/ArticlePreview.astro";
 import global from "../data/global.json";
+import { person, website } from "../utils/structured-data";
 import {
   getPublishedBlogPosts,
   sortBlogPostsByDateDesc,
@@ -11,7 +12,24 @@ import {
 const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts()).slice(0, 4);
 ---
 
-<BaseLayout isHomepage>
+<BaseLayout
+  isHomepage
+  description="Rémi de Juvigny is a Product Engineer from France building open-source apps for developers. Now working on Camox, an agent-native CMS framework."
+  jsonLd={{
+    "@graph": [
+      website,
+      person,
+      {
+        "@type": "ProfilePage",
+        "@id": "https://remi.space/#profilepage",
+        url: "https://remi.space/",
+        name: global.siteName,
+        isPartOf: { "@id": website["@id"] },
+        mainEntity: { "@id": person["@id"] },
+      },
+    ],
+  }}
+>
   <!-- Hero -->
   <header class="py-6 bg-gray-100 dark:bg-gray-800">
     <div class="container">
