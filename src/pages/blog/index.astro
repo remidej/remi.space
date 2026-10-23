@@ -6,6 +6,8 @@ import {
   getPublishedBlogPosts,
   sortBlogPostsByDateDesc,
 } from "../../utils/blog";
+import { getPostUrl } from "../../utils/markdown";
+import { BLOG_ID, PERSON_ID, person, website } from "../../utils/structured-data";
 
 const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts());
 ---
@@ -13,6 +15,33 @@ const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts());
 <BaseLayout
   title="All articles"
   description={`View all the blog posts from ${global.siteName}`}
+  jsonLd={{
+    "@graph": [
+      website,
+      person,
+      {
+        "@type": "Blog",
+        "@id": BLOG_ID,
+        url: "https://remi.space/blog/",
+        name: `${global.siteName}'s blog`,
+        description:
+          "Articles about making products for the web, using technologies like TypeScript and AI.",
+        inLanguage: "en",
+        author: { "@id": PERSON_ID },
+        publisher: { "@id": PERSON_ID },
+        isPartOf: { "@id": website["@id"] },
+        blogPost: posts.map((post) => ({
+          "@type": "BlogPosting",
+          "@id": `${getPostUrl(post)}#article`,
+          url: getPostUrl(post),
+          headline: post.data.title,
+          description: post.data.description,
+          datePublished: post.data.date.toISOString(),
+          author: { "@id": PERSON_ID },
+        })),
+      },
+    ],
+  }}
 >
   <div class="container py-8">
     <h1
