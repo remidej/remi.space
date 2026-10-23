@@ -1,15 +1,16 @@
-import type { APIContext } from "astro";
-import { getPublishedBlogPosts } from "../../utils/blog";
-import { markdownResponse, postToMarkdown } from "../../utils/markdown";
+import type { APIRoute } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { cleanMdx, md } from "astro-slop";
+import { getPostUrl, resolvePostAssets } from "../../utils/markdown";
 
-export async function getStaticPaths() {
-  const posts = await getPublishedBlogPosts();
-  return posts.map((post) => ({
-    params: { slug: post.data.slug },
-    props: { post },
-  }));
-}
+export { getStaticPaths } from "./[slug].astro";
 
-export function GET({ props }: APIContext) {
-  return markdownResponse(postToMarkdown(props.post));
-}
+export const GET: APIRoute<{ post: CollectionEntry<"blog"> }> = ({ props: { post } }) => md`---
+title: ${post.data.title}
+description: ${post.data.description}
+author: Rémi de Juvigny
+date: ${post.data.date.toISOString().slice(0, 10)}
+url: ${getPostUrl(post)}
+---
+
+${cleanMdx(resolvePostAssets(post))}`;

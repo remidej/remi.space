@@ -8,8 +8,11 @@ import {
   getPublishedBlogPosts,
   sortBlogPostsByDateDesc,
 } from "../utils/blog";
+import { getEntry, render } from "astro:content";
 
 const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts()).slice(0, 4);
+const { Content: Intro } = await render((await getEntry("pages", "intro"))!);
+const { Content: Work } = await render((await getEntry("pages", "work"))!);
 ---
 
 <BaseLayout
@@ -47,8 +50,7 @@ const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts()).slice(0, 4)
       <section
         class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mt-6 flex flex-col gap-3 [&_a]:underline [&_a]:decoration-primary-300 dark:[&_a]:decoration-primary-700 [&_a]:decoration-[3px]"
       >
-        <p>I'm a Product Engineer from France. I build open-source apps for developers. After five years at Strapi, I'm now working on <a href="https://camox.ai" target="_blank">Camox</a>, an agent-native CMS framework.</p>
-        <p>I write about making products for the web, using technologies like TypeScript and AI.</p>
+        <Intro />
       </section>
       <div class="mt-6">
         <SocialButtons socialNetworks={global.footerSocialNetworks} />
@@ -98,15 +100,9 @@ const posts = sortBlogPostsByDateDesc(await getPublishedBlogPosts()).slice(0, 4)
     <p class="uppercase tracking-wide font-bold mb-6 text-lg text-blue-400 dark:text-blue-500">
       Work
     </p>
-    <p class="md:text-lg text-gray-700 dark:text-gray-300">
-      I'm building Camox full time.
-    </p>
-    <p class="md:text-lg text-gray-700 dark:text-gray-300 mt-4">
-      Camox is my take on what a next-gen CMS should look like. It leverages the power of coding agents without generating slop. It's opinionated, extensible, fully type-safe, all while providing full visual editing.
-    </p>
-    <p class="md:text-lg text-gray-700 dark:text-gray-300 mt-4">
-      Previously engineer at Strapi, where I worked on growing the ecosystem, and building content management features like History and Preview.
-    </p>
+    <div class="md:text-lg text-gray-700 dark:text-gray-300 flex flex-col gap-4">
+      <Work />
+    </div>
     <a
       href="https://camox.ai"
       target="_blank"
